@@ -1,0 +1,256 @@
+\documentclass[12pt, hidelinks]{article}
+\usepackage[ngerman]{babel}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{quiver}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usepackage{tikz-cd}
+\usepackage[unicode]{hyperref}
+\usepackage[all]{hypcap}
+
+\usetikzlibrary{angles,calc, decorations.pathreplacing}
+
+\definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
+\definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+\definecolor{brightlavender}{rgb}{0.75, 0.58, 0.89}
+
+\newtheorem{conj}{Vermutung}
+\numberwithin{conj}{section}
+\newtheorem{definition}[conj]{Definition}
+\newtheorem{remark}[conj]{Anmerkung}
+\newtheorem{example}[conj]{Beispiel}
+\newtheorem{theorem}[conj]{Satz}
+\newtheorem{lemma}[conj]{Lemma}
+\newtheorem{proposition}[conj]{Proposition}
+\newtheorem{corollary}[conj]{Korollar}
+\newtheorem{assume}[conj]{Annahme}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ima}{\operatorname{im}}
+
+\title{\textbf{Spektrale Sequenzen\\ Leray–Serre spektrale Sequenz}}
+\author{
+\textbf{Luciano Melodia} \\
+Seminar zur Spektraltheorie \\
+Lehrstuhl für Mathematische Physik \\
+Friedrich-Alexander Universität Erlangen-Nürnberg \\
+\texttt{luciano.melodia@fau.de}}
+\date{\today}
+
+\begin{document}
+\hypersetup{bookmarksnumbered=true,}
+\maketitle
+
+\begin{Large}
+\tableofcontents
+\end{Large}
+
+\section{Homologische Spektrale Sequenzen}
+Spektrale Sequenzen können im Allgemeinen über abelschen Kategorien definiert werden, oder weniger allgemein über $R$-Moduln. Wir betrachten in dieser Arbeit die spektralen Sequenzen über $\mathbb{Z}$-Moduln, also die Variante für abelsche Gruppen.
+
+\begin{definition}[Homologische Sequenz]
+\label{homologischeSequenz}
+Sei $r_0 \geq 0$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}$ besteht aus
+\begin{enumerate}[nolistsep]
+    \item einer Familie abelscher Gruppen $\{A^r_{p,q}\}_{p,q \in \Z, r \geq r_0}$ und
+    \item einer Familie Gruppenhomomorphismen $\{d^r_{p,q}: A^r_{p,q} \to A^r_{p-r,q+r-1}\}$ welche Differentiale genannt werden, so dass für alle $p,q,r$ gilt
+    \begin{enumerate}[nolistsep]
+        \item $d^r_{p-r,q+r-1} \circ d^r_{p,q} = 0$ und
+        \item $E^{r+1}_{p,q}$ ist die Homologie von $A^r$ und $A^r_{p,q} = \ker d^r_{p,q} / \ima d_{p+r,q-r+1}$.
+    \end{enumerate}
+\end{enumerate}
+\end{definition}
+
+Diese Definition einer homologischen Sequenz zeigt deutlich auf, für welche Untergruppen die Quotienten berechnet werden - in einer Art Kettenkomplex mit zwei Indizes. Eine übliche Vereinfachung der Notation wird sich jedoch bei den weiteren Untersuchungen als hilfreich erweisen, indem wir ein $r$ festlegt und alle $A^r_{p,q}$ als ein Objekt $A^r$ behandeln. Dieses nennt man dann eine bigraduierte abelsche Gruppe. Die Differentiale $d^r_{p,q}$ heißen auch kollektiv $d^r$, oder bigraduierte Differentiale.
+
+\begin{definition}[Bigraduierte abelsche Gruppen]
+    Eine bigraduierte abelsche Gruppe $A$ ist eine Familie von abelschen Gruppen $A \coloneq \bigoplus_{p,q \in \Z} A_{p,q}$ und $B \coloneq \bigoplus_{p,q \in \Z} B_{p,q}$ bigraduierte abelsche Gruppen, so ist die bigraduierte Abbildung vom Grad $(c,d)$ eine Sammlung von Gruppenhomomorphismen $f \coloneq \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}$.
+\end{definition}
+
+Seien $A = \bigoplus_{p,q \in \Z} A_{p,q}$ und $B = \bigoplus_{p,q \in \Z} B_{p,q}$ bigraduierte abelsche Gruppen. 
+
+\begin{definition}[Bigraduierte Abbildung]
+    Wir nennen $f^{(c,d)}_{p,q}: A_{p,q} \to B_{p+c,q+d}$ einen Gruppenhomomorphismus vom Bigrad $(c,d)$. Dann ist eine bigraduierte Abbildung vom Bigrad $(c,d)$ ein  Gruppenhomomorphismen $f: A \to B, \bigoplus_{p,q} a_{p,q} \mapsto \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}(a) = \bigoplus_{p,q \in \Z} b_{p+c,q+d}$.
+\end{definition}
+
+$f$ kann als Sammlung von Gruppenhomomorphismen vom Bigrad $(c,d)$ verstanden werden, die elementweise auf der direkten Summe der abelschen Gruppen operieren. Wir können also sinngemäß schreiben $f = \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}$.
+
+\begin{example}
+    Sei $R$ ein Ring, dann trägt $R[x,x^{-1},y,y^{-1}]$ die Struktur einer bigraduierten abelschen Gruppe $A_{p,q} = Rx^py^q$ für alle $p,q \in \Z$.
+\end{example}
+
+\begin{definition}[Bigraduierte Untergruppen und Quotienten]
+    Seien $A,B$ bigraduierte abelsche Gruppen. Dann definieren wir
+    \begin{enumerate}
+        \item $A \subset B \colon\Leftrightarrow A_{p,q} \subset B_{p,q}$ für alle $p,q \in \Z$ und
+        \item falls $A \subset B$, dann ist $B/A \coloneq \bigoplus_{p,q \in \Z} B_{p,q}/A_{p,q}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Falls $f: A \to B$ eine bigraduierte Abbildung des Grads $(c,d)$ zwischen bigraduierten abelschen Gruppen ist, dann definieren wir
+    \begin{itemize}[nolistsep]
+        \item $\ker f \coloneq \bigoplus_{p,q \in \Z} \ker f_{p,q}$ und
+        \item $\ima f \coloneq \bigoplus_{p,q \in \Z} \ima f_{p-c,q-d}$.
+    \end{itemize}
+\end{definition}
+
+Nun können wir die zuvor definierte homologische Sequenz \ref{homologischeSequenz} zu einer spektralen homologischen Sequenz erheben.
+
+\begin{definition}
+    \label{homologischeSpektraleSequenz}
+    Sei $r_0 \geq 0$. Eine homologische spektrale Sequenz $\{E^r,d^r\}$ besteht aus
+    \begin{enumerate}[nolistsep]
+        \item einer bigraduierten abelschen Gruppe $E^r$ und
+        \item einer bigraduierten Abbildung $d^r: E^r \to E^r$ vom Grad $(r,r-1)$, welche Differential genannt wird,
+    \end{enumerate}
+    für jedes $r$, so dass
+    \begin{itemize}[nolistsep]
+        \item $d^r \circ d^r = 0$ und
+        \item $E^{r+1}$ ist die Homologie von $E^r$ in Bezug auf die Differentiale $d^r$, d.h.
+        \begin{align}
+            E^r = \frac{\ker d_r}{\ima d_r} = \frac{\bigoplus_{p,q \in \Z} d^r_{p,q}}{\bigoplus_{p,q \in \Z} \ima d^r_{p,q}} = \bigoplus_{p,q \in \Z} \frac{d^r_{p,q}}{\ima d^r_{p,q}}
+        \end{align}
+    \end{itemize}
+    Für jedes $r$ wird $E^r$ das $r$te Blatt oder die $r$te Seite von $\{E^r,d^r\}$ genannt.
+\end{definition}
+
+\begin{remark}
+    Es gibt dieselbe Variante als kohomologische spektrale Sequenz, welche auf analoge Weise wie Def. \ref{homologischeSpektraleSequenz} definiert wird, mit der Ausnahme, dass wir nun $E_r \coloneq \bigoplus_{p,q \in \Z} E^{p,q}_r$ für die Kohomologien schreiben und die Differentiale durch $d_r: E_r \to E_r$ geschrieben werden und vom Grad $(r,-r+1)$ sind. Die homologische spektrale Sequenz wird benutzt, um Homologiegruppen zu berechnen, während die kohomologische Spektrale Sequenz benutzt wird um Kohomologien zu berechnen.
+\end{remark}
+
+\begin{definition}
+    Sei $\{E^r, d^r\}$ eine homologische spektrale Sequenz, so dass es für alle $p,q \in \Z$ eine natürliche Zahl $r(p,q) \in \mathbb{N}$, abhängig von $p,q$ gibt, so dass für alle $r \geq r(p,q)$, $E^r_{p,q} \cong E_{p,q}^{r(p,q)}$. Dann sagen wir, dass die bigraduierte abelsche Gruppe
+    \begin{align}
+        E^\infty \coloneq \bigoplus_{p,q \in \Z} E^{r(p,q)}_{p,q}
+    \end{align}
+    der Limes für $\{E^r, d^r\}$ ist. Äquivalent sagen wir auch, dass die spektrale Sequenz an $E^\infty$ angrenzt.
+\end{definition}
+
+\begin{definition}
+    Eine spektrale Sequenz heißt Erste-Quadranten-Spektralsequenz, falls für ein $r \in \mathbb{N}$ die Einträge auf der $r$ten Seite ungleich Null sind, genau dann wenn $p \geq 0$ und $q \geq 0$.
+\end{definition}
+
+\section{Filtrierungen und exakte Paare}
+Angenommen wir haben einen topologischen Raum $X$ und einen guten Teilraum $A$, wobei das Gütekriterium in diesem Fall besagt, dass es eine Umgebung $U \subset X$ gibt, mit $\overline{A} \subset \mathring{U}$, so dass $A$ ein Deformationsretrakt von $U$ ist. Dies garantiert, dass die relative Homologie $H_n(X,A) \cong \tilde{H}_n(X/A)$ isomorph ist zur reduzierten Homologie des Quotienten $X/A$. Falls wir nun die Homologien von $A$ und $X/A$ kennen, so ist der natürliche Weg die lange exakte reduzierte Homologiesequenz zu benutzen, um die Homologien von $X$ zu berechnen:
+\begin{align}
+    \cdots \to \tilde{H}_n(A) \to \tilde{H}_n(X) \to \tilde{H}_n(X/A) \to H_{n-1}(A) \to H_{n-1}(X) \to \cdots.
+\end{align}
+Wir erweitern unsere Situation auf drei ineinanderliegende Teilräume $B \subset A \subset X$, wobei wir wieder annehmen, dass die Teilräume gutartig sind und wir die Homologien von $B, A/B$ und $X/A$ kennen. Dann hätten wir gerne eine Verallgemeinerung der exakten Sequenz, die auch für ein solches Paar ineinanderliegender Räume funktioniert. Allgemeiner können wir eine solche Matroschka von topologischen Räumen als Filtrierung definieren:
+
+\begin{definition}
+    Eine Filtrierung eines topologischen Raums $X$ ist eine aufsteigende Folge von topologischen Teilräumen $\mathcal{X}: \cdots X_{-2} \subset X_{-1} \subset X_{0} \subset X_{1} \subset \cdots \subset X$.
+\end{definition}
+
+Was können wir über die Homologien von $X$ sagen, indem wir unser Wissen über die Homologien der $X_i$ aus einer Filtrierung $\mathcal{X}$ und/oder den Quotienten $X_i/X_{i-1}$ verwenden? Falls wir uns auf einen Spezialfall beschränken, nämlich dass $X$ der Totalraum einer Faserung ist, so erhalten wir eine zufriedenstellende Antwort auf diese Frage.
+
+In einer spektralen Sequenz kommt es häufig vor, dass $E^r$ und $d^r$ aus einer anderen Struktur heraus gebildet werden, einem exakten Paar.
+
+\begin{definition}
+    Ein exaktes Paar ist ein Paar bigraduierter abelscher Gruppen $A$ und $E$ zusammen mit bigraduierten Abbildungen $i: A \to A$, $j: A \to E$ und $k: E \to A$, so dass das folgende Diagramm exakt ist:
+    \[\begin{tikzcd}
+    	A && A \\
+    	& E
+    	\arrow["i", from=1-1, to=1-3]
+    	\arrow["j", from=1-3, to=2-2]
+    	\arrow["k", from=2-2, to=1-1]
+    \end{tikzcd}\]
+    D.h.
+    \begin{itemize}[nolistsep]
+        \item $\ker i = \ima k$,
+        \item $\ker j = \ima i$ und
+        \item $\ker k = \ima j$.
+    \end{itemize}
+\end{definition}
+
+Haben wir ein solches exaktes Paar gegeben, so gibt es eine natürliche Art und Weise (welche auch eine natürliche Transformation in den entsprechenden Kategorien bildet), wie man das Differential $d = jk: E \to E$ definiert, so dass $d^2 = jkjk = j(kj)k = 0$. Das Differential wird dann verwendet um ein zweites exaktes Paar zu definieren, das derivierte Paar.
+
+\begin{lemma}
+    Sei $(A,E,i,j,k)$ ein exaktes Paar, dann gibt es ein zweites exaktes Paar $(A',E',i',j',k')$, welches deriviertes Paar genannt wird, so dass
+    \[\begin{tikzcd}
+    	A' && A' \\
+    	& E
+    	\arrow["i'", from=1-1, to=1-3]
+    	\arrow["j'", from=1-3, to=2-2]
+    	\arrow["k'", from=2-2, to=1-1]
+    \end{tikzcd}\]
+    definiert durch
+    \begin{itemize}[nolistsep]
+        \item $A' = i(A)$,
+        \item $E' = \ker jk / \ima jk = \ker d / \ima d$,
+        \item $i' = i\vert_{i(A)}$,
+        \item für alle $i(a) \in A':$ $j'(i(a)) = [j(a)] \in E'$ und
+        \item für alle $[e] \in E':$ $k'([e']) = k(e)$.
+    \end{itemize}
+\end{lemma}
+
+\begin{proof}
+    Der Beweis gliedert sich in drei Teile. Wir prüfen die Wohldefiniertheit von $j'$ und $k'$ und die Exaktheit des Diagramms.
+    \begin{enumerate}[nolistsep]
+        \item Wohldefiniertheit von $j'$: Sei $i(a_1) = i(a_2)$ für $a_1,a_2 \in A$. Dann ist $a_1-a_2 \in \ker i = \ima k$ nach Exaktheit, also ist auch $j(a_1-a_2) = j(a_1)-j(a_2) \in \ima jk = \ima d$, per Definition des Differentials. Also gilt für die Äquivalenzklassen $[j(a_1)]-[j(a_2)] = 0$, da beide im Bild des Differentials liegen und deren Differenz ein Rand ist. Damit ist $[j(a_1)] = [j(a_2)]$ in $E'$ und $j'$ hängt nicht von der Wahl des Repräsentanten ab.
+        \item Wohldefiniertheit von $k'$: Für jedes $e \in \ker d = \ker jk$ gilt $k(e) \in \ker j = \ima i = A'$ nach Exaktheit und der Definition $i(A') = A'$. Weiterhin ist $[e_1] = [e_2]$ für $e_1,e_2 \in E$, so gilt $[e_1 - e_2] = [0]$, also ist $e_1-e_2$ ein Rand und damit $e_1 - e_2 \in \ima d = \ima jk \subset \ima j = \ker k$. Deshalb gilt $k'([e_1] - [e_2]) = k(e_1-e_2) = 0$ und deshalb $k'([e_1]) = k'([e_2])$.
+        \item Exaktheit: Sei $a' \in A'$, dann gibt es ein $a \in A$, so dass $i(a) = a'$. Wir erhalten $(j'\circ i')(a') = (j'\circ i\vert_{i(a)} \circ i)(a) = [(j \circ i\vert_{i(a)} \circ i)(a))] = [j(a'))] = [(j\circ i)(a)] = 0$, denn $ji = 0$. Somit ist $j'i' = 0$, also $\ima i' \subset \ker j'$. Für $a' \in \ker j'$ mit $a' = i(a)$, dann ist $j'(a') = j'(i(a))) = [j(a)] = 0$ und somit $j(a) \in \ima d$. Also gibt es ein $e \in E$, so dass $j(a) = d(e) = jk(e)$. Deshalb ist $a-k(e) \in \ker j = \ima i$. Also gibt es ein $b \in A$, so dass $a-k(e) = i(b)$. Weil $ik = 0$ haben wir $a' = i(a) = i(a) - (ik)(e) = i(a-k(e)) = i^2(b)$. Also ist $a' = i(i(b))$ und damit ist $a' \in \ima i'$. Also ist $\ker j' \subset \ima i'$ und deshalb $\ker j' = \ima i'$. Sei $a' = i(a) \in A'$, dann sehen wir, dass $(k'j')(a') = k'([ja]) = (kj)(a) = 0$. Also ist $\ima j' \subset \ker k'$. TODO
+    \end{enumerate}
+\end{proof}
+
+Der Prozess, in dem ein deriviertes Paar von einem exakten Paar erzeugt wird, kann mehrmals iteriert werden, was uns zu einem $r$-fach derivierten Paar für ein $r \in \mathbb{N}$ führt, welches wir als $(A^r, E^r,i^r,j^r,k^r)$ bezeichnen. Sei $d^r = j^r k^r$, dann entsteht die homologische spektrale Sequenz gerade durch die paare $\{E^r, d^r\}$. Allerdings haben wir auf diese Weise noch keine Graduierung, also nur einfache abelsche Gruppen. Die Graduierung ergibt sich aus der Filtrierung $X_0 \subset X_1 \subset \cdots \subset X$, indem wir daraus ein exaktes Paar konstruieren.
+
+\begin{definition}[Exakte Paare einer Filtrierung]
+\label{exaktFiltration}
+Für alle $p,q \in \Z$ sei $E^1_{p,1} = H_{p+q}(X_p,X_{p-1})$ und $A^1_{p,q} = H_{p+q}(X_p)$. Wir definieren $i^1,j^1$ und $k^1$ auf jedem $A^1$ oder $E^1$, in Vereinbarkeit mit der langen exakten Homologiesequenz:
+\[\begin{tikzcd}[cramped]
+	\cdots & {H_{p+q}(X_{p-1})} & {H_{p+q}(X_{p})} & {H_{p+q}(X_{p},X_{p-1})} \\
+	& {} & \cdots & {H_{p+q-1}(X_{p-1})}
+	\arrow["{k^1_{p,q+1}}", from=1-1, to=1-2]
+	\arrow["{i^1_{p,q}}", from=1-2, to=1-3]
+	\arrow["{j^1_{p,q}}", from=1-3, to=1-4]
+	\arrow["{k^1_{p,q}}", from=1-4, to=2-4]
+	\arrow["{i^1_{p,q-1}}"', from=2-4, to=2-3]
+\end{tikzcd}\]
+Die Abbildung
+\begin{itemize}[nolistsep]
+    \item $i^1_{p,q} = H_{p+q}(\iota): A^1 \to A^1$ wird funktoriell induziert für jedes Paar $(X_p,X_{p-1})$ durch die Inklusion $\iota: X_{p-1} \hookrightarrow X_p$.
+    \item $j^1_{p,q}: A^1 \to E^1$ wird induziert durch die Quotientenabbildung auf den Kettenkomplexen und
+    \item $k^1_{p,q}: E^1_{p,q} \to A^1_{p,q}$ ist durch die verbindenden Homomorphismen definiert:
+    \begin{align}
+        k^1_{p,q} = \partial: H_{p+q}(X_p,X_{p-1}) \to H_{p+q-1}(X_{p-1}).
+    \end{align}
+\end{itemize}
+Da die lange exakte Homologiesequenz exakt ist, ist auch $(E^1_{p,q},A^1_{p+q},i^1_{p,q},j^1_{p,q},k^1_{p,q})$ ein exaktes Paar.
+\end{definition}
+
+Aus Def. \ref{exaktFiltration} erhalten wir ein exaktes Paar für jedes $r$, also unendlich viele exakte Paare, wobei diese Paare sowohl abzählbar, als auch überabzählbar unendlich sein können. Definieren wir $d^r = j^rk^r$, wie aus den vorhergehenden Überlegungen, dann können wir aus all diesen exakten paaren eine homologische spektrale Sequenz konstruieren.
+
+\begin{theorem}[Homologische spektrale Sequenz einer Filtrierung]
+Gegeben sei ein deriviertes exaktes Paar $(E^1_{p,q},A^1_{p+q},i^1_{p,q},j^1_{p,q},k^1_{p,q})$ aus einer homologisch exakten Sequenz einer Filtrierung, so gibt es eine homologische spektrale Sequenz $\{E^r,d^r\}$ mit $d^r = j^rk^r$.
+\end{theorem}
+
+\begin{proof}
+Wir wissen bereits, dass $d^r \circ d^r = 0$ und $E^{r+1}$ ist die Homologie von $E^r$ in Bezug auf $d^r$. Also reicht es zu zeigen, dass $d^r: E^r \to E^r$ vom Grad $(-r,r-1)$ ist,. Auf der ersten Seite gilt $d^1=j^1k^1$ und damit für $(H_{p+1}(X_p,X_{p-1}), d^1)$ auch
+\begin{align}
+    H_{p+q}(X_p,X_{p-1}) \xrightarrow{k^1} H_{p+q-1}(X_{p-1}) \xrightarrow{j^1} H_{p+q-1}(X_{p-1},X_{p-2}).
+\end{align}
+Also sehen wir, dass $d^1: E^1_{p,q} = H_{p+q}(X_p,X_{p-1}) \to H_{p+q-1}(X_{p-1},X_{p-2}) = E^1_{p-1,q}$. Damit ist $d^1$ vom Grad $(-1,0)$.
+
+Für den allgemeinen Fall gliedern wir den Beweis in drei Teile:
+\begin{enumerate}[nolistsep]
+    \item $A^r_{p,q} = i^{r-1}(A^1_{p,q})$.
+    \item $k_{p,q}^r: E^r_{p,q} \to A^r_{p-1,q}$.
+    \item $j_{p,q}^r: A^r_{p,q} \to E^r_{p-r+1,q+r-1}$.
+\end{enumerate}
+\begin{enumerate}
+    \item 1
+\end{enumerate}
+\end{proof}
+
+\section{Presentation der Serre spektralen Sequenz}
+
+\section{Homologie von $\Omega S^n$ und $\mathbb{C}P^\infty$}
+
+\end{document}
