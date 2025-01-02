@@ -34,6 +34,9 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\ima}{\operatorname{im}}
 
+\usepackage[style=authoryear,backend=bibtex]{biblatex}
+\addbibresource{main.bib}
+
 \title{\textbf{Spektrale Sequenzen\\ Leray–Serre spektrale Sequenz}}
 \author{
 \textbf{Luciano Melodia} \\
@@ -56,7 +59,7 @@ Spektrale Sequenzen können im Allgemeinen über abelschen Kategorien definiert 
 
 \begin{definition}[Homologische Sequenz]
 \label{homologischeSequenz}
-Sei $r_0 \geq 0$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}$ besteht aus
+Sei $0 \leq r_0 \in \mathbb{R}$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}_{r \geq r_0}$ besteht aus
 \begin{enumerate}[nolistsep]
     \item einer Familie abelscher Gruppen $\{A^r_{p,q}\}_{p,q \in \Z, r \geq r_0}$ und
     \item einer Familie Gruppenhomomorphismen $\{d^r_{p,q}: A^r_{p,q} \to A^r_{p-r,q+r-1}\}$ welche Differentiale genannt werden, so dass für alle $p,q,r$ gilt
@@ -67,13 +70,22 @@ Sei $r_0 \geq 0$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}$ besteht a
 \end{enumerate}
 \end{definition}
 
-Diese Definition einer homologischen Sequenz zeigt deutlich auf, für welche Untergruppen die Quotienten berechnet werden - in einer Art Kettenkomplex mit zwei Indizes. Eine übliche Vereinfachung der Notation wird sich jedoch bei den weiteren Untersuchungen als hilfreich erweisen, indem wir ein $r$ festlegt und alle $A^r_{p,q}$ als ein Objekt $A^r$ behandeln. Dieses nennt man dann eine bigraduierte abelsche Gruppe. Die Differentiale $d^r_{p,q}$ heißen auch kollektiv $d^r$, oder bigraduierte Differentiale.
+Diese Definition einer homologischen Sequenz zeigt deutlich auf, für welche Untergruppen die Quotienten berechnet werden - in einer Art Kettenkomplex mit zwei Indizes. Eine übliche Vereinfachung der Notation wird sich jedoch bei den weiteren Untersuchungen als hilfreich erweisen, indem wir ein $r$ festlegen und alle $A^r_{p,q}$ als ein Objekt $A^r$ betrachten. Diese neu entstandene Gruppe nennt man dann eine bigraduierte abelsche Gruppe. Die Differentiale $d^r_{p,q}$ heißen auch kollektiv $d^r$, oder bigraduierte Differentiale.
 
 \begin{definition}[Bigraduierte abelsche Gruppen]
-    Eine bigraduierte abelsche Gruppe $A$ ist eine Familie von abelschen Gruppen $A \coloneq \bigoplus_{p,q \in \Z} A_{p,q}$ und $B \coloneq \bigoplus_{p,q \in \Z} B_{p,q}$ bigraduierte abelsche Gruppen, so ist die bigraduierte Abbildung vom Grad $(c,d)$ eine Sammlung von Gruppenhomomorphismen $f \coloneq \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}$.
+    Eine bigraduierte abelsche Gruppe $A$ ist eine Familie von abelschen Gruppen $A \coloneq \bigoplus_{p,q \in \Z} A_{p,q}$, welche als direkte Summe indexiert über zwei Indizes aus $\Z$ aufgefasst werden kann. Sind zwei bigraduierte abelsche Gruppen $A, B \coloneq \bigoplus_{p,q \in \Z} B_{p,q}$ gegeben, so ist die bigraduierte Abbildung vom Grad $(c,d)$ eine Sammlung von Gruppenhomomorphismen $f \coloneq \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}$.
+    \[\begin{tikzcd}
+        A & {A_{0,0}} & {A_{1,0}} & {A_{0,1}} & {A_{-1,0}} & \cdots \\
+        B & {B_{0,0}} & {B_{1,0}} & {B_{0,1}} & {B_{-1,0}} & \cdots
+        \arrow["f", color={rgb,255:red,214;green,92;blue,92}, squiggly, from=1-1, to=2-1]
+        \arrow["{f_{0,0}}", from=1-2, to=2-2]
+        \arrow["{f_{1,0}}", from=1-3, to=2-3]
+        \arrow["{f_{0,1}}", from=1-4, to=2-4]
+        \arrow["{f_{-1,0}}", from=1-5, to=2-5]
+    \end{tikzcd}\]
 \end{definition}
 
-Seien $A = \bigoplus_{p,q \in \Z} A_{p,q}$ und $B = \bigoplus_{p,q \in \Z} B_{p,q}$ bigraduierte abelsche Gruppen. 
+Man beachte, dass wir der direkten Summe keine Bedeutung zuschreiben. Die Reihenfolge der Summation ist also willkürlich. Ebenso könnten wir die einzelnen abelschen Gruppen als Elemente einer Menge auffassen. Seien $A = \bigoplus_{p,q \in \Z} A_{p,q}$ und $B = \bigoplus_{p,q \in \Z} B_{p,q}$ also bigraduierte abelsche Gruppen. 
 
 \begin{definition}[Bigraduierte Abbildung]
     Wir nennen $f^{(c,d)}_{p,q}: A_{p,q} \to B_{p+c,q+d}$ einen Gruppenhomomorphismus vom Bigrad $(c,d)$. Dann ist eine bigraduierte Abbildung vom Bigrad $(c,d)$ ein  Gruppenhomomorphismen $f: A \to B, \bigoplus_{p,q} a_{p,q} \mapsto \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}(a) = \bigoplus_{p,q \in \Z} b_{p+c,q+d}$.
@@ -87,7 +99,7 @@ $f$ kann als Sammlung von Gruppenhomomorphismen vom Bigrad $(c,d)$ verstanden we
 
 \begin{definition}[Bigraduierte Untergruppen und Quotienten]
     Seien $A,B$ bigraduierte abelsche Gruppen. Dann definieren wir
-    \begin{enumerate}
+    \begin{enumerate}[nolistsep]
         \item $A \subset B \colon\Leftrightarrow A_{p,q} \subset B_{p,q}$ für alle $p,q \in \Z$ und
         \item falls $A \subset B$, dann ist $B/A \coloneq \bigoplus_{p,q \in \Z} B_{p,q}/A_{p,q}$.
     \end{enumerate}
@@ -101,7 +113,7 @@ $f$ kann als Sammlung von Gruppenhomomorphismen vom Bigrad $(c,d)$ verstanden we
     \end{itemize}
 \end{definition}
 
-Nun können wir die zuvor definierte homologische Sequenz \ref{homologischeSequenz} zu einer spektralen homologischen Sequenz erheben.
+Nun können wir die zuvor definierte homologische Sequenz (Def. \ref{homologischeSequenz}) zu einer spektralen homologischen Sequenz erheben.
 
 \begin{definition}
     \label{homologischeSpektraleSequenz}
@@ -110,31 +122,32 @@ Nun können wir die zuvor definierte homologische Sequenz \ref{homologischeSeque
         \item einer bigraduierten abelschen Gruppe $E^r$ und
         \item einer bigraduierten Abbildung $d^r: E^r \to E^r$ vom Grad $(r,r-1)$, welche Differential genannt wird,
     \end{enumerate}
-    für jedes $r$, so dass
+    so dass für jedes $r$ gilt:
     \begin{itemize}[nolistsep]
         \item $d^r \circ d^r = 0$ und
         \item $E^{r+1}$ ist die Homologie von $E^r$ in Bezug auf die Differentiale $d^r$, d.h.
         \begin{align}
-            E^r = \frac{\ker d_r}{\ima d_r} = \frac{\bigoplus_{p,q \in \Z} d^r_{p,q}}{\bigoplus_{p,q \in \Z} \ima d^r_{p,q}} = \bigoplus_{p,q \in \Z} \frac{d^r_{p,q}}{\ima d^r_{p,q}}
+            E^r = \frac{\ker d_r}{\ima d_r} = \frac{\bigoplus_{p,q \in \Z} d^r_{p,q}}{\bigoplus_{p,q \in \Z} \ima d^r_{p,q}} = \bigoplus_{p,q \in \Z} \frac{d^r_{p,q}}{\ima d^r_{p,q}}.
         \end{align}
     \end{itemize}
-    Für jedes $r$ wird $E^r$ das $r$te Blatt oder die $r$te Seite von $\{E^r,d^r\}$ genannt.
 \end{definition}
+
+Für jedes $r$ wird $E^r$ das $r$te Blatt oder die $r$te Seite von $\{E^r,d^r\}_{r \geq r_0}$ genannt.
 
 \begin{remark}
     Es gibt dieselbe Variante als kohomologische spektrale Sequenz, welche auf analoge Weise wie Def. \ref{homologischeSpektraleSequenz} definiert wird, mit der Ausnahme, dass wir nun $E_r \coloneq \bigoplus_{p,q \in \Z} E^{p,q}_r$ für die Kohomologien schreiben und die Differentiale durch $d_r: E_r \to E_r$ geschrieben werden und vom Grad $(r,-r+1)$ sind. Die homologische spektrale Sequenz wird benutzt, um Homologiegruppen zu berechnen, während die kohomologische Spektrale Sequenz benutzt wird um Kohomologien zu berechnen.
 \end{remark}
 
 \begin{definition}
-    Sei $\{E^r, d^r\}$ eine homologische spektrale Sequenz, so dass es für alle $p,q \in \Z$ eine natürliche Zahl $r(p,q) \in \mathbb{N}$, abhängig von $p,q$ gibt, so dass für alle $r \geq r(p,q)$, $E^r_{p,q} \cong E_{p,q}^{r(p,q)}$. Dann sagen wir, dass die bigraduierte abelsche Gruppe
+    Sei $\{E^r, d^r\}_{r \geq r_0}$ eine homologische spektrale Sequenz, so dass es für alle $p,q \in \Z$ eine natürliche Zahl $r(p,q) \in \mathbb{N}$ gibt, abhängig von $p,q$, so dass für alle $r \geq r(p,q)$, $E^r_{p,q} \cong E_{p,q}^{r(p,q)}$. Dann sagen wir, dass die bigraduierte abelsche Gruppe
     \begin{align}
         E^\infty \coloneq \bigoplus_{p,q \in \Z} E^{r(p,q)}_{p,q}
     \end{align}
-    der Limes für $\{E^r, d^r\}$ ist. Äquivalent sagen wir auch, dass die spektrale Sequenz an $E^\infty$ angrenzt.
+    der Limes für $\{E^r, d^r\}_{r \geq r_0}$ ist. Äquivalent sagen wir auch, dass die spektrale Sequenz an $E^\infty$ angrenzt.
 \end{definition}
 
 \begin{definition}
-    Eine spektrale Sequenz heißt Erste-Quadranten-Spektralsequenz, falls für ein $r \in \mathbb{N}$ die Einträge auf der $r$ten Seite ungleich Null sind, genau dann wenn $p \geq 0$ und $q \geq 0$.
+    Eine spektrale Sequenz heißt Erste-Quadranten-Spektralsequenz, falls für ein $r \in \mathbb{N}$ die Einträge, also die Homologiegruppen auf der $r$ten Seite ungleich Null sind, genau dann wenn $p \geq 0$ und $q \geq 0$.
 \end{definition}
 
 \section{Filtrierungen und exakte Paare}
@@ -156,7 +169,7 @@ In einer spektralen Sequenz kommt es häufig vor, dass $E^r$ und $d^r$ aus einer
     Ein exaktes Paar ist ein Paar bigraduierter abelscher Gruppen $A$ und $E$ zusammen mit bigraduierten Abbildungen $i: A \to A$, $j: A \to E$ und $k: E \to A$, so dass das folgende Diagramm exakt ist:
     \[\begin{tikzcd}
     	A && A \\
-    	& E
+    	& E.
     	\arrow["i", from=1-1, to=1-3]
     	\arrow["j", from=1-3, to=2-2]
     	\arrow["k", from=2-2, to=1-1]
@@ -180,7 +193,7 @@ Haben wir ein solches exaktes Paar gegeben, so gibt es eine natürliche Art und 
     	\arrow["j'", from=1-3, to=2-2]
     	\arrow["k'", from=2-2, to=1-1]
     \end{tikzcd}\]
-    definiert durch
+    definiert ist durch
     \begin{itemize}[nolistsep]
         \item $A' = i(A)$,
         \item $E' = \ker jk / \ima jk = \ker d / \ima d$,
@@ -244,13 +257,65 @@ Für den allgemeinen Fall gliedern wir den Beweis in drei Teile:
     \item $k_{p,q}^r: E^r_{p,q} \to A^r_{p-1,q}$.
     \item $j_{p,q}^r: A^r_{p,q} \to E^r_{p-r+1,q+r-1}$.
 \end{enumerate}
-\begin{enumerate}
-    \item 1
+Nun zeigen wir diese Schritte:
+\begin{enumerate}[nolistsep]
+    \item Das ist ersichtlich aus der Definition von derivierten Paaren.
+    \item Das ist ersichtlich, da $k^r+1_{p,q}$ durch $k^r_{p,q}$ auf $\ker d^r / \ima d^r$ induziert wird. Wir wissen bereits, dass $k^1_{p,q}: E^1_{p,q} \to A^1_{p-1,q}$, also können wir induktiv auch $k^{n}_{p,q}: E^{n-1}_{p,q} \to A^{n-1}_{p-1,q}$ definieren, für beliebiges $r$.
+    \item Sei $a \in A^r_{p,q}$, dann gibt es ein $b \in A^1_{p,q}$, so dass $i^{r-1}(b) = a$, weil $A^r_{p,q} = i^{r-1}(A^1_{p,q})$ nach der ersten Forderung für derivierte Paare. Damit haben wir
+    \begin{align}
+    j^r(a)=j^r(i^{r-1}(b)) = [j^{r-1}(i^{r-2}(b))] = [[j^{r-2}(i^{r-3}(b))]] = \cdots = [\cdots[j^1(b)]\cdots].
+    \end{align}
+    Indem wir mehrere Klammern gesetzt haben, d.h. $[[\alpha]]$ für ein $\alpha \in E^{r-1}_{p,1}$, haben wir gekennzeichnet, dass wir zunächst eine Äquivalenzklasse $[\alpha] \in E^r_{p,q}$ betrachten und dann Äquivalenzklassen von Äquivalenzklassen $[[\alpha]] \in E^{r+1}_{p,q}$. Weil $[\cdots[j^1(b)]\cdots] E^{r+k}_{p,q}$ und $j^1(b) \in E^1_{p,q}$, ist die homologische Ordnung dieser beiden Äquivalenzklassen dieselbe, also nur der Grad der derivierten Paarung $r$ unterscheidet sich. Damit ist auch die homologische Ordnung von $j^r(a)$ und $j^1(b)$ gleich, denn $b \in i^{r-1}(A^r_{p,q}) = A^1_{p-r+1,q+r-1}$ und $j^1(b) \in E^r_{p-r+1,q+r-1}$. Also ist $j^r_{p,q}: A^r_{p,q} \to E^r_{p-r+1,q+r-1}$. Durch Verkettung erhalten wir $d^r: E^r_{p,q} \xrightarrow{k^r} A^r_{p-1,q} \xrightarrow{j^r} E^r_{p-r,q+r-1}$.
 \end{enumerate}
+Damit ist der Grad der bigraduierten Abbildung $d^r$ gleich $(-r,r-1)$.
 \end{proof}
 
 \section{Presentation der Serre spektralen Sequenz}
+Bevor wir die Presentation der Serre spektralen Sequenz einführen können, benötigen wir die Definition einer Faserung, welche die Homotopiehochhebungseigenschaft erfüllt. Diese erlaubt uns durch Anwendung der Faserung aus einfachen, bekannten Räumen, neue komplexere Räume zu konstruieren. Die Faserung ist eine Verallgemeinerung des Vektorbündels, welche auch ohne lineare oder affine Struktur auskommt. Die Homotopie-Hochhebungseingeschaft wird uns anschließend auch kompatible Eigenschaften auf Homologieebene induzieren.
+
+\begin{definition}
+Eine Abbildung $\pi: X \to B$, welche folgende Homotopiehochhebungseigenschaften für beliebige Räume $X$ erfüllt, heißt Faserung:
+\begin{itemize}[noitemsep]
+    \item für jede Homotopie $h: Z \times [0,1] \to B$ und
+    \item für jeden Lift $\overline{h}_0: Z \to X$ mit $h_0 = h\vert_{X\times \{0\}}$ und $h_0 = \pi \circ \overline{h}_0$,
+\end{itemize}
+existiert eine Homotopie $\overline{h}: Z \times [0,1] \to X$, die $h$ liftet. Daraus resultiert folgendes kommutierende Diagramm:
+\[\begin{tikzcd}
+    {Z \times \{0\}} & X \\
+    {Z\times[0,1]} & B.
+    \arrow["{\overline{h}_0}", from=1-1, to=1-2]
+    \arrow["\iota"', hook, from=1-1, to=2-1]
+    \arrow["{\overline{h}}", dashed, from=2-1, to=1-2]
+    \arrow["h", from=2-1, to=2-2]
+    \arrow["\pi"', from=2-2, to=1-2]
+\end{tikzcd}\]
+\end{definition}
+Als gegebene Daten verwenden wir eine Faserung $\pi: X \to B$, wobei $B$ ein wegzusammenhängender CW-Komplex ist und $X$ ein topologischer Raum. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern wollen, eine solche Faserung nennt man auch Serre-Faserung. Der Raum $B$ wird Basisraum genannt und $X$ heißt Totalraum. Wir können eine Filtrierung von $X$ erzeugen, indem wir das $p$-Skelett $B^p$ von $B$ betrachten und $X_p \coloneq \pi^{-1}(B^p)$ definieren. Aus dieser Filtrierung erhalten wir ein exaktes Paar und von diesem exakten Paar wiederum eine homologische Sequenz. In dieser Konstellation heißt die resultierende spektrale Sequenz auch Serre spektrale Sequenz.
+
+Wir benötigen zunächst für einen Weg $\gamma: [0,1] \to B$ in den Basisraum $B$ eine Abbildung $L_\gamma: F_a \to F_b$ für die Fasern $F_a = \pi^{-1}(a)$ und $F_b = \pi^{-1}(b)$. Diese Abbildung zwischen den Fasern soll stetig sein und die Existenz einer solchen Abbildung wird garantiert, durch die Homotopieäquivalenz der Fasern über jede Wegzusammenhangskomponenten zueinander.
+
+\begin{proposition}
+Falls $\pi: X \to B$ eine Faserung ist, dann sind die Fasern $F_b = \pi^{-1}(b)$ über jede Wegzusammenhangskomponente von $B$ zueinander homotopieäquivalent.
+\end{proposition}
+
+\begin{proof}
+Sei $\gamma: [0,1] \to B$ ein Weg und $F_{\gamma(s)} \coloneq \pi^{-1}(\gamma(s))$ eine Faser. Wir definieren eine Homotopie $h: F_{\gamma(0)} \times [0,1] \to B$ durch $h(x,t) = \gamma(t)$. Sei $\overline{h}_0: F_{\gamma(0)} \times \{0\} \hookrightarrow X$ die Inklusion. Dann gilt für $x \in F_{\gamma(0)}, (\pi \circ \overline{h}_0)(x) = \gamma(0) = h_0(x)$. Da $\pi: X \to B$ eine Faserung ist, existiert eine Abbildung $\overline{h}: F_{\gamma(0)} \times [0,1] \to X$, sodass das folgende Diagramm kommutiert:
+\[\begin{tikzcd}
+    {F_{\gamma(0)} \times \{0\}} & X \\
+    {F_{\gamma(0)}\times[0,1]} & B.
+    \arrow["{\overline{h}_0}", from=1-1, to=1-2]
+    \arrow["\iota"', hook, from=1-1, to=2-1]
+    \arrow["{\overline{h}}", dashed, from=2-1, to=1-2]
+    \arrow["h", from=2-1, to=2-2]
+    \arrow["\pi"', from=2-2, to=1-2]
+\end{tikzcd}\]
+
+
+Für jeden Weg $\gamma: [0,1] \to B$ können wir also eine Abbildung zwischen den Fasern der Anfangs- und Endpunkte definieren $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$, indem wir die Homotopiehochhebungseigenschaft in Bezug auf $F_{\gamma(0)}$ verwenden.
+\end{proof}
 
 \section{Homologie von $\Omega S^n$ und $\mathbb{C}P^\infty$}
 
+\nocite{*}
+\printbibliography
 \end{document}
