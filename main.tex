@@ -39,7 +39,7 @@
 \usepackage[style=authoryear,backend=bibtex]{biblatex}
 \addbibresource{main.bib}
 
-\title{\textbf{Spektrale Sequenzen\\ Leray–Serre spektrale Sequenz}}
+\title{\textbf{Spektrale Sequenzen\\ Leray–Serre Spektralsequenz}}
 \author{
 \textbf{Luciano Melodia} \\
 Seminar zur Spektraltheorie \\
@@ -51,6 +51,18 @@ Friedrich-Alexander Universität Erlangen-Nürnberg \\
 \begin{document}
 \hypersetup{bookmarksnumbered=true,}
 \maketitle
+
+\begin{abstract}
+Die Homologiedefinition $H_n(A_\bullet)$ eines Kettenkomplexes ist für beliebige Homologietheorien als Quotient $\ker d_n/\ima d_{n+1}$ definiert. In Bezug auf Spektralsequenzen gibt es also in einem Kettenkomplex ein Differential, das aus der Gruppe herausgeht, in diesem Fall $d_n$, und eines, das in die Gruppe hineingeht, in diesem Fall $d_{n+1}$. Mit dieser Sichtweise können wir verschiedene Homologiegruppen betrachten, je nachdem, welche Differenziale wir verwenden. Eine solche Betrachtung kann nummeriert und in sogenannten Seiten organisiert werden. Eine Spektralsequenz ist wie ein Buch, das aus einer unendlichen Anzahl von Seiten besteht. Jede Seite ist ein zweidimensionales Gitter, das aus Gruppen besteht, die bestimmten Differentialen zugeordnet sind. Wir können eine natürliche Transformation anwenden, um von einer Seite zur nächsten zu gelangen, und im Idealfall stabilisieren sich die Seiten zu einem Seitenlimes im Unendlichen. Die Notation für die Homologien ist $E^r_{p,q}$, wobei $r$ die Seitenzahl, $p$ der horizontale Index und $q$ der vertikale Index ist.
+
+In gewisser Weise verhält sich jede Seite einer Spektralsequenz wie ein $2$-dimensionaler Kettenkomplex. Die Gruppen sind durch zwei Parameter statt durch einen indiziert, und für jede Gruppe gibt es genau ein Differenzial, das aus der Gruppe herausführt, und genau ein Differenzial, das in die Gruppe hineinführt. Außerdem gilt immer die Eigenschaft $d^2 = 0$.
+
+Wie sieht nun die Operation aus, die uns von $E^r_{p,q}$ nach $E^{r+1}_{p,q}$ führt? Die Differentiale auf jeder Seite hängen stark von der Definition der Spektralsequenz ab. Schreiben wir $d_{\operatorname{IN}},d_{\operatorname{OUT}}$ für die eingehenden und ausgehenden Differenziale von $E^r_{p,q}$, dann definieren wir $E^{r+1}_{p,q} \coloneq \ker d_{\operatorname{OUT}} / \ima d_{\operatorname{IN}}$.
+
+Die Funktionsweise der Spektralsequenz besteht darin, dass die Gruppen auf der ersten Seite $E^1_{p,q}$ definiert werden. Dann lassen wir die Spektralsequenzmaschine arbeiten. Im Falle der Serre Spektralsequenz stabilisiert sich diese, es gibt also ein $R$, so dass für alle $r > R$ gilt: $E^r_{p,q} = E^R_{p,q}$. Dies sind die Einträge der stabilisierten Seite $E^\infty_{p,q}$.
+
+Wir beschreiben nun, was wir in unsere Spektralsequenz eintragen müssen und was wir davon als Ergebnis erwarten können, insbesondere am Beispiel der Serre'schen Spektralsequenz.
+\end{abstract}
 
 \begin{Large}
 \tableofcontents
@@ -119,7 +131,7 @@ Nun können wir die zuvor definierte homologische Sequenz (Def. \ref{homologisch
 
 \begin{definition}
     \label{homologischeSpektraleSequenz}
-    Sei $r_0 \geq 0$. Eine homologische spektrale Sequenz $\{E^r,d^r\}$ besteht aus
+    Sei $r_0 \geq 0$. Eine homologische Spektralsequenz $\{E^r,d^r\}$ besteht aus
     \begin{enumerate}[nolistsep]
         \item einer bigraduierten abelschen Gruppe $E^r$ und
         \item einer bigraduierten Abbildung $d^r: E^r \to E^r$ vom Grad $(r,r-1)$, welche Differential genannt wird,
@@ -137,19 +149,19 @@ Nun können wir die zuvor definierte homologische Sequenz (Def. \ref{homologisch
 Für jedes $r$ wird $E^r$ das $r$te Blatt oder die $r$te Seite von $\{E^r,d^r\}_{r \geq r_0}$ genannt.
 
 \begin{remark}
-    Es gibt dieselbe Variante als kohomologische spektrale Sequenz, welche auf analoge Weise wie Def. \ref{homologischeSpektraleSequenz} definiert wird, mit der Ausnahme, dass wir nun $E_r \coloneq \bigoplus_{p,q \in \Z} E^{p,q}_r$ für die Kohomologien schreiben und die Differentiale durch $d_r: E_r \to E_r$ geschrieben werden und vom Grad $(r,-r+1)$ sind. Die homologische spektrale Sequenz wird benutzt, um Homologiegruppen zu berechnen, während die kohomologische Spektrale Sequenz benutzt wird um Kohomologien zu berechnen.
+    Es gibt dieselbe Variante als kohomologische Spektralsequenz, welche auf analoge Weise wie Def. \ref{homologischeSpektraleSequenz} definiert wird, mit der Ausnahme, dass wir nun $E_r \coloneq \bigoplus_{p,q \in \Z} E^{p,q}_r$ für die Kohomologien schreiben und die Differentiale durch $d_r: E_r \to E_r$ geschrieben werden und vom Grad $(r,-r+1)$ sind. Die homologische Spektralsequenz wird benutzt, um Homologiegruppen zu berechnen, während die kohomologische Spektrale Sequenz benutzt wird um Kohomologien zu berechnen.
 \end{remark}
 
 \begin{definition}
-    Sei $\{E^r, d^r\}_{r \geq r_0}$ eine homologische spektrale Sequenz, so dass es für alle $p,q \in \Z$ eine natürliche Zahl $r(p,q) \in \mathbb{N}$ gibt, abhängig von $p,q$, so dass für alle $r \geq r(p,q)$, $E^r_{p,q} \cong E_{p,q}^{r(p,q)}$. Dann sagen wir, dass die bigraduierte abelsche Gruppe
+    Sei $\{E^r, d^r\}_{r \geq r_0}$ eine homologische Spektralsequenz, so dass es für alle $p,q \in \Z$ eine natürliche Zahl $r(p,q) \in \mathbb{N}$ gibt, abhängig von $p,q$, so dass für alle $r \geq r(p,q)$, $E^r_{p,q} \cong E_{p,q}^{r(p,q)}$. Dann sagen wir, dass die bigraduierte abelsche Gruppe
     \begin{align}
         E^\infty \coloneq \bigoplus_{p,q \in \Z} E^{r(p,q)}_{p,q}
     \end{align}
-    der Limes für $\{E^r, d^r\}_{r \geq r_0}$ ist. Äquivalent sagen wir auch, dass die spektrale Sequenz an $E^\infty$ angrenzt.
+    der Limes für $\{E^r, d^r\}_{r \geq r_0}$ ist. Äquivalent sagen wir auch, dass die Spektralsequenz an $E^\infty$ angrenzt.
 \end{definition}
 
 \begin{remark}
-Eine visuelle Darstellung der ersten drei Seiten der Serre spektralen Sequenz mit den Differenzialen ($\rightarrow$) und den Werte- und Zielbereichen dargestellt durch $\bullet$. Die $\bullet$ repräsentieren dabei Gruppen, insbesondere Homologiegruppen, oder Homologievektorräume über einem Körper $\mathbb{F}$. Der rote Punkt $\color{red}\bullet$ entspricht $E^1_{0,2}$ und der blaue Punkt $\color{blue}\bullet$ entspricht $E^2_{1,-2}$.
+Eine visuelle Darstellung der ersten drei Seiten der Serre spektralen Sequenz mit den Differenzialen ($\rightarrow$) und den Werte- und Zielbereichen dargestellt durch $\bullet$. Die $\bullet$ repräsentieren dabei Gruppen, insbesondere Homologiegruppen, oder Homologievektorräume über einem Körper $\mathbb{F}$. Der rote Punkt $\color{red}\bullet$ entspricht $E^1_{0,2}$ und der blaue Punkt $\color{blue}\bullet$ entspricht $E^2_{1,-2}$. Diese besondere Spektralsequenz stabilisiert immer.
 \[
 \begin{tikzcd}[sep=tiny]
     &&& {E^1} &&&&&& {E^2} &&&&&& {E^3} \\
@@ -203,7 +215,7 @@ Eine visuelle Darstellung der ersten drei Seiten der Serre spektralen Sequenz mi
 \end{remark}
 
 \begin{definition}
-    Eine spektrale Sequenz heißt Erste-Quadranten-Spektralsequenz, falls für ein $r \in \mathbb{N}$ die Einträge, also die Homologiegruppen auf der $r$ten Seite ungleich Null sind, genau dann wenn $p \geq 0$ und $q \geq 0$.
+    Eine Spektralsequenz heißt Erste-Quadranten-Spektralsequenz, falls für ein $r \in \mathbb{N}$ die Einträge, also die Homologiegruppen auf der $r$ten Seite ungleich Null sind, genau dann wenn $p \geq 0$ und $q \geq 0$.
 \end{definition}
 
 \section{Filtrierungen und exakte Paare}
@@ -268,7 +280,7 @@ Haben wir ein solches exaktes Paar gegeben, so gibt es eine natürliche Art und 
     \end{enumerate}
 \end{proof}
 
-Der Prozess, in dem ein deriviertes Paar von einem exakten Paar erzeugt wird, kann mehrmals iteriert werden, was uns zu einem $r$-fach derivierten Paar für ein $r \in \mathbb{N}$ führt, welches wir als $(A^r, E^r,i^r,j^r,k^r)$ bezeichnen. Sei $d^r = j^r k^r$, dann entsteht die homologische spektrale Sequenz gerade durch die paare $\{E^r, d^r\}$. Allerdings haben wir auf diese Weise noch keine Graduierung, also nur einfache abelsche Gruppen. Die Graduierung ergibt sich aus der Filtrierung $X_0 \subset X_1 \subset \cdots \subset X$, indem wir daraus ein exaktes Paar konstruieren.
+Der Prozess, in dem ein deriviertes Paar von einem exakten Paar erzeugt wird, kann mehrmals iteriert werden, was uns zu einem $r$-fach derivierten Paar für ein $r \in \mathbb{N}$ führt, welches wir als $(A^r, E^r,i^r,j^r,k^r)$ bezeichnen. Sei $d^r = j^r k^r$, dann entsteht die homologische Spektralsequenz gerade durch die paare $\{E^r, d^r\}$. Allerdings haben wir auf diese Weise noch keine Graduierung, also nur einfache abelsche Gruppen. Die Graduierung ergibt sich aus der Filtrierung $X_0 \subset X_1 \subset \cdots \subset X$, indem wir daraus ein exaktes Paar konstruieren.
 
 \begin{definition}[Exakte Paare einer Filtrierung]
 \label{exaktFiltration}
@@ -294,10 +306,10 @@ Die Abbildung
 Da die lange exakte Homologiesequenz exakt ist, ist auch $(E^1_{p,q},A^1_{p+q},i^1_{p,q},j^1_{p,q},k^1_{p,q})$ ein exaktes Paar.
 \end{definition}
 
-Aus Def. \ref{exaktFiltration} erhalten wir ein exaktes Paar für jedes $r$, also unendlich viele exakte Paare, wobei diese Paare sowohl abzählbar, als auch überabzählbar unendlich sein können. Definieren wir $d^r = j^rk^r$, wie aus den vorhergehenden Überlegungen, dann können wir aus all diesen exakten paaren eine homologische spektrale Sequenz konstruieren.
+Aus Def. \ref{exaktFiltration} erhalten wir ein exaktes Paar für jedes $r$, also unendlich viele exakte Paare, wobei diese Paare sowohl abzählbar, als auch überabzählbar unendlich sein können. Definieren wir $d^r = j^rk^r$, wie aus den vorhergehenden Überlegungen, dann können wir aus all diesen exakten paaren eine homologische Spektralsequenz konstruieren.
 
-\begin{theorem}[Homologische spektrale Sequenz einer Filtrierung]
-Gegeben sei ein deriviertes exaktes Paar $(E^1_{p,q},A^1_{p+q},i^1_{p,q},j^1_{p,q},k^1_{p,q})$ aus einer homologisch exakten Sequenz einer Filtrierung, so gibt es eine homologische spektrale Sequenz $\{E^r,d^r\}$ mit $d^r = j^rk^r$.
+\begin{theorem}[Homologische Spektralsequenz einer Filtrierung]
+Gegeben sei ein deriviertes exaktes Paar $(E^1_{p,q},A^1_{p+q},i^1_{p,q},j^1_{p,q},k^1_{p,q})$ aus einer homologisch exakten Sequenz einer Filtrierung, so gibt es eine homologische Spektralsequenz $\{E^r,d^r\}$ mit $d^r = j^rk^r$.
 \end{theorem}
 
 \begin{proof}
@@ -327,7 +339,7 @@ Damit ist der Grad der bigraduierten Abbildung $d^r$ gleich $(-r,r-1)$.
 \end{proof}
 
 \section{Presentation der Serre spektralen Sequenz}
-Die Serre spektrale Sequenz ist konstruiert worden um die Homologiegruppen von unterschiedlichen Bestandteilen einer sogenannten Faserung zusammenzubringen. Bei Einer Faserung $Z \to X \to Y$ sollte man an eine Abbildung $pi: X \to Y$ denken, sodass alle Urbilder $\pi^{-1}(y)$ für $y \in Y$ homotopieäquivalent zu $Z$ sind. Bevor wir die Presentation der Serre spektralen Sequenz einführen können, benötigen wir also die Definition einer Faserung, welche die Homotopiehochhebungseigenschaft erfüllt. Diese erlaubt uns durch Anwendung der Faserung aus einfachen, bekannten Räumen, neue komplexere Räume zu konstruieren. Die Faserung ist eine Verallgemeinerung des Vektorbündels, welche auch ohne lineare oder affine Struktur auskommt. Die Homotopie-Hochhebungseingeschaft wird uns anschließend auch kompatible Eigenschaften auf Homologieebene induzieren.
+Die Serre Spektralsequenz ist konstruiert worden um die Homologiegruppen von unterschiedlichen Bestandteilen einer sogenannten Faserung zusammenzubringen. Bei Einer Faserung $Z \to X \to Y$ sollte man an eine Abbildung $pi: X \to Y$ denken, sodass alle Urbilder $\pi^{-1}(y)$ für $y \in Y$ homotopieäquivalent zu $Z$ sind. Bevor wir die Presentation der Serre spektralen Sequenz einführen können, benötigen wir also die Definition einer Faserung, welche die Homotopiehochhebungseigenschaft erfüllt. Diese erlaubt uns durch Anwendung der Faserung aus einfachen, bekannten Räumen, neue komplexere Räume zu konstruieren. Die Faserung ist eine Verallgemeinerung des Vektorbündels, welche auch ohne lineare oder affine Struktur auskommt. Die Homotopie-Hochhebungseingeschaft wird uns anschließend auch kompatible Eigenschaften auf Homologieebene induzieren.
 
 \begin{definition}[Faserung]
 Eine Abbildung $\pi: X \to B$, welche folgende Homotopiehochhebungseigenschaften für beliebige Räume $X$ erfüllt, heißt Faserung:
@@ -355,7 +367,7 @@ Im folgenden betrachten wir ein paar Beispiele von Faserungen, um etwas Intuitio
 \end{enumerate}
 \end{example}
 
-Als gegebene Daten verwenden wir eine Faserung $\pi: X \to B$, wobei $B$ ein wegzusammenhängender CW-Komplex ist und $X$ ein topologischer Raum. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern wollen, eine solche Faserung nennt man auch Serre-Faserung. Der Raum $B$ wird Basisraum genannt und $X$ heißt Totalraum. Wir können eine Filtrierung von $X$ erzeugen, indem wir das $p$-Skelett $B^p$ von $B$ betrachten und $X_p \coloneq \pi^{-1}(B^p)$ definieren. Aus dieser Filtrierung erhalten wir ein exaktes Paar und von diesem exakten Paar wiederum eine homologische Sequenz. In dieser Konstellation heißt die resultierende spektrale Sequenz auch Serre spektrale Sequenz.
+Als gegebene Daten verwenden wir eine Faserung $\pi: X \to B$, wobei $B$ ein wegzusammenhängender CW-Komplex ist und $X$ ein topologischer Raum. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern wollen, eine solche Faserung nennt man auch Serre-Faserung. Der Raum $B$ wird Basisraum genannt und $X$ heißt Totalraum. Wir können eine Filtrierung von $X$ erzeugen, indem wir das $p$-Skelett $B^p$ von $B$ betrachten und $X_p \coloneq \pi^{-1}(B^p)$ definieren. Aus dieser Filtrierung erhalten wir ein exaktes Paar und von diesem exakten Paar wiederum eine homologische Sequenz. In dieser Konstellation heißt die resultierende Spektralsequenz auch Serre Spektralsequenz.
 
 Wir benötigen zunächst für einen Weg $\gamma: [0,1] \to B$ in den Basisraum $B$ eine Abbildung $L_\gamma: F_a \to F_b$ für die Fasern $F_a = \pi^{-1}(a)$ und $F_b = \pi^{-1}(b)$. Diese Abbildung zwischen den Fasern soll stetig sein und die Existenz einer solchen Abbildung wird garantiert, durch die Homotopieäquivalenz der Fasern über jede Wegzusammenhangskomponenten zueinander.
 
