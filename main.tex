@@ -7,7 +7,9 @@
 \usepackage{enumitem}
 \usepackage{amsthm}
 \usepackage{mathtools}
+\usepackage{xcolor}
 \usepackage{quiver}
+\usepackage{adjustbox}
 \usepackage{tikz}
 \usetikzlibrary{babel}
 \usepackage{tikz-cd}
@@ -146,6 +148,60 @@ Für jedes $r$ wird $E^r$ das $r$te Blatt oder die $r$te Seite von $\{E^r,d^r\}_
     der Limes für $\{E^r, d^r\}_{r \geq r_0}$ ist. Äquivalent sagen wir auch, dass die spektrale Sequenz an $E^\infty$ angrenzt.
 \end{definition}
 
+\begin{remark}
+Eine visuelle Darstellung der ersten drei Seiten der Serre spektralen Sequenz mit den Differenzialen ($\rightarrow$) und den Werte- und Zielbereichen dargestellt durch $\bullet$. Die $\bullet$ repräsentieren dabei Gruppen, insbesondere Homologiegruppen, oder Homologievektorräume über einem Körper $\mathbb{F}$. Der rote Punkt $\color{red}\bullet$ entspricht $E^1_{0,2}$ und der blaue Punkt $\color{blue}\bullet$ entspricht $E^2_{1,-2}$.
+\[
+\begin{tikzcd}[sep=tiny]
+    &&& {E^1} &&&&&& {E^2} &&&&&& {E^3} \\
+    & \bullet & \bullet & {\color{red}\bullet} & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\
+    {} & \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\
+    & \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\
+    & \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\
+    & \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & {\color{blue}\bullet} & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet
+    \arrow[from=2-3, to=2-2]
+    \arrow[from=2-4, to=2-3]
+    \arrow[from=2-5, to=2-4]
+    \arrow[from=2-6, to=2-5]
+    \arrow[from=3-3, to=3-2]
+    \arrow[from=3-4, to=3-3]
+    \arrow[from=3-5, to=3-4]
+    \arrow[from=3-6, to=3-5]
+    \arrow[from=3-10, to=2-8]
+    \arrow[from=3-11, to=2-9]
+    \arrow[from=3-12, to=2-10]
+    \arrow[from=4-3, to=4-2]
+    \arrow[from=4-4, to=4-3]
+    \arrow[from=4-5, to=4-4]
+    \arrow[from=4-6, to=4-5]
+    \arrow[shorten <=5pt, Rightarrow, from=4-6, to=4-8]
+    \arrow[from=4-10, to=3-8]
+    \arrow[from=4-11, to=3-9]
+    \arrow[from=4-12, to=3-10]
+    \arrow[shorten <=5pt, Rightarrow, from=4-12, to=4-14]
+    \arrow[from=4-17, to=2-14]
+    \arrow[from=4-18, to=2-15]
+    \arrow[from=5-3, to=5-2]
+    \arrow[from=5-4, to=5-3]
+    \arrow[from=5-5, to=5-4]
+    \arrow[from=5-6, to=5-5]
+    \arrow[from=5-10, to=4-8]
+    \arrow[from=5-11, to=4-9]
+    \arrow[from=5-12, to=4-10]
+    \arrow[from=5-17, to=3-14]
+    \arrow[from=5-18, to=3-15]
+    \arrow[from=6-3, to=6-2]
+    \arrow[from=6-4, to=6-3]
+    \arrow[from=6-5, to=6-4]
+    \arrow[from=6-6, to=6-5]
+    \arrow[from=6-10, to=5-8]
+    \arrow[from=6-11, to=5-9]
+    \arrow[from=6-12, to=5-10]
+    \arrow[from=6-17, to=4-14]
+    \arrow[from=6-18, to=4-15]
+\end{tikzcd}
+\]
+\end{remark}
+
 \begin{definition}
     Eine spektrale Sequenz heißt Erste-Quadranten-Spektralsequenz, falls für ein $r \in \mathbb{N}$ die Einträge, also die Homologiegruppen auf der $r$ten Seite ungleich Null sind, genau dann wenn $p \geq 0$ und $q \geq 0$.
 \end{definition}
@@ -271,9 +327,9 @@ Damit ist der Grad der bigraduierten Abbildung $d^r$ gleich $(-r,r-1)$.
 \end{proof}
 
 \section{Presentation der Serre spektralen Sequenz}
-Bevor wir die Presentation der Serre spektralen Sequenz einführen können, benötigen wir die Definition einer Faserung, welche die Homotopiehochhebungseigenschaft erfüllt. Diese erlaubt uns durch Anwendung der Faserung aus einfachen, bekannten Räumen, neue komplexere Räume zu konstruieren. Die Faserung ist eine Verallgemeinerung des Vektorbündels, welche auch ohne lineare oder affine Struktur auskommt. Die Homotopie-Hochhebungseingeschaft wird uns anschließend auch kompatible Eigenschaften auf Homologieebene induzieren.
+Die Serre spektrale Sequenz ist konstruiert worden um die Homologiegruppen von unterschiedlichen Bestandteilen einer sogenannten Faserung zusammenzubringen. Bei Einer Faserung $Z \to X \to Y$ sollte man an eine Abbildung $pi: X \to Y$ denken, sodass alle Urbilder $\pi^{-1}(y)$ für $y \in Y$ homotopieäquivalent zu $Z$ sind. Bevor wir die Presentation der Serre spektralen Sequenz einführen können, benötigen wir also die Definition einer Faserung, welche die Homotopiehochhebungseigenschaft erfüllt. Diese erlaubt uns durch Anwendung der Faserung aus einfachen, bekannten Räumen, neue komplexere Räume zu konstruieren. Die Faserung ist eine Verallgemeinerung des Vektorbündels, welche auch ohne lineare oder affine Struktur auskommt. Die Homotopie-Hochhebungseingeschaft wird uns anschließend auch kompatible Eigenschaften auf Homologieebene induzieren.
 
-\begin{definition}
+\begin{definition}[Faserung]
 Eine Abbildung $\pi: X \to B$, welche folgende Homotopiehochhebungseigenschaften für beliebige Räume $X$ erfüllt, heißt Faserung:
 \begin{itemize}[noitemsep]
     \item für jede Homotopie $h: Z \times [0,1] \to B$ und
@@ -290,6 +346,15 @@ existiert eine Homotopie $\overline{h}: Z \times [0,1] \to X$, die $h$ liftet. D
     \arrow["\pi"', from=2-2, to=1-2]
 \end{tikzcd}\]
 \end{definition}
+Im folgenden betrachten wir ein paar Beispiele von Faserungen, um etwas Intuition zu gewinnen.
+\begin{example} Beispiele für Faserungen:
+\begin{enumerate}[nolistsep]
+    \item Seien $X,Y$ topologische Räume, dann ist die Projektion $\pi: X \times Y \to Y$ eine Faserung, wobei jede Faser homeomorph ist zu $X$. Sei $h: Z \times [0,1] \to Y$ eine Homotopie mit $\overline{h}_0: Z \times \{0\} \to X \times Y$, so dass $(\pi \circ \overline{h}_0)(z) = h_0(z) = h(z,0)$. Sei $\overline{h}: Z \times [0,1] \to X \times Y$ definiert durch $\overline{h}(z,t) = ((p_X \circ \overline{h}_0)(z,t), h(z,t))$, wobei $p_X: X \times Y \to X$ die Projektion auf die erste Komponente bezeichnet. Wir haben also $\overline{h}$ so gebaut, dass es mit $\overline{h}_0$ in der $X$-Komponente und mit $h$ in der $Y$-Komponente übereinstimmt.
+    \item Die kanonische Surjektion $\pi: S^n \to \mathbb{R}P^n, x \mapsto [x]$ ist eine Faserung mit Fasern homeomorph zu $S^0$.
+    \item Die kanonische Surjektion $\pi: S^{2n+1} \to \mathbb{C}P^n, x \mapsto [x]$ ist eine Faserung mit Fasern homeomorph zu $S^1$.
+\end{enumerate}
+\end{example}
+
 Als gegebene Daten verwenden wir eine Faserung $\pi: X \to B$, wobei $B$ ein wegzusammenhängender CW-Komplex ist und $X$ ein topologischer Raum. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern wollen, eine solche Faserung nennt man auch Serre-Faserung. Der Raum $B$ wird Basisraum genannt und $X$ heißt Totalraum. Wir können eine Filtrierung von $X$ erzeugen, indem wir das $p$-Skelett $B^p$ von $B$ betrachten und $X_p \coloneq \pi^{-1}(B^p)$ definieren. Aus dieser Filtrierung erhalten wir ein exaktes Paar und von diesem exakten Paar wiederum eine homologische Sequenz. In dieser Konstellation heißt die resultierende spektrale Sequenz auch Serre spektrale Sequenz.
 
 Wir benötigen zunächst für einen Weg $\gamma: [0,1] \to B$ in den Basisraum $B$ eine Abbildung $L_\gamma: F_a \to F_b$ für die Fasern $F_a = \pi^{-1}(a)$ und $F_b = \pi^{-1}(b)$. Diese Abbildung zwischen den Fasern soll stetig sein und die Existenz einer solchen Abbildung wird garantiert, durch die Homotopieäquivalenz der Fasern über jede Wegzusammenhangskomponenten zueinander.
@@ -309,13 +374,33 @@ Sei $\gamma: [0,1] \to B$ ein Weg und $F_{\gamma(s)} \coloneq \pi^{-1}(\gamma(s)
     \arrow["h", from=2-1, to=2-2]
     \arrow["\pi"', from=2-2, to=1-2]
 \end{tikzcd}\]
+Insbesondere gilt $h = \pi \overline{h}, \overline{h}(x,t) \in F_{\gamma(t)}$. Falls also $t=1$ ist, erhalten wir die Abbildung $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$ definiert durch $L_\gamma(x) = \overline{h}(x,1)$.
 
+Wir zeigen als nächstes, dass die Abbildung $\gamma \mapsto L_\gamma$ sich gutartig verhält, in Bezug auf Homotopien \cite[Prop. 4.61]{hatcher2001}:
+\begin{itemize}[noitemsep]
+    \item Falls $\gamma_0$ und $\gamma_1$ Wege von $a$ nach $b$ sind und $\gamma \simeq_{\{0,1\}} \gamma'$ (d.h. es gibt eine Homotopie $h: \gamma \Rightarrow \gamma'$, welche konstant auf den Basispunkten $0$ und $1$ ist), dann gilt $L_\gamma \simeq L_{\gamma'}$.
+    \item Falls $\gamma_0$ und $\gamma_1$ Wege sind, so dass $\gamma_1(0) = \gamma_0(1)$, dann ist $L_{\gamma_0 \star y_1} \simeq L_{\gamma_1} \circ L_{\gamma_0}$.
+\end{itemize}
+Wir werden nun die Proposition aus diesen beiden Eigenschaften ableiten. Seien $F_a$ und $F_b$ Fasern und sei $\gamma$ ein Weg von $a$ nach $b$. Wir betrachten $L_\gamma: F_a \to F_b$ und $L_{\overline{\gamma}}: F_b \to F_a$.
 
-Für jeden Weg $\gamma: [0,1] \to B$ können wir also eine Abbildung zwischen den Fasern der Anfangs- und Endpunkte definieren $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$, indem wir die Homotopiehochhebungseigenschaft in Bezug auf $F_{\gamma(0)}$ verwenden.
+Sei $\alpha \equiv a$ die Konstante Schleife und $\overline{h}$ die Abbildung, welche wir verwenden um $L_\alpha(x)$ zu definieren. Weil $h(x,t) = \alpha(x) = a$ ist für alle $x$, wissen wir auch dass $\overline{h}(x,t) \in F_a$ für alle $x$ und $t$. Also ist $\overline{h}$ eine Homotopie, so dass $\overline{h}(x,0) = \operatorname{Id}_{F_a}$ und $\overline{h}(x,1) = L_\alpha$. Also ist auch $\operatorname{F}_a \simeq L_\alpha$ und ebenso $\operatorname{Id}_{F_b} \simeq L_\beta$.
+
+Mit den Eigenschaften aus \cite[Prop. 4.61]{hatcher2001} erhalten wir
+\begin{align}
+L_{\overline{\gamma}} \circ L_\gamma &\simeq L_{\gamma \star \overline{\gamma}} \simeq L_\alpha \simeq \operatorname{Id}_{F_a}, \\
+L_{\gamma} \circ L_{\overline{\gamma}} &\simeq L_{\overline{\gamma} \star \gamma} \simeq L_\beta \simeq \operatorname{Id}_{F_b}.
+\end{align}
+Also ist $F_a \simeq F_b$.
 \end{proof}
 
-\section{Homologie von $\Omega S^n$ und $\mathbb{C}P^\infty$}
+Für jeden Weg $\gamma: [0,1] \to B$ können wir also eine Abbildung zwischen den Fasern der Anfangs- und Endpunkte definieren $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$, indem wir die Homotopiehochhebungseigenschaft in Bezug auf $F_{\gamma(0)}$ verwenden. 
 
+\section{Homologie von $\mathbb{C}P^\infty$}
+
+
+Etwas seltsam verhält es sich mit der Serre spektralen Sequenz für die Homologie von $\mathbb{C}P^\infty$, denn wir ignorieren im Grunde die erste Seite $E^1$ und beginnen unsere Berechnungen mit $E^2$ und setzen diese auf alle weiteren Seiten fort. Der Grund dafür ist, das wir eine sehr einfache aber sehr nützliche Fomel haben, für die Gruppen auf der zweiten Seite. Im Fall unserer Faserung $S^1 \to S^\infty \to \mathbb{C}P^\infty$ können wir die ganze zweite Seite $E^2$ sofort ausschreiben.
+
+Nach Teil c) von Satz 
 \nocite{*}
 \printbibliography
 \end{document}
