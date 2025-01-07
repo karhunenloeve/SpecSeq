@@ -4,11 +4,7 @@ This document explains spectral sequences and homology in a concise and clear wa
 
 ## Definition of Homology Groups
 
-The homology definition $H_n(A_\bullet)$ of a chain complex is defined for arbitrary homology theories as the quotient:
-$$
-\ker d_n / \text{im} \, d_{n+1}
-$$
-With respect to spectral sequences, there exists in a chain complex a differential that goes out of the group, in this case $d_n$, and one that goes into the group, in this case $d_{n+1}$. This leads to a powerful framework for examining various homology groups depending on which differentials we use. These considerations are organized into what are called *pages*. 
+The homology definition $H_n(A_\bullet)$ of a chain complex is defined for arbitrary homology theories as the quotient $Z_n / B_n$. With respect to spectral sequences, there exists in a chain complex a differential that goes out of the group, in this case $d_n$, and one that goes into the group, in this case $d_{n+1}$. This leads to a powerful framework for examining various homology groups depending on which differentials we use. These considerations are organized into what are called *pages*. 
 
 ### 📖 How Spectral Sequences Work
 
@@ -18,7 +14,7 @@ The notation for homology groups is $E^r_{p,q}$, where $r$ denotes the page numb
 
 ### 🔄 The Operation from $E^r_{p,q}$ to $E^{r+1}_{p,q}$
 
-The differentials on each page $r$ are heavily dependent on the definition of the spectral sequence. We define the differentials $d_{\operatorname{IN}}$ and $d_{\operatorname{OUT}}$ as the incoming and outgoing differentials of $E^r_{p,q}$, and the operation from one page to the next is:
+The differentials on each page $r$ are heavily dependent on the definition of the spectral sequence. We define the differentials $d_{IN}$ and $d_{OUT}$ as the incoming and outgoing differentials of $E^r_{p,q}$, and the operation from one page to the next is:
 $$
 E^{r+1}_{p,q} \coloneq \ker d_{OUT} / \text{im} \, d_{IN}
 $$
