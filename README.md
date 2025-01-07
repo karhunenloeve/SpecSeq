@@ -14,7 +14,7 @@ The notation for homology groups is $E^r_{p,q}$, where $r$ denotes the page numb
 
 ### 🔄 The Operation from $E^r_{p,q}$ to $E^{r+1}_{p,q}$
 
-The differentials on each page $r$ are heavily dependent on the definition of the spectral sequence. We define the differentials $d_{IN}$ and $d_{OUT}$ as the incoming and outgoing differentials of $E^r_{p,q}$, and the operation from one page to the next is: $E^{r+1}_{p,q} \coloneq \ker d_{OUT} / im \, d_{IN}$.
+The differentials on each page $r$ are heavily dependent on the definition of the spectral sequence. We define the differentials $d_{IN}$ and $d_{OUT}$ as the incoming and outgoing differentials of $E^r_{p,q}$, and the operation from one page to the next is: $E^{r+1}_{p,q} \coloneq ker d_{OUT} / im d_{IN}$.
 
 ### ✨ Serre Spectral Sequence Example
 
