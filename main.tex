@@ -36,7 +36,10 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\ima}{\operatorname{im}}
 
-\usepackage[style=authoryear,backend=bibtex]{biblatex}
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
 \addbibresource{main.bib}
 
 \title{\textbf{Spektralsequenzen\\ Leray–Serre Spektralsequenz}}
@@ -69,11 +72,11 @@ Wir beschreiben nun, was wir in unsere Spektralsequenz eintragen müssen und was
 \end{Large}
 
 \section{Homologische Spektralsequenzen}
-Spektralsequenzen können im Allgemeinen über abelschen Kategorien definiert werden, oder weniger allgemein über $R$-Moduln. Wir betrachten in dieser Arbeit die spektralen Sequenzen über $\mathbb{Z}$-Moduln, also die Variante für abelsche Gruppen.
+Generell besteht die Möglichkeit, Spektralsequenzen über abelsche Kategorien zu definieren, alternativ oder zusätzlich über $R$-Moduln. Gegenstand der vorliegenden Arbeit sind Spektralsequenzen über $\mathbb{Z}$-Moduln, also die Variante für abelsche Gruppen.
 
 \begin{definition}[Homologische Sequenz]
 \label{homologischeSequenz}
-Sei $0 \leq r_0 \in \mathbb{R}$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}_{r \geq r_0}$ besteht aus
+Sei $0 \leq r_0 \in I$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}_{r \geq r_0}$ besteht aus
 \begin{enumerate}[nolistsep]
     \item einer Familie abelscher Gruppen $\{A^r_{p,q}\}_{p,q \in \Z, r \geq r_0}$ und
     \item einer Familie Gruppenhomomorphismen $\{d^r_{p,q}: A^r_{p,q} \to A^r_{p-r,q+r-1}\}$ welche Differentiale genannt werden, so dass für alle $p,q,r$ gilt
@@ -84,7 +87,7 @@ Sei $0 \leq r_0 \in \mathbb{R}$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,
 \end{enumerate}
 \end{definition}
 
-Diese Definition einer homologischen Sequenz zeigt deutlich auf, für welche Untergruppen die Quotienten berechnet werden - in einer Art Kettenkomplex mit zwei Indizes. Eine übliche Vereinfachung der Notation wird sich jedoch bei den weiteren Untersuchungen als hilfreich erweisen, indem wir ein $r$ festlegen und alle $A^r_{p,q}$ als ein Objekt $A^r$ betrachten. Diese neu entstandene Gruppe nennt man dann eine bigraduierte abelsche Gruppe. Die Differentiale $d^r_{p,q}$ heißen auch kollektiv $d^r$, oder bigraduierte Differentiale.
+Die vorliegende Definition einer homologischen Sequenz verdeutlicht, für welche Untergruppen die Quotienten berechnet werden, und zwar in einer Art Kettenkomplex mit zwei Indizes. Es ist jedoch davon auszugehen, dass sich eine Vereinfachung der Notation bei den weiteren Untersuchungen als hilfreich erweisen wird. Konkret wird ein $r$ festgelegt und alle $A^r$ als ein Objekt $A^r$ betrachtet. Diese neu entstandene Gruppe wird als bigraduierte abelsche Gruppe bezeichnet, während die Differentiale $d^r$ auch kollektiv als $d^r$ oder bigraduierte Differentiale bezeichnet werden.
 
 \begin{definition}[Bigraduierte abelsche Gruppen]
     Eine bigraduierte abelsche Gruppe $A$ ist eine Familie von abelschen Gruppen $A \coloneq \bigoplus_{p,q \in \Z} A_{p,q}$, welche als direkte Summe indexiert über zwei Indizes aus $\Z$ aufgefasst werden kann. Sind zwei bigraduierte abelsche Gruppen $A, B \coloneq \bigoplus_{p,q \in \Z} B_{p,q}$ gegeben, so ist die bigraduierte Abbildung vom Grad $(c,d)$ eine Sammlung von Gruppenhomomorphismen $f \coloneq \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}$.
@@ -99,7 +102,7 @@ Diese Definition einer homologischen Sequenz zeigt deutlich auf, für welche Unt
     \end{tikzcd}\]
 \end{definition}
 
-Man beachte, dass wir der direkten Summe keine Bedeutung zuschreiben. Die Reihenfolge der Summation ist also willkürlich. Ebenso könnten wir die einzelnen abelschen Gruppen als Elemente einer Menge auffassen. Seien $A = \bigoplus_{p,q \in \Z} A_{p,q}$ und $B = \bigoplus_{p,q \in \Z} B_{p,q}$ also bigraduierte abelsche Gruppen. 
+Es sei darauf hingewiesen, dass der direkten Summe keine Bedeutung beigemessen wird, sodass die Reihenfolge der Summation als willkürlich zu betrachten ist. Eine alternative Betrachtungsweise besteht in der Auffassung der einzelnen abelschen Gruppen als Elemente einer Menge. Seien also $A = \bigoplus_{p,q \in \Z} A_{p,q}$ und $B = \bigoplus_{p,q \in \Z} B_{p,q}$ die bigraduierten abelschen Gruppen. 
 
 \begin{definition}[Bigraduierte Abbildung]
     Wir nennen $f^{(c,d)}_{p,q}: A_{p,q} \to B_{p+c,q+d}$ einen Gruppenhomomorphismus vom Bigrad $(c,d)$. Dann ist eine bigraduierte Abbildung vom Bigrad $(c,d)$ ein  Gruppenhomomorphismen $f: A \to B, \bigoplus_{p,q} a_{p,q} \mapsto \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}(a) = \bigoplus_{p,q \in \Z} b_{p+c,q+d}$.
@@ -276,7 +279,15 @@ Haben wir ein solches exaktes Paar gegeben, so gibt es eine natürliche Art und 
     \begin{enumerate}[nolistsep]
         \item Wohldefiniertheit von $j'$: Sei $i(a_1) = i(a_2)$ für $a_1,a_2 \in A$. Dann ist $a_1-a_2 \in \ker i = \ima k$ nach Exaktheit, also ist auch $j(a_1-a_2) = j(a_1)-j(a_2) \in \ima jk = \ima d$, per Definition des Differentials. Also gilt für die Äquivalenzklassen $[j(a_1)]-[j(a_2)] = 0$, da beide im Bild des Differentials liegen und deren Differenz ein Rand ist. Damit ist $[j(a_1)] = [j(a_2)]$ in $E'$ und $j'$ hängt nicht von der Wahl des Repräsentanten ab.
         \item Wohldefiniertheit von $k'$: Für jedes $e \in \ker d = \ker jk$ gilt $k(e) \in \ker j = \ima i = A'$ nach Exaktheit und der Definition $i(A') = A'$. Weiterhin ist $[e_1] = [e_2]$ für $e_1,e_2 \in E$, so gilt $[e_1 - e_2] = [0]$, also ist $e_1-e_2$ ein Rand und damit $e_1 - e_2 \in \ima d = \ima jk \subset \ima j = \ker k$. Deshalb gilt $k'([e_1] - [e_2]) = k(e_1-e_2) = 0$ und deshalb $k'([e_1]) = k'([e_2])$.
-        \item Exaktheit: Sei $a' \in A'$, dann gibt es ein $a \in A$, so dass $i(a) = a'$. Wir erhalten $(j'\circ i')(a') = (j'\circ i\vert_{i(a)} \circ i)(a) = [(j \circ i\vert_{i(a)} \circ i)(a))] = [j(a'))] = [(j\circ i)(a)] = 0$, denn $ji = 0$. Somit ist $j'i' = 0$, also $\ima i' \subset \ker j'$. Für $a' \in \ker j'$ mit $a' = i(a)$, dann ist $j'(a') = j'(i(a))) = [j(a)] = 0$ und somit $j(a) \in \ima d$. Also gibt es ein $e \in E$, so dass $j(a) = d(e) = jk(e)$. Deshalb ist $a-k(e) \in \ker j = \ima i$. Also gibt es ein $b \in A$, so dass $a-k(e) = i(b)$. Weil $ik = 0$ haben wir $a' = i(a) = i(a) - (ik)(e) = i(a-k(e)) = i^2(b)$. Also ist $a' = i(i(b))$ und damit ist $a' \in \ima i'$. Also ist $\ker j' \subset \ima i'$ und deshalb $\ker j' = \ima i'$. Sei $a' = i(a) \in A'$, dann sehen wir, dass $(k'j')(a') = k'([ja]) = (kj)(a) = 0$. Also ist $\ima j' \subset \ker k'$. TODO
+        \item Exaktheit: Sei $a' \in A'$, dann gibt es ein $a \in A$, so dass $i(a) = a'$. Wir erhalten $(j'\circ i')(a') = (j'\circ i\vert_{i(a)} \circ i)(a) = [(j \circ i\vert_{i(a)} \circ i)(a))] = [j(a'))] = [(j\circ i)(a)] = 0$, denn $ji = 0$. Somit ist $j'i' = 0$, also $\ima i' \subset \ker j'$. Für $a' \in \ker j'$ mit $a' = i(a)$, dann ist $j'(a') = j'(i(a))) = [j(a)] = 0$ und somit $j(a) \in \ima d$. Also gibt es ein $e \in E$, so dass $j(a) = d(e) = jk(e)$. Deshalb ist $a-k(e) \in \ker j = \ima i$. Also gibt es ein $b \in A$, so dass $a-k(e) = i(b)$. Weil $ik = 0$ haben wir $a' = i(a) = i(a) - (ik)(e) = i(a-k(e)) = i^2(b)$. Also ist $a' = i(i(b))$ und damit ist $a' \in \ima i'$. Also ist $\ker j' \subset \ima i'$ und deshalb $\ker j' = \ima i'$. Sei $a' = i(a) \in A'$, dann sehen wir, dass $(k'j')(a') = k'([ja]) = (kj)(a) = 0$. Also ist $\ima j' \subset \ker k'$.
+
+        Sei $[e] \in \ker k'$, dann ist $k(e) = 0$ und aufgrund der Exaktheit $e \in \ima j$. Also gibt es ein $a \in A$, so dass $e = j(a)$ aufgrund der Surjektivität von $j$. Deshalb ist $[e] = [j(a)] = j'(i(a))$. Also haben wir $[e] \in \ima j'$ und können schlussfolgern, dass $\ker k' = \ima h'$.
+
+        Sei $[e] \in E'$, dann ist $(i'\circ k')([e]) = i'(k(e)) =(i \circ k)(e) = 0$ aufgrund der Tatsache dass $ik = 0$ und somit auch $\ima k' \subset \ker i'$.
+
+        Sei $a' \in \ker i'$. Dann ist $a' \in \ker i$ und somit $a' \in \ima k$. Falls $a' = k(e)$, so ist $a' = k'([e])$. Wir schlussfolgern $\ker i' = \ima k'$.
+
+        Also ist das derivierte Paar ein exaktes Paar.
     \end{enumerate}
 \end{proof}
 
@@ -360,6 +371,7 @@ existiert eine Homotopie $\overline{h}: Z \times [0,1] \to X$, die $h$ liftet. D
 \end{definition}
 Im folgenden betrachten wir ein paar Beispiele von Faserungen, um etwas Intuition zu gewinnen.
 \begin{example} Beispiele für Faserungen:
+\label{examplesFibrations}
 \begin{enumerate}[nolistsep]
     \item Seien $X,Y$ topologische Räume, dann ist die Projektion $\pi: X \times Y \to Y$ eine Faserung, wobei jede Faser homeomorph ist zu $X$. Sei $h: Z \times [0,1] \to Y$ eine Homotopie mit $\overline{h}_0: Z \times \{0\} \to X \times Y$, so dass $(\pi \circ \overline{h}_0)(z) = h_0(z) = h(z,0)$. Sei $\overline{h}: Z \times [0,1] \to X \times Y$ definiert durch $\overline{h}(z,t) = ((p_X \circ \overline{h}_0)(z,t), h(z,t))$, wobei $p_X: X \times Y \to X$ die Projektion auf die erste Komponente bezeichnet. Wir haben also $\overline{h}$ so gebaut, dass es mit $\overline{h}_0$ in der $X$-Komponente und mit $h$ in der $Y$-Komponente übereinstimmt.
     \item Die kanonische Surjektion $\pi: S^n \to \mathbb{R}P^n, x \mapsto [x]$ ist eine Faserung mit Fasern homeomorph zu $S^0$.
@@ -404,12 +416,83 @@ L_{\gamma} \circ L_{\overline{\gamma}} &\simeq L_{\overline{\gamma} \star \gamma
 \end{align}
 Also ist $F_a \simeq F_b$.
 \end{proof}
+Diese Proposition führt dazu, dass sich die Konvention etabliert hat, dass wir immer Bezug auf die Fasern einer Faserung eines einzelnen topologischen Raums nehmen, zu dem alle Fasern homotopeäquivalent sind, solange diese eben wegszusammenhängend sind. Es ist üblich eine Faserung als $F \to X \to X$ zu schreiben, wobei $F$ der Raum ist, der homotopieäquivalent zu den Fasern ist.
 
-Für jeden Weg $\gamma: [0,1] \to B$ können wir also eine Abbildung zwischen den Fasern der Anfangs- und Endpunkte definieren $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$, indem wir die Homotopiehochhebungseigenschaft in Bezug auf $F_{\gamma(0)}$ verwenden. 
+Aus diese Art und Weise können wir unsere Beispiele \ref{examplesFibrations} wie folgt umschreiben:
+\begin{itemize}[nolistsep]
+    \item $F \to F \times B \to B$,
+    \item $S^0 \to S^n \to \mathbb{R}P^n$,
+    \item $S^1 \to S^{2n+1} \to \mathbb{C}P^n$.
+\end{itemize}
+Für alle drei Beispiele sind die Fasern sogar homeomorph.
+
+Für jeden Weg $\gamma: [0,1] \to B$ können wir also eine Abbildung zwischen den Fasern der Anfangs- und Endpunkte definieren $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$, indem wir die Homotopiehochhebungseigenschaft in Bezug auf $F_{\gamma(0)}$ verwenden.
+
+Um die Faserung für unser Beispiel nutzbar zu machen, müssen wir zeigen, dass das Faserbündel $S^1 \to S^\infty \to \mathbb{C}P^\infty$ mit $\pi: S^\infty \to \mathbb{C}P^\infty$ der kanonischen Surjektion eine Faserung ist. Wir sehen aufgrund der Konstruktion von $\mathbb{C}P^\infty$, dass der Raum einfach zusammenhängend als CW-Komplex ist.
+
+Sei $X$ ein topologischer Raum und $\mathcal{U}$ eine offene Überdeckung von $X$.
+
+\begin{definition}
+Eine Verfeinerung ist eine offene Überdeckung $\mathcal{V}$ von $X$, so dass für alle $V \in \mathcal{V}$ ein $U \in \mathcal{U}$ existiert, mit $V \subset U$.
+
+Wir sagen, dass eine Verfeinerung $\mathcal{V}$ lokal endlich ist, falls für alle offenen Umgebungen $U_x$ von $x \in X$ gilt $U_x \cap V = \emptyset$ für fast alle $V \in \mathcal{V}$.
+\end{definition}
+
+\begin{definition}
+Ein topologischer Raum heißt parakompakt, falls jede offene Überdeckung eine lokal endliche Verfeinerung besitzt.
+\end{definition}
+
+\begin{remark}
+Alle kompakten topologischen Räume sind parakompakt.
+\end{remark}
+
+\begin{lemma}
+Jeder CW-Komplex ist parakompakt.
+\end{lemma}
+
+\begin{proof}
+TODO
+\end{proof}
+
+\begin{theorem}{\cite[Theorem 1]{huebsch1955}}
+Falls $\pi: X \to B$ ein Faserbündel ist und $B$ parakompakt, dann ist $\pi$ eine Faserung.
+\end{theorem}
+
+Aus diesem Satz und der Tatsache, dass alle CW-Komplexe parakompakt sind, folgt unser gewünschgtes Korollar.
+
+\begin{corollary}
+Jedes Faserbündel mit einem CW-Komplex als Basisraum ist eine Faserung.
+\end{corollary}
 
 \section{Homologie von $\mathbb{C}P^\infty$}
-
-
+Zunächst möchten wir in diesem Kapitel die Homologien von $\mathbb{C}P^\infty$ mittels zellulärer Homologie berechnen, in dem wir die Struktur eines CW-Komplexes darauf definieren, um sie anschließend mit dem Ergebnis aus der Spektralsequenz vergleichen zu können. Der Raum $\mathbb{C}P^n$ besteht aus den Komplexen Geraden durch den Ursprung in $\mathbb{C}^{n+1} \cong \mathbb{R}^{2n+2}$. Der isometrische Isomorphismus ist gegeben durch die Abbildung $\phi: \mathbb{R}^{2n+2} \to \mathbb{C}^{n+1}, (x_1, \ldots, x_{2n+2}) \mapsto (x_1 + ix_2, \ldots, x_{2n+1} + ix_{2n+2})$. Wir können $\mathbb{C}P^n = S^{2n+1} / \sim$ schreiben, wobei die Äquivalenzrelation gegeben ist durch
+\begin{align}
+(x_1, \ldots, x_{2n+2}) \sim (R(x_1,x_2),\ldots,R(x_{2n+1},x_{2n+2})) \quad \forall R \in \operatorname{SO}(2).
+\end{align}
+Dies ergibt die folgende Filtrierung in Skelette
+\begin{align*}
+\emptyset \subset \bullet \subset \bullet \subset \mathbb{C}P^1 \subset \mathbb{C}P^1 \subset \ldots \subset \mathbb{C}P^{n-1} \subset \mathbb{C}P^{n-1} \subset \mathbb{C}P^n \subset \mathbb{C}P^n \subset \ldots \subset \mathbb{C}P^\infty,
+\end{align*}
+wobei $\mathbb{C}P^k$ durch einen pushout aus $\mathbb{C}P^{k-1}$ konstruiert wird, indem $2k$-Scheiben $D^{2k}$ mittels der kanonischen Surjektion $\pi: S^{2k-1} \to \mathbb{C}P^{k-1}$ angeheftet werden:
+\[\begin{tikzcd}[sep=large]
+    {\mathbb{C}P^k} & {\mathbb{C}P^{k-1}} \\
+    {D^{2k}} & {S^{2k-1}}.
+    \arrow["{[x] \mapsto[(x,0,0)]}"', from=1-2, to=1-1]
+    \arrow["c", from=2-1, to=1-1]
+    \arrow["\pi"', from=2-2, to=1-2]
+    \arrow["\iota", from=2-2, to=2-1]
+\end{tikzcd}\]
+$\mathbb{C}P^\infty$ hat dabei Skelette $X_{2k} = X_{2k+1} = \mathbb{C}P^k$ für alle $k \in \mathbb{N}_0$. Damit erhalten wir für den zellulären Kettenkomplex $C_{2k}(\mathbb{C}P^\infty) \cong H_{2k}(X_{2k},X_{2k-1}) \cong \mathbb{Z}$ für $0 \leq k \leq n$ und $C_k(\mathbb{C}P^n) \cong H_k(X_k,X_{k-1}) = 0$ für $k > 2n$ für $k$ ungerade. Der zelluläre Komplex ist gegeben durch
+\begin{align}
+0 \to \mathbb{Z} \xrightarrow{d_{2n}} 0 \xrightarrow{d_{2n-1}} \mathbb{Z} \xrightarrow{d_{2n-2}} 0 \xrightarrow{d_{2n-3}} \ldots \xrightarrow{d_{3}} \mathbb{Z} \xrightarrow{d_{2}} 0 \xrightarrow{d_{1}} \mathbb{Z} \xrightarrow{d_0}0.
+\end{align}
+und seine Homologien sind
+\begin{align}
+H_k(\mathbb{C}P^\infty) = \begin{cases}
+\mathbb{Z} \quad k \in \mathbb{N}_0 \, \text{gerade},\\
+0 \quad \text{sonst.}
+\end{cases}
+\end{align}
 Etwas seltsam verhält es sich mit der Serre spektralen Sequenz für die Homologie von $\mathbb{C}P^\infty$, denn wir ignorieren im Grunde die erste Seite $E^1$ und beginnen unsere Berechnungen mit $E^2$ und setzen diese auf alle weiteren Seiten fort. Der Grund dafür ist, das wir eine sehr einfache aber sehr nützliche Fomel haben, für die Gruppen auf der zweiten Seite. Im Fall unserer Faserung $S^1 \to S^\infty \to \mathbb{C}P^\infty$ können wir die ganze zweite Seite $E^2$ sofort ausschreiben.
 
 Nach Teil c) von Satz 
