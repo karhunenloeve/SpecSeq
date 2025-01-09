@@ -700,130 +700,422 @@ tatsächlich vom Grad \(\,(-r,\,r-1)\) ist, was die Behauptung abschließt.
 \end{proof}
 
 \section{Presentation der Serre spektralen Sequenz}
-Die Serre Spektralsequenz ist konstruiert worden um die Homologiegruppen von unterschiedlichen Bestandteilen einer sogenannten Faserung zusammenzubringen. Bei Einer Faserung $Z \to X \to Y$ sollte man an eine Abbildung $pi: X \to Y$ denken, sodass alle Urbilder $\pi^{-1}(y)$ für $y \in Y$ homotopieäquivalent zu $Z$ sind. Bevor wir die Presentation der Serre spektralen Sequenz einführen können, benötigen wir also die Definition einer Faserung, welche die Homotopiehochhebungseigenschaft erfüllt. Diese erlaubt uns durch Anwendung der Faserung aus einfachen, bekannten Räumen, neue komplexere Räume zu konstruieren. Die Faserung ist eine Verallgemeinerung des Vektorbündels, welche auch ohne lineare oder affine Struktur auskommt. Die Homotopie-Hochhebungseingeschaft wird uns anschließend auch kompatible Eigenschaften auf Homologieebene induzieren.
+Die \emph{Serre-Spektralsequenz} wurde entwickelt, um die Homologiegruppen der verschiedenen Bestandteile einer sogenannten \emph{Faserung} miteinander in Beziehung zu setzen. Bei einer Faserung 
+\[
+    Z \;\longrightarrow\; X \;\longrightarrow\; Y
+\]
+denkt man an eine Abbildung 
+\[
+    \pi : X \;\longrightarrow\; Y,
+\]
+so dass sämtliche Urbilder \(\,\pi^{-1}(y)\) für jedes \(y \in Y\) homotopieäquivalent zu \(Z\) sind. 
+
+Bevor wir die Konstruktion der Serre-Spektralsequenz genauer vorstellen können, benötigen wir die Definition einer Faserung, die die \emph{Homotopiehochhebungseigenschaft} erfüllt. Diese Eigenschaft erlaubt es uns, aus einfacheren und bereits bekannten Räumen durch Anwendung der Faserung neue, komplexere Räume zu konstruieren. 
+
+Die Faserung verallgemeinert dabei das Konzept eines Vektorbündels, kommt jedoch ohne lineare oder affine Struktur aus. Die Homotopiehochhebungseigenschaft wird sich anschließend in kompatiblen Eigenschaften auf der Ebene der Homologie niederschlagen und so die Grundlage für die Serre-Spektralsequenz bilden.
 
 \begin{definition}[Faserung]
-Eine Abbildung $\pi: X \to B$, welche folgende Homotopiehochhebungseigenschaften für beliebige Räume $X$ erfüllt, heißt Faserung:
+Eine Abbildung \(\pi : X \to B\), welche die folgende \emph{Homotopiehochhebungseigenschaft} für beliebige Räume \(Z\) erfüllt, heißt eine \emph{Faserung}:
 \begin{itemize}[noitemsep]
-    \item für jede Homotopie $h: Z \times [0,1] \to B$ und
-    \item für jeden Lift $\overline{h}_0: Z \to X$ mit $h_0 = h\vert_{X\times \{0\}}$ und $h_0 = \pi \circ \overline{h}_0$,
+    \item für jede Homotopie \(h : Z \times [0,1] \to B\) und
+    \item für jeden Lift \(\overline{h}_0 : Z \to X\) mit 
+    \[
+        h_0 \;=\; h\vert_{Z\times \{0\}}
+        \quad\text{und}\quad 
+        h_0 \;=\; \pi \circ \overline{h}_0,
+    \]
 \end{itemize}
-existiert eine Homotopie $\overline{h}: Z \times [0,1] \to X$, die $h$ liftet. Daraus resultiert folgendes kommutierende Diagramm:
-\[\begin{tikzcd}
-    {Z \times \{0\}} & X \\
-    {Z\times[0,1]} & B.
-    \arrow["{\overline{h}_0}", from=1-1, to=1-2]
-    \arrow["\iota"', hook, from=1-1, to=2-1]
-    \arrow["{\overline{h}}", dashed, from=2-1, to=1-2]
-    \arrow["h", from=2-1, to=2-2]
-    \arrow["\pi"', from=2-2, to=1-2]
-\end{tikzcd}\]
+existiert eine \emph{Homotopie} \(\overline{h} : Z \times [0,1] \to X\), die genau \(h\) \emph{liftet}. Im folgenden kommutativen Diagramm wird das veranschaulicht:
+\[
+\begin{tikzcd}
+    {Z \times \{0\}} \arrow[hook]{d}[swap]{\iota} 
+    \arrow{r}{\overline{h}_0}
+    & X \\
+    {Z\times[0,1]} \arrow[dashed]{ur}[swap]{\overline{h}}
+    \arrow{r}{h}
+    & B \arrow{u}[swap]{\pi}
+\end{tikzcd}
+\]
 \end{definition}
-Im folgenden betrachten wir ein paar Beispiele von Faserungen, um etwas Intuition zu gewinnen.
-\begin{example} Beispiele für Faserungen:
-\label{examplesFibrations}
+
+\noindent
+Im Folgenden betrachten wir einige Beispiele von Faserungen, um ein besseres \emph{Gefühl} für diese Struktur zu bekommen.
+
+\begin{example}[Beispiele für Faserungen]\label{examplesFibrations}
 \begin{enumerate}[nolistsep]
-    \item Seien $X,Y$ topologische Räume, dann ist die Projektion $\pi: X \times Y \to Y$ eine Faserung, wobei jede Faser homeomorph ist zu $X$. Sei $h: Z \times [0,1] \to Y$ eine Homotopie mit $\overline{h}_0: Z \times \{0\} \to X \times Y$, so dass $(\pi \circ \overline{h}_0)(z) = h_0(z) = h(z,0)$. Sei $\overline{h}: Z \times [0,1] \to X \times Y$ definiert durch $\overline{h}(z,t) = ((p_X \circ \overline{h}_0)(z,t), h(z,t))$, wobei $p_X: X \times Y \to X$ die Projektion auf die erste Komponente bezeichnet. Wir haben also $\overline{h}$ so gebaut, dass es mit $\overline{h}_0$ in der $X$-Komponente und mit $h$ in der $Y$-Komponente übereinstimmt.
-    \item Die kanonische Surjektion $\pi: S^n \to \mathbb{R}P^n, x \mapsto [x]$ ist eine Faserung mit Fasern homeomorph zu $S^0$.
-    \item Die kanonische Surjektion $\pi: S^{2n+1} \to \mathbb{C}P^n, x \mapsto [x]$ ist eine Faserung mit Fasern homeomorph zu $S^1$.
+    \item Seien \(X,Y\) topologische Räume. Dann ist die Projektion
+    \[
+        \pi : X \times Y \;\longrightarrow\; Y
+    \]
+    eine Faserung. Jede Faser ist homöomorph zu \(X\). Zur Verifikation der Homotopiehochhebungseigenschaft sei
+    \[
+        h : Z \times [0,1] \;\longrightarrow\; Y
+    \]
+    eine Homotopie und \(\overline{h}_0 : Z \times \{0\} \to X \times Y\) ein Lift mit 
+    \[
+        (\pi \circ \overline{h}_0)(z) \;=\; h_0(z) \;=\; h(z,0).
+    \]
+    Definiere \(\overline{h} : Z \times [0,1] \to X \times Y\) durch
+    \[
+        \overline{h}(z,t)
+        \;=\;
+        \Bigl(\bigl(p_X \circ \overline{h}_0\bigr)(z),\; h(z,t)\Bigr),
+    \]
+    wobei \(p_X : X \times Y \to X\) die Projektion auf die erste Komponente ist. Offenbar stimmt \(\overline{h}\) in der \(X\)-Komponente mit \(\overline{h}_0\) und in der \(Y\)-Komponente mit \(h\) überein, was genau die benötigte Lifteigenschaft liefert.
+
+    \item Die kanonische Surjektion 
+    \[
+        \pi : S^n \;\longrightarrow\; \mathbb{R}P^n,\quad x \;\mapsto\; [x]
+    \]
+    ist eine Faserung, deren Fasern homöomorph zu \(S^0\) sind (man kann sich das als \(\{\pm x\}\subset S^n\) über einem Punkt \([x]\) in \(\mathbb{R}P^n\) vorstellen).
+
+    \item Die kanonische Surjektion 
+    \[
+        \pi : S^{2n+1} \;\longrightarrow\; \mathbb{C}P^n,\quad x \;\mapsto\; [x]
+    \]
+    ist eine Faserung, deren Fasern homöomorph zu \(S^1\) sind. Hier interpretiert man die Punkte im \(\,S^{2n+1}\subset \mathbb{C}^{n+1}\) als Einheitsvektoren und deren Bilder in \(\,\mathbb{C}P^n\) als komplexe Geraden.
 \end{enumerate}
 \end{example}
 
-Als gegebene Daten verwenden wir eine Faserung $\pi: X \to B$, wobei $B$ ein wegzusammenhängender CW-Komplex ist und $X$ ein topologischer Raum. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern wollen, eine solche Faserung nennt man auch Serre-Faserung. Der Raum $B$ wird Basisraum genannt und $X$ heißt Totalraum. Wir können eine Filtrierung von $X$ erzeugen, indem wir das $p$-Skelett $B^p$ von $B$ betrachten und $X_p \coloneq \pi^{-1}(B^p)$ definieren. Aus dieser Filtrierung erhalten wir ein exaktes Paar und von diesem exakten Paar wiederum eine homologische Sequenz. In dieser Konstellation heißt die resultierende Spektralsequenz auch Serre Spektralsequenz.
+Als gegebene Daten verwenden wir eine Faserung \(\pi : X \to B\), wobei \(B\) ein wegzusammenhängender CW-Komplex und \(X\) ein topologischer Raum ist. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern. Eine solche Faserung heißt auch eine \emph{Serre-Faserung}. Der Raum \(B\) wird \emph{Basisraum} genannt, \(X\) der \emph{Totalraum}. 
 
-Wir benötigen zunächst für einen Weg $\gamma: [0,1] \to B$ in den Basisraum $B$ eine Abbildung $L_\gamma: F_a \to F_b$ für die Fasern $F_a = \pi^{-1}(a)$ und $F_b = \pi^{-1}(b)$. Diese Abbildung zwischen den Fasern soll stetig sein und die Existenz einer solchen Abbildung wird garantiert, durch die Homotopieäquivalenz der Fasern über jede Wegzusammenhangskomponenten zueinander.
+Wir erzeugen eine Filtrierung von \(X\), indem wir das \(p\)-Skelett \(B^p\) von \(B\) betrachten und
+\[
+    X_p \;\coloneqq\; \pi^{-1}\bigl(B^p\bigr)
+\]
+setzen. Aus dieser Filtrierung erhalten wir ein exaktes Paar, aus dem wiederum eine homologische Sequenz entsteht. In dieser Konstellation heißt die resultierende Spektralsequenz auch \emph{Serre-Spektralsequenz}.
+
+\smallskip
+
+Für einen Weg \(\gamma: [0,1] \to B\) in den Basisraum \(B\) benötigen wir eine stetige Abbildung
+\[
+    L_\gamma : F_a \;\longrightarrow\; F_b,
+\]
+wobei \(F_a = \pi^{-1}(a)\) und \(F_b = \pi^{-1}(b)\) die Fasern über \(a = \gamma(0)\) bzw.\ \(b = \gamma(1)\) sind. Die Existenz einer solchen Abbildung wird durch die Homotopieäquivalenz der Fasern \(\,F_{\gamma(s)}\) für alle \(s\in[0,1]\) garantiert, sobald \(\pi : X \to B\) eine Serre-Faserung ist. Dies führt zur folgenden Aussage:
 
 \begin{proposition}
-Falls $\pi: X \to B$ eine Faserung ist, dann sind die Fasern $F_b = \pi^{-1}(b)$ über jede Wegzusammenhangskomponente von $B$ zueinander homotopieäquivalent.
+    Falls \(\pi : X \to B\) eine Faserung ist, so sind die Fasern 
+    \[
+        F_b \;=\; \pi^{-1}(b)
+    \]
+    über jede wegzusammenhängende Komponente von \(B\) zueinander homotopieäquivalent.
 \end{proposition}
 
 \begin{proof}
-Sei $\gamma: [0,1] \to B$ ein Weg und $F_{\gamma(s)} \coloneq \pi^{-1}(\gamma(s))$ eine Faser. Wir definieren eine Homotopie $h: F_{\gamma(0)} \times [0,1] \to B$ durch $h(x,t) = \gamma(t)$. Sei $\overline{h}_0: F_{\gamma(0)} \times \{0\} \hookrightarrow X$ die Inklusion. Dann gilt für $x \in F_{\gamma(0)}, (\pi \circ \overline{h}_0)(x) = \gamma(0) = h_0(x)$. Da $\pi: X \to B$ eine Faserung ist, existiert eine Abbildung $\overline{h}: F_{\gamma(0)} \times [0,1] \to X$, sodass das folgende Diagramm kommutiert:
-\[\begin{tikzcd}
-    {F_{\gamma(0)} \times \{0\}} & X \\
-    {F_{\gamma(0)}\times[0,1]} & B.
-    \arrow["{\overline{h}_0}", from=1-1, to=1-2]
-    \arrow["\iota"', hook, from=1-1, to=2-1]
-    \arrow["{\overline{h}}", dashed, from=2-1, to=1-2]
-    \arrow["h", from=2-1, to=2-2]
-    \arrow["\pi"', from=2-2, to=1-2]
-\end{tikzcd}\]
-Insbesondere gilt $h = \pi \overline{h}, \overline{h}(x,t) \in F_{\gamma(t)}$. Falls also $t=1$ ist, erhalten wir die Abbildung $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$ definiert durch $L_\gamma(x) = \overline{h}(x,1)$.
-
-Wir zeigen als nächstes, dass die Abbildung $\gamma \mapsto L_\gamma$ sich gutartig verhält, in Bezug auf Homotopien \cite[Prop. 4.61]{hatcher2001}:
-\begin{itemize}[noitemsep]
-    \item Falls $\gamma_0$ und $\gamma_1$ Wege von $a$ nach $b$ sind und $\gamma \simeq_{\{0,1\}} \gamma'$ (d.h. es gibt eine Homotopie $h: \gamma \Rightarrow \gamma'$, welche konstant auf den Basispunkten $0$ und $1$ ist), dann gilt $L_\gamma \simeq L_{\gamma'}$.
-    \item Falls $\gamma_0$ und $\gamma_1$ Wege sind, so dass $\gamma_1(0) = \gamma_0(1)$, dann ist $L_{\gamma_0 \star y_1} \simeq L_{\gamma_1} \circ L_{\gamma_0}$.
-\end{itemize}
-Wir werden nun die Proposition aus diesen beiden Eigenschaften ableiten. Seien $F_a$ und $F_b$ Fasern und sei $\gamma$ ein Weg von $a$ nach $b$. Wir betrachten $L_\gamma: F_a \to F_b$ und $L_{\overline{\gamma}}: F_b \to F_a$.
-
-Sei $\alpha \equiv a$ die Konstante Schleife und $\overline{h}$ die Abbildung, welche wir verwenden um $L_\alpha(x)$ zu definieren. Weil $h(x,t) = \alpha(x) = a$ ist für alle $x$, wissen wir auch dass $\overline{h}(x,t) \in F_a$ für alle $x$ und $t$. Also ist $\overline{h}$ eine Homotopie, so dass $\overline{h}(x,0) = \operatorname{Id}_{F_a}$ und $\overline{h}(x,1) = L_\alpha$. Also ist auch $\operatorname{F}_a \simeq L_\alpha$ und ebenso $\operatorname{Id}_{F_b} \simeq L_\beta$.
-
-Mit den Eigenschaften aus \cite[Prop. 4.61]{hatcher2001} erhalten wir
-\begin{align}
-L_{\overline{\gamma}} \circ L_\gamma &\simeq L_{\gamma \star \overline{\gamma}} \simeq L_\alpha \simeq \operatorname{Id}_{F_a}, \\
-L_{\gamma} \circ L_{\overline{\gamma}} &\simeq L_{\overline{\gamma} \star \gamma} \simeq L_\beta \simeq \operatorname{Id}_{F_b}.
-\end{align}
-Also ist $F_a \simeq F_b$.
+    Sei \(\gamma : [0,1] \to B\) ein Weg und \(F_{\gamma(s)} \coloneqq \pi^{-1}(\gamma(s))\) eine Faser. Wir definieren eine Homotopie
+    \[
+        h : F_{\gamma(0)} \times [0,1] \;\longrightarrow\; B,
+        \quad
+        h(x,t) \;=\; \gamma(t).
+    \]
+    Sei \(\overline{h}_0 : F_{\gamma(0)} \times \{0\} \hookrightarrow X\) die Inklusion. Dann gilt für jedes \(x \in F_{\gamma(0)}\):
+    \[
+        (\pi \circ \overline{h}_0)(x) \;=\; \gamma(0)
+        \;=\;
+        h_0(x).
+    \]
+    Da \(\pi : X \to B\) eine Faserung ist, existiert eine Abbildung
+    \[
+        \overline{h} : F_{\gamma(0)} \times [0,1] \;\longrightarrow\; X,
+    \]
+    sodass in folgendem Diagramm alles kommutiert:
+    \[
+    \begin{tikzcd}
+        F_{\gamma(0)} \times \{0\}
+        \arrow[hook]{d}[swap]{\iota}
+        \arrow{r}{\overline{h}_0}
+        & X \\
+        F_{\gamma(0)}\times[0,1]
+        \arrow[dashed]{ur}[swap]{\overline{h}}
+        \arrow{r}{h}
+        & B \arrow{u}[swap]{\pi}
+    \end{tikzcd}
+    \]
+    Insbesondere gilt \(h = \pi \circ \overline{h}\), und \(\overline{h}(x,t) \in F_{\gamma(t)}\). Für \(t=1\) erhalten wir daraus die gesuchte Abbildung
+    \[
+        L_\gamma : F_{\gamma(0)} \;\longrightarrow\; F_{\gamma(1)},
+        \quad
+        L_\gamma(x) \;=\; \overline{h}\bigl(x,1\bigr).
+    \]
+    Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des Weges \(\gamma\), und damit sind sämtliche Fasern über eine wegzusammenhängende Komponente von \(B\) untereinander homotopieäquivalent.
 \end{proof}
-Diese Proposition führt dazu, dass sich die Konvention etabliert hat, dass wir immer Bezug auf die Fasern einer Faserung eines einzelnen topologischen Raums nehmen, zu dem alle Fasern homotopeäquivalent sind, solange diese eben wegszusammenhängend sind. Es ist üblich eine Faserung als $F \to X \to X$ zu schreiben, wobei $F$ der Raum ist, der homotopieäquivalent zu den Fasern ist.
 
-Aus diese Art und Weise können wir unsere Beispiele \ref{examplesFibrations} wie folgt umschreiben:
-\begin{itemize}[nolistsep]
-    \item $F \to F \times B \to B$,
-    \item $S^0 \to S^n \to \mathbb{R}P^n$,
-    \item $S^1 \to S^{2n+1} \to \mathbb{C}P^n$.
+
+Wir zeigen als Nächstes, dass sich die Abbildung \(\gamma \mapsto L_\gamma\) bezüglich Homotopien \cite[Prop.~4.61]{hatcher2001} \emph{gutartig} verhält:
+\begin{itemize}[noitemsep]
+    \item Falls \(\gamma\) und \(\gamma'\) Wege von \(a\) nach \(b\) sind und
+          \(\gamma \simeq_{\{0,1\}} \gamma'\)
+          (d.\,h.\ es existiert eine Homotopie \(h : \gamma \Rightarrow \gamma'\), die auf den Basispunkten \(0\) und \(1\) konstant ist), dann gilt
+          \[
+              L_\gamma \;\simeq\; L_{\gamma'}.
+          \]
+    \item Falls \(\gamma_0\) und \(\gamma_1\) Wege sind, sodass \(\gamma_1(0) = \gamma_0(1)\), dann gilt
+          \[
+              L_{\gamma_0 \star \gamma_1}
+              \;\simeq\;
+              L_{\gamma_1} \,\circ\, L_{\gamma_0}.
+          \]
 \end{itemize}
-Für alle drei Beispiele sind die Fasern sogar homeomorph.
+Im Folgenden leiten wir aus diesen Eigenschaften die Proposition her. Seien \(F_a\) und \(F_b\) Fasern einer Faserung und \(\gamma\) ein Weg von \(a\) nach \(b\). Wir betrachten die Abbildungen
+\[
+    L_\gamma : F_a \longrightarrow F_b
+    \quad\text{und}\quad
+    L_{\overline{\gamma}} : F_b \longrightarrow F_a,
+\]
+wobei \(\overline{\gamma}\) ein Weg von \(b\) zurück nach \(a\) bezeichnet.
 
-Für jeden Weg $\gamma: [0,1] \to B$ können wir also eine Abbildung zwischen den Fasern der Anfangs- und Endpunkte definieren $L_\gamma: F_{\gamma(0)} \to F_{\gamma(1)}$, indem wir die Homotopiehochhebungseigenschaft in Bezug auf $F_{\gamma(0)}$ verwenden.
+\smallskip
 
-Um die Faserung für unser Beispiel nutzbar zu machen, müssen wir zeigen, dass das Faserbündel $S^1 \to S^\infty \to \mathbb{C}P^\infty$ mit $\pi: S^\infty \to \mathbb{C}P^\infty$ der kanonischen Surjektion eine Faserung ist. Wir sehen aufgrund der Konstruktion von $\mathbb{C}P^\infty$, dass der Raum einfach zusammenhängend als CW-Komplex ist.
+Sei \(\alpha \equiv a\) die konstante Schleife bei \(a\), und sei \(\overline{h}\) die Abbildung, mit der wir \(L_\alpha(x)\) definieren. Da
+\[
+    h(x,t) \;=\; \alpha(x) \;=\; a
+    \quad\text{für alle}\;
+    x\in F_a,\; t\in [0,1],
+\]
+folgt \(\overline{h}(x,t) \in F_a\) für alle \(x\) und \(t\). Somit ist \(\overline{h}\) eine Homotopie, welche \(\overline{h}(x,0) = \mathrm{Id}_{F_a}(x)\) und \(\overline{h}(x,1) = L_\alpha(x)\) erfüllt. Daher gilt
+\[
+    \mathrm{Id}_{F_a}
+    \;\simeq\;
+    L_\alpha
+    \quad\text{und analog}\quad
+    \mathrm{Id}_{F_b}
+    \;\simeq\;
+    L_\beta,
+\]
+wobei \(\beta\) die konstante Schleife bei \(b\) ist.
 
-Sei $X$ ein topologischer Raum und $\mathcal{U}$ eine offene Überdeckung von $X$.
+\smallskip
+
+Mit den oben genannten Eigenschaften nach \cite[Prop.~4.61]{hatcher2001} erhalten wir nun:
+\[
+    L_{\overline{\gamma}} \,\circ\, L_\gamma
+    \;\simeq\;
+    L_{\gamma \star \overline{\gamma}}
+    \;\simeq\;
+    L_\alpha
+    \;\simeq\;
+    \mathrm{Id}_{F_a},
+\]
+\[
+    L_{\gamma} \,\circ\, L_{\overline{\gamma}}
+    \;\simeq\;
+    L_{\overline{\gamma} \star \gamma}
+    \;\simeq\;
+    L_\beta
+    \;\simeq\;
+    \mathrm{Id}_{F_b}.
+\]
+Daraus folgt, dass \(F_a\) und \(F_b\) homotopieäquivalent sind.
+
+\smallskip
+
+Durch diese Proposition hat sich die Konvention etabliert, für einen gegebenen (wegzusammenhängenden) Basisraum stets Bezug auf \emph{die} Faser der Faserung zu nehmen, denn alle Fasern sind untereinander homotopieäquivalent. Üblich ist es daher, eine Faserung auch kurz in der Form
+\[
+    F \;\longrightarrow\; X \;\longrightarrow\; B
+\]
+anzugeben, wobei \(F\) ein Raum ist, der homotopieäquivalent zu den jeweiligen Fasern \(\pi^{-1}(b)\) ist.
+
+\smallskip
+
+Entsprechend lassen sich unsere Beispiele aus \autoref{examplesFibrations} wie folgt umschreiben:
+\begin{itemize}[nolistsep]
+    \item \(F \;\longrightarrow\; F \times B \;\longrightarrow\; B,\)
+    \item \(S^0 \;\longrightarrow\; S^n \;\longrightarrow\; \mathbb{R}P^n,\)
+    \item \(S^1 \;\longrightarrow\; S^{2n+1} \;\longrightarrow\; \mathbb{C}P^n.\)
+\end{itemize}
+In all diesen Beispielen sind die jeweiligen Fasern sogar \emph{homeomorph}. 
+
+\noindent
+Für jeden Weg \(\gamma : [0,1] \to B\) erhalten wir eine Abbildung 
+\[
+    L_\gamma : F_{\gamma(0)} \;\longrightarrow\; F_{\gamma(1)},
+\]
+indem wir die Homotopiehochhebungseigenschaft auf die Faser \(F_{\gamma(0)}\) anwenden.
+
+\smallskip
+
+Um das Faserbündel
+\[
+    S^1 \;\longrightarrow\; S^\infty \;\longrightarrow\; \mathbb{C}P^\infty
+\]
+mit der kanonischen Surjektion \(\pi : S^\infty \to \mathbb{C}P^\infty\) in unserem Beispiel nutzbar zu machen, müssen wir zeigen, dass es sich tatsächlich um eine \emph{Faserung} handelt. Dabei verwenden wir, dass \(\mathbb{C}P^\infty\) als \emph{CW-Komplex} konstruiert wird, der zugleich wegzusammenhängend und einfach zusammenhängend ist.
+
+\smallskip
+
+Sei nun \(X\) ein topologischer Raum und \(\mathcal{U}\) eine offene Überdeckung von \(X\).
 
 \begin{definition}
-Eine Verfeinerung ist eine offene Überdeckung $\mathcal{V}$ von $X$, so dass für alle $V \in \mathcal{V}$ ein $U \in \mathcal{U}$ existiert, mit $V \subset U$.
+    Eine \emph{Verfeinerung} von \(\mathcal{U}\) ist eine offene Überdeckung \(\mathcal{V}\) von \(X\), sodass für jedes \(V \in \mathcal{V}\) ein \(U \in \mathcal{U}\) existiert mit \(V \subset U\).
 
-Wir sagen, dass eine Verfeinerung $\mathcal{V}$ lokal endlich ist, falls für alle offenen Umgebungen $U_x$ von $x \in X$ gilt $U_x \cap V = \emptyset$ für fast alle $V \in \mathcal{V}$.
+    Wir sagen, dass eine Verfeinerung \(\mathcal{V}\) \emph{lokal endlich} ist, falls für alle Punkte \(x \in X\) und jede offene Umgebung \(U_x\) von \(x\) nur endlich viele Mengen \(V \in \mathcal{V}\) die Bedingung \(U_x \cap V \neq \emptyset\) erfüllen.
 \end{definition}
 
 \begin{definition}
-Ein topologischer Raum heißt parakompakt, falls jede offene Überdeckung eine lokal endliche Verfeinerung besitzt.
+    Ein topologischer Raum heißt \emph{parakompakt}, falls jede offene Überdeckung eine lokal endliche Verfeinerung besitzt.
 \end{definition}
 
 \begin{remark}
-Alle kompakten topologischen Räume sind parakompakt.
+    Alle kompakten topologischen Räume sind parakompakt.
 \end{remark}
 
 \begin{lemma}
-Jeder CW-Komplex ist parakompakt.
+    Jeder \emph{CW-Komplex} ist parakompakt.
 \end{lemma}
 
 \begin{proof}
-TODO
+Sei $X$ ein CW-Komplex mit $n$-Skeletten $X^n$. Wir können jedes $X^n$ als Vereinigung 
+\[
+    X^n \;=\; \bigcup_{\alpha} K^n_{\alpha}
+\]
+von endlichen CW-Komplexen schreiben. Sei $\mathcal{U}$ eine offene Überdeckung von $X$. Für jedes $n$ und jedes $\alpha$ betrachten wir
+\[
+    \mathcal{U}^n_\alpha \;=\; \{\,U \cap K^n_{\alpha} \,\mid\, U \in \mathcal{U}\},
+\]
+das eine offene Überdeckung von $K^n_{\alpha}$ darstellt. Da jedes $K^n_{\alpha}$ kompakt ist, existiert eine Verfeinerung $\mathcal{V}^n_\alpha$ von $\mathcal{U}^n_\alpha$. Für jede offene Menge $A \in \mathcal{V}^n_\alpha$ gibt es eine offene Menge $V_A \subset X$, sodass
+\[
+    A \;=\; V_A \,\cap\, K^n_{\alpha}.
+\]
+Da $A \subset U_A \cap K^n_{\alpha}$ für ein $U_A \in \mathcal{U}$ gilt, können wir durch Bildung des Durchschnitts $V_A \cap U_A$ (falls nötig) annehmen, dass $V_A \subset U_A$ gilt.
+
+Setzen wir nun
+\[
+    \mathcal{V} \;=\; \bigl\{\,V_A \;\mid\; A \in \mathcal{V}^n_{\alpha}\bigr\}_{n,\alpha}.
+\]
+Weil jede Familie $\{\,V_A \,\mid\, A \in \mathcal{V}^n_{\alpha}\}$ lokal endlich ist, ist $\mathcal{V}$ eine \emph{abzählbar lokal endliche} Verfeinerung von $\mathcal{U}$ (d.\,h.\ $\mathcal{V}$ ist eine Verfeinerung, die eine abzählbare Vereinigung lokal endlicher Familien ist). Da CW-Komplexe regulär sind, können wir nach Lemma~41.3 aus \cite{hatcher2001} (bzw.\ [7]) darauf schließen, dass $X$ parakompakt ist.
 \end{proof}
 
-\begin{theorem}{\cite[Theorem 1]{huebsch1955}}
-Falls $\pi: X \to B$ ein Faserbündel ist und $B$ parakompakt, dann ist $\pi$ eine Faserung.
+\begin{theorem}[{\cite[Theorem 1]{huebsch1955}}]
+    Falls \(\pi : X \to B\) ein Faserbündel ist und \(B\) parakompakt, dann ist \(\pi\) eine Faserung.
 \end{theorem}
 
-Aus diesem Satz und der Tatsache, dass alle CW-Komplexe parakompakt sind, folgt unser gewünschgtes Korollar.
+\noindent
+Aus diesem Satz und der Tatsache, dass alle CW-Komplexe parakompakt sind, ergibt sich das gewünschte Korollar:
 
 \begin{corollary}
-Jedes Faserbündel mit einem CW-Komplex als Basisraum ist eine Faserung.
+    Jedes Faserbündel mit einem CW-Komplex als Basisraum ist eine Faserung.
 \end{corollary}
 
+\noindent
+Angenommen, wir haben eine Faserung 
+\[
+    \pi: X \;\longrightarrow\; B,
+\]
+wobei wir der Einfachheit halber voraussetzen, dass $B$ ein wegzusammenhängender CW-Komplex ist. Für jedes $p$ sei $B^p$ das $p$-dimensionale Skelett von $B$, und wir definieren
+\[
+    X_p \;\coloneqq\; \pi^{-1}\bigl(B^p\bigr).
+\]
+Die Räume $X_p$ bilden eine Filtrierung von $X$, auf die wir später noch zurückkommen werden. Für eine gegebene Gruppe $G$ definieren wir die \emph{erste Seite} der Serre-Spektralsequenz durch
+\[
+    E^1_{p,q}
+    \;\coloneqq\;
+    H_{p+q}\bigl(X_p,\,X_{p-1};\,G\bigr).
+\]
+Sobald wir diese erste Seite festgelegt haben, \emph{läuft} die Serre-Spektralsequenz weiter, bis sie schließlich bei der $E^\infty$-Seite \emph{stabilisiert} und in einer Form vorliegt, die eng mit $H_{\bullet}(X;G)$ verwandt ist. Genauer erhalten wir den folgenden Satz, welchen wir hier nicht beweisen werden.
+
+\begin{theorem}{\cite[Proposition 4E.1]{hatcher2001}}
+\label{thm:SerreSpectralSequence}
+Sei 
+\[
+    F \;\longrightarrow\; X \;\longrightarrow\; B
+\]
+eine Faserung, wobei $B$ ein einfach zusammenhängender CW-Komplex ist. Dann gibt es eine Spektralsequenz 
+\[
+    E^r_{p,q}
+\]
+mit folgenden Eigenschaften:
+\begin{enumerate}[label=(\alph*)]
+    \item Die Differentiale auf der $r$-ten Seite haben die Form
+    \[
+        d^r : E^r_{p,q} \;\longrightarrow\; E^r_{\,p-r,\,q+r-1}.
+    \]
+    \item $E^{r+1}_{p,q}$ ist die Homologie von $E^r_{\bullet,\bullet}$ an der Stelle $E^r_{p,q}$, 
+    das heißt
+    \[
+        E^{r+1}_{p,q}
+        \;=\;
+        \frac{\ker\bigl(d^r : E^r_{p,q} \to E^r_{\!*}\bigr)}{\mathrm{im}\bigl(d^r : E^r_{\!*} \to E^r_{p,q}\bigr)}.
+    \]
+    \item Auf der zweiten Seite gilt
+    \[
+        E^2_{p,q}
+        \;\cong\;
+        H_{p}\bigl(B;\,H_{q}(F;G)\bigr).
+    \]
+    \item Die stabilen Terme $E^\infty_{p,q}$ sind isomorph zu den assoziierten Graden der gefilterten Gruppe $H_{p+q}(X;G)$,
+    \[
+        E^\infty_{p,q}
+        \;\cong\;
+        \frac{F_pH_{p+q}(X;G)}{F_{p-1}H_{p+q}(X;G)},
+    \]
+    wobei 
+    \[
+        0
+        \;=\;
+        F_{-1}H_{n}(X;G)
+        \;\subset\;
+        F_0H_{n}(X;G)
+        \;\subset\;
+        \dots
+        \;\subset\;
+        F_nH_{n}(X;G)
+        \;=\;
+        H_{n}(X;G)
+    \]
+    eine bestimmte aufsteigende Filtrierung ist.
+\end{enumerate}
+\end{theorem}
+
 \section{Homologie von $\mathbb{C}P^\infty$}
-Zunächst möchten wir in diesem Kapitel die Homologien von $\mathbb{C}P^\infty$ mittels zellulärer Homologie berechnen, in dem wir die Struktur eines CW-Komplexes darauf definieren, um sie anschließend mit dem Ergebnis aus der Spektralsequenz vergleichen zu können. Der Raum $\mathbb{C}P^n$ besteht aus den Komplexen Geraden durch den Ursprung in $\mathbb{C}^{n+1} \cong \mathbb{R}^{2n+2}$. Der isometrische Isomorphismus ist gegeben durch die Abbildung $\phi: \mathbb{R}^{2n+2} \to \mathbb{C}^{n+1}, (x_1, \ldots, x_{2n+2}) \mapsto (x_1 + ix_2, \ldots, x_{2n+1} + ix_{2n+2})$. Wir können $\mathbb{C}P^n = S^{2n+1} / \sim$ schreiben, wobei die Äquivalenzrelation gegeben ist durch
-\begin{align}
-(x_1, \ldots, x_{2n+2}) \sim (R(x_1,x_2),\ldots,R(x_{2n+1},x_{2n+2})) \quad \forall R \in \operatorname{SO}(2).
-\end{align}
-Dies ergibt die folgende Filtrierung in Skelette
+\noindent
+Zunächst möchten wir in diesem Kapitel die Homologiegruppen von \(\mathbb{C}P^\infty\) mithilfe \emph{zellulärer Homologie} bestimmen, indem wir dessen Struktur als CW-Komplex explizit verwenden und das Ergebnis anschließend mit dem aus der Spektralsequenz vergleichen. 
+
+Der Raum \(\mathbb{C}P^n\) besteht aus den komplexen Geraden durch den Ursprung in \(\mathbb{C}^{n+1} \cong \mathbb{R}^{2n+2}\). Ein isometrischer Isomorphismus wird hierbei gegeben durch
+\[
+    \phi \colon \mathbb{R}^{2n+2} \;\longrightarrow\; \mathbb{C}^{n+1},
+    \quad
+    (x_1, \dots, x_{2n+2})
+    \;\mapsto\;
+    \bigl(x_1 + i x_2,\; \dots,\; x_{2n+1} + i x_{2n+2}\bigr).
+\]
+Wir können \(\mathbb{C}P^n\) als Quotientenraum
+\[
+    \mathbb{C}P^n \;=\; S^{2n+1} \,/\,\sim
+\]
+auffassen, wobei die Äquivalenzrelation gegeben ist durch
+\[
+    (x_1, \ldots, x_{2n+2})
+    \;\sim\;
+    \bigl(R(x_1,x_2),\,\dots,\,R(x_{2n+1},x_{2n+2})\bigr)
+    \quad
+    \forall\, R \in \mathrm{SO}(2).
+\]
+Diese Beschreibung führt zu folgender Filtrierung in Skelette:
 \begin{align*}
-\emptyset \subset \bullet \subset \bullet \subset \mathbb{C}P^1 \subset \mathbb{C}P^1 \subset \ldots \subset \mathbb{C}P^{n-1} \subset \mathbb{C}P^{n-1} \subset \mathbb{C}P^n \subset \mathbb{C}P^n \subset \ldots \subset \mathbb{C}P^\infty,
+    \emptyset
+    &\;\subset\;
+    \bullet
+    \;\subset\;
+    \bullet
+    \;\subset\;
+    \mathbb{C}P^1
+    \;\subset\;
+    \mathbb{C}P^1
+    \;\subset\;
+    \dots\\
+    &\;\subset\;
+    \mathbb{C}P^{n-1}
+    \;\subset\;
+    \mathbb{C}P^{n-1}
+    \;\subset\;
+    \mathbb{C}P^n
+    \;\subset\;
+    \mathbb{C}P^n
+    \;\subset\;
+    \dots
+    \;\subset\;
+    \mathbb{C}P^\infty,
 \end{align*}
-wobei $\mathbb{C}P^k$ durch einen pushout aus $\mathbb{C}P^{k-1}$ konstruiert wird, indem $2k$-Scheiben $D^{2k}$ mittels der kanonischen Surjektion $\pi: S^{2k-1} \to \mathbb{C}P^{k-1}$ angeheftet werden:
+wobei \(\mathbb{C}P^k\) jeweils aus \(\mathbb{C}P^{k-1}\) durch Anheften von \((2k)\)-Scheiben \(D^{2k}\) (mittels der kanonischen Surjektion \(\pi \colon S^{2k-1} \to \mathbb{C}P^{k-1}\)) entsteht. Das entsprechende Pushout-Diagramm lautet:
 \[\begin{tikzcd}[sep=large]
     {\mathbb{C}P^k} & {\mathbb{C}P^{k-1}} \\
     {D^{2k}} & {S^{2k-1}}.
@@ -832,18 +1124,75 @@ wobei $\mathbb{C}P^k$ durch einen pushout aus $\mathbb{C}P^{k-1}$ konstruiert wi
     \arrow["\pi"', from=2-2, to=1-2]
     \arrow["\iota", from=2-2, to=2-1]
 \end{tikzcd}\]
-$\mathbb{C}P^\infty$ hat dabei Skelette $X_{2k} = X_{2k+1} = \mathbb{C}P^k$ für alle $k \in \mathbb{N}_0$. Damit erhalten wir für den zellulären Kettenkomplex $C_{2k}(\mathbb{C}P^\infty) \cong H_{2k}(X_{2k},X_{2k-1}) \cong \mathbb{Z}$ für $0 \leq k \leq n$ und $C_k(\mathbb{C}P^n) \cong H_k(X_k,X_{k-1}) = 0$ für $k > 2n$ für $k$ ungerade. Der zelluläre Komplex ist gegeben durch
-\begin{align}
-0 \to \mathbb{Z} \xrightarrow{d_{2n}} 0 \xrightarrow{d_{2n-1}} \mathbb{Z} \xrightarrow{d_{2n-2}} 0 \xrightarrow{d_{2n-3}} \ldots \xrightarrow{d_{3}} \mathbb{Z} \xrightarrow{d_{2}} 0 \xrightarrow{d_{1}} \mathbb{Z} \xrightarrow{d_0}0.
-\end{align}
-und seine Homologien sind
-\begin{align}
-H_k(\mathbb{C}P^\infty) = \begin{cases}
-\mathbb{Z} \quad k \in \mathbb{N}_0 \, \text{gerade},\\
-0 \quad \text{sonst.}
-\end{cases}
-\end{align}
-Etwas seltsam verhält es sich mit der Serre spektralen Sequenz für die Homologie von $\mathbb{C}P^\infty$, denn wir ignorieren im Grunde die erste Seite $E^1$ und beginnen unsere Berechnungen mit $E^2$ und setzen diese auf alle weiteren Seiten fort. Der Grund dafür ist, das wir eine sehr einfache aber sehr nützliche Fomel haben, für die Gruppen auf der zweiten Seite. Im Fall unserer Faserung $S^1 \to S^\infty \to \mathbb{C}P^\infty$ können wir die ganze zweite Seite $E^2$ sofort ausschreiben.
+In \(\mathbb{C}P^\infty\) sind die Skelette durch
+\[
+    X_{2k} = X_{2k+1} = \mathbb{C}P^k
+    \quad
+    \text{für alle } k \in \mathbb{N}_0
+\]
+gegeben. Für den zugehörigen zellulären Kettenkomplex erhalten wir
+\[
+    C_{2k}\bigl(\mathbb{C}P^\infty\bigr)
+    \;\cong\;
+    H_{2k}\bigl(X_{2k},\,X_{2k-1}\bigr)
+    \;\cong\;
+    \mathbb{Z}
+    \quad
+    \text{für }
+    0 \,\leq\, k \,\leq\, n,
+\]
+sowie 
+\[
+    C_k\bigl(\mathbb{C}P^n\bigr)
+    \;\cong\;
+    H_k\bigl(X_k,\,X_{k-1}\bigr) 
+    \;=\; 0
+    \quad
+    \text{für }
+    k > 2n
+    \text{ und für alle ungeraden } k.
+\]
+Der zelluläre Komplex hat somit die Form
+\[
+    0 \;\longrightarrow\;
+    \mathbb{Z}
+    \,\xrightarrow{d_{2n}}\,
+    0
+    \,\xrightarrow{d_{2n-1}}\,
+    \mathbb{Z}
+    \,\xrightarrow{d_{2n-2}}\,
+    0
+    \,\xrightarrow{d_{2n-3}}\,
+    \cdots
+    \,\xrightarrow{d_{3}}\,
+    \mathbb{Z}
+    \,\xrightarrow{d_{2}}\,
+    0
+    \,\xrightarrow{d_{1}}\,
+    \mathbb{Z}
+    \,\xrightarrow{d_{0}}\,
+    0.
+\]
+Seine Homologiegruppen sind folglich
+\[
+    H_k\bigl(\mathbb{C}P^\infty\bigr)
+    \;=\;
+    \begin{cases}
+        \mathbb{Z}, &\text{falls } k \in \mathbb{N}_0 \text{ gerade},\\
+        0, &\text{sonst}.
+    \end{cases}
+\]
+
+\smallskip
+
+Betrachten wir nun die \emph{Serre-Spektralsequenz} zur Berechnung der Homologie von \(\mathbb{C}P^\infty\). Dort \emph{ignorieren} wir in gewisser Weise die erste Seite \(E^1\) und beginnen direkt mit \(E^2\), die wir auf allen weiteren Seiten fortsetzen. Dies liegt daran, dass wir für diese Faserung \(
+    S^1 \;\longrightarrow\; S^\infty \;\longrightarrow\; \mathbb{C}P^\infty
+\)
+eine besonders einfache, aber äußerst hilfreiche Formel für die Gruppen auf der zweiten Seite haben. Im konkreten Fall können wir also die gesamte Seite \(E^2\) auf einen Blick niederschreiben.
+
+
+
+
 
 Nach Teil c) von Satz 
 \nocite{*}
