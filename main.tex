@@ -799,9 +799,9 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \begin{itemize}[noitemsep]
             \item für jede Homotopie $h : Z \times [0,1] \to Y$ und
 
-            \item für jeden Lift $\widetilde{h}_{0} : Z \to X$ mit
+            \item für jeden Lift $\widetilde{h}_{0} : Z \to X$ welcher
                 \[
-                    h_{0} \;=\; h\vert_{Z\times \{0\}}\quad\text{und}\quad h_{0} \;=\; \pi
+                    h_{0} \;=\; h\vert_{Z\times \{0\}}\quad\text{hochhebt, so dass}\quad h_{0} \;=\; \pi
                     \circ \widetilde{h}_{0},
                 \]
         \end{itemize}
@@ -841,10 +841,10 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \]
                 Definiere $\widetilde{h}: Z \times [0,1] \to X \times Y$ durch
                 \[
-                    \widetilde{h}(z,t) \;=\; \Bigl( p_{X} \circ \widetilde{h}_{0} (
+                    \widetilde{h}(z,t) \;=\; \Bigl( \pi_{X} \circ \widetilde{h}_{0} (
                     z),\; h(z,t)\Bigr),
                 \]
-                wobei $p_{X} : X \times Y \to X$ die Projektion auf die erste Komponente
+                wobei $\pi_{X} : X \times Y \to X$ die Projektion auf die erste Komponente
                 ist. Offenbar stimmt $\widetilde{h}$ in der $X$-Komponente mit $\widetilde{h}
                 _{0}$ und in der $Y$-Komponente mit $h$ überein, was genau die benötigte
                 Lifteigenschaft liefert.
@@ -875,9 +875,9 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     genannt, $X$ der \textbf{Totalraum}.
 
     Wir erzeugen eine Filtrierung von $X$, indem wir das $p$-Skelett $B^{p}$ von $B$
-    betrachten und
+    betrachten und die Fasern
     \[
-        X_{p} \;\coloneqq\; \pi^{-1} B^{p} 
+        X_{p} \;\coloneqq\; \pi^{-1}(B^{p})
     \]
     setzen. Aus dieser Filtrierung erhalten wir ein exaktes Paar, aus dem wiederum
     eine homologische Sequenz entsteht. In dieser Konstellation heißt die
@@ -934,12 +934,10 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Für $t=1$ erhalten wir daraus die gesuchte Abbildung
         \[
             L_{\gamma} : F_{\gamma(0)}\;\longrightarrow\; F_{\gamma(1)}, \quad L_{\gamma}
-            (x) \;=\; \widetilde{h} x,1 .
+            (x) \;=\; \widetilde{h}(x,1).
         \]
-        Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des
-        Weges $\gamma$, und damit sind sämtliche Fasern über eine wegzusammenhängende
-        Komponente von $B$ untereinander homotopieäquivalent.
     \end{proof}
+    Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des Weges $\gamma$, und damit sind sämtliche Fasern über eine wegzusammenhängende Komponente von $B$ untereinander homotopieäquivalent.
 
     Wir zeigen als Nächstes, dass sich die Abbildung $\gamma \mapsto L_{\gamma}$ bezüglich
     Homotopien \cite[Prop.~4.61]{hatcher2001} \textbf{gutartig} verhält:
@@ -1136,7 +1134,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     werden. Für eine gegebene Gruppe $G$ definieren wir die \textbf{erste Seite} der
     Serre-Spektralsequenz durch
     \[
-        E^{1}_{p,q}\;\coloneqq\; H_{p+q} X_{p},\,X_{p-1};\,G .
+        E^{1}_{p,q}\;\coloneqq\; H_{p+q}(X_{p},\,X_{p-1};\,G).
     \]
     Sobald wir diese erste Seite festgelegt haben, \textbf{läuft} die Serre-Spektralsequenz
     weiter, bis sie schließlich bei der $E^{\infty}$-Seite \textbf{stabilisiert} und
@@ -1163,13 +1161,13 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
             \item $E^{r+1}_{p,q}$ ist die Homologie von $E^{r}_{\bullet,\bullet}$ an der
                 Stelle $E^{r}_{p,q}$, das heißt
                 \[
-                    E^{r+1}_{p,q}\;=\; \frac{\ker d^{r} : E^{r}_{p,q}\to E^{r}_{\!*} }{\mathrm{im} d^{r}
+                    E^{r+1}_{p,q}\;=\; \frac{\ker d^{r} : E^{r}_{p,q}\to E^{r}_{\!*} }{\mathrm{im} \; d^{r}
                     : E^{r}_{\!*}\to E^{r}_{p,q} }.
                 \]
 
             \item Auf der zweiten Seite gilt
                 \[
-                    E^{2}_{p,q}\;\cong\; H_{p} B;\,H_{q}(F;G) .
+                    E^{2}_{p,q}\;\cong\; H_{p}(B;\,H_{q}(F;G)).
                 \]
 
             \item Die stabilen Terme $E^{\infty}_{p,q}$ sind isomorph zu den assoziierten
@@ -1268,12 +1266,12 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \]
     gegeben. Für den zugehörigen zellulären Kettenkomplex erhalten wir
     \[
-        C_{2k} \mathbb{C}P^{\infty}  \;\cong\; H_{2k} X_{2k},\,X_{2k-1}
+        C_{2k}(\mathbb{C}P^{\infty}) \;\cong\; H_{2k}(X_{2k},\,X_{2k-1})
           \;\cong\; \mathbb{Z}\quad \text{für }k \geq 0,
     \]
     sowie
     \[
-        C_{k} \mathbb{C}P^{\infty}  \;\cong\; H_{k} X_{k},\,X_{k-1}\bigr
+        C_{k}(\mathbb{C}P^{\infty}) \;\cong\; H_{k}\bigl(X_{k},\,X_{k-1}\bigr
         ) \;=\; 0 \quad \text{für alle ungeraden }k \text{ und }k < 0.
     \]
 
@@ -1289,15 +1287,14 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     der Zellsymmetrie, sodass die Homologiegruppen direkt abgelesen werden können.
     Es gilt:
     \[
-        H_{k} \mathbb{C}P^{\infty}  \;=\;
+        H_{k}(\mathbb{C}P^{\infty}) \;=\;
         \begin{cases}
             \mathbb{Z}, & \text{falls }k \in 2\mathbb{N}_{0} \text{ (gerade)}, \\
             0,          & \text{falls }k \text{ ungerade}.
         \end{cases}
     \]
 
-    Diese Struktur illustriert, dass $\mathbb{C}P^{\infty}$ ein \textit{classifying
-    space} für $\mathbb{Z}$-Koohomologie ist.
+    Diese Struktur illustriert, dass $\mathbb{C}P^{\infty}$ ein \textit{klassifizierender Raum} für $\mathbb{Z}$-Homologie ist.
 
     \smallskip
 
@@ -1311,12 +1308,10 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     eine besonders einfache und äußerst nützliche Struktur besitzt, die es erlaubt,
     die Gruppen auf der zweiten Seite direkt zu bestimmen.
 
-    Im konkreten Fall können wir die gesamte Seite $E^{2}$ wie folgt beschreiben: Die
-    Basis $\mathbb{C}P^{\infty}$ hat nichttriviale Homologie nur in geraden Graden,
-    während die Faser $S^{1}$ nur in Grad $1$ Homologie hat. Die Tensorstruktur des
-    Spektralsequenz-Produkts liefert somit:
+    Im konkreten Fall können wir die gesamte Seite $E^{2}$ wie folgt beschreiben: Der Basisraum $\mathbb{C}P^{\infty}$ hat nichttriviale Homologie nur in geraden Graden,
+    während die Faser $S^{1}$ nur in Grad $1$ Homologie hat. Wir erhalten
     \[
-        E^{2}_{p,q}= H_{p} \mathbb{C}P^{\infty}  \otimes H_{q} S^{1}\bigr
+        E^{2}_{p,q} = H_{p}(\mathbb{C}P^{\infty}; H_{q}(S^{1};\mathbb{Z})
         ).
     \]
 
@@ -1329,11 +1324,11 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \end{cases}
     \]
 
-    Die Spektralsequenz degeneriert in diesem Fall auf der zweiten Seite ($E^{2} =
+    Die Spektralsequenz artet in diesem Fall auf der zweiten Seite aus ($E^{2} =
     E^{\infty}$), da die differentielle Abbildung $d^{2}$ wegen der geraden
-    Homologie der Basis trivial ist. Somit erhalten wir direkt:
+    Homologie des Basisraums trivial ist. Somit erhalten wir direkt:
     \[
-        H_{k} \mathbb{C}P^{\infty}  =
+        H_{k}(\mathbb{C}P^{\infty}) =
         \begin{cases}
             \mathbb{Z}, & \text{falls } k \text{ gerade}, \\
             0,          & \text{sonst}.
@@ -1348,39 +1343,21 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \ref{SerreSpectralSequence} ist die zweite Seite $E^{2}$ der Serre-Spektralsequenz
     durch die Homologien
     \[
-        E^{2}_{p,q}= H_{p} B;\, H_{q}(F;\mathbb{Z}) 
+        E^{2}_{p,q}= H_{p}(B;\, H_{q}(F;\mathbb{Z}))
     \]
     gegeben.
 
     Wir bemerken, dass $E^{2}_{p,q}$ nur dann nichttrivial sein kann, wenn
     $p \geq 0$ und $q \geq 0$, da alle Homologiegruppen für $p < 0$ oder $q < 0$ trivial
-    sind. Damit sieht die Seite $E^{2}$ in einer Umgebung von $(p,q) = (0,0)$ wie
+    sind. Damit sieht die Seite $E^{2}$ in einer Umgebung von $({\color{blue}p},{\color{red}q}) = (0,0)$ wie
     folgt aus:
     \[
-        \begin{array}{c|c|c|c|c|c}
-            q      & \cdots & 2          & 1          & 0          &        \\
-            \hline
-            \vdots & \ddots & \vdots     & \vdots     & \vdots     &        \\
-            2      & \cdots & \mathbb{Z} & 0          & 0          &        \\
-            1      & \cdots & 0          & \mathbb{Z} & 0          &        \\
-            0      & \cdots & 0          & 0          & \mathbb{Z} &        \\
-            \hline
-            p      & \cdots & 0          & 1          & 2          & \cdots
-        \end{array}
-    \]
-
-    Hierbei stehen die Einträge $\mathbb{Z}$ an Positionen, die durch die Tensorstruktur
-    der Homologien von $B = \mathbb{C}P^{\infty}$ (nichttrivial nur in geraden
-    Graden) und $F = S^{1}$ (nichttrivial nur in Grad $1$) entstehen. Die
-    nichttrivialen Beiträge von $H_{q}(F;\mathbb{Z})$ für $q = 0,1$ kombinieren
-    sich mit $H_{p}(B;\mathbb{Z})$, was die Struktur der Seite $E^{2}$ ergibt.
-    \[
         \begin{tikzcd}
-            [sep=tiny] {\color{blue}p:} & {\color{blue}2} & 0 & {E^2_{0,2}} & {E^2_{1,2}}
+            [sep=tiny] {\color{blue}} & {\color{blue}2} & 0 & {E^2_{0,2}} & {E^2_{1,2}}
             & {E^2_{2,2}} & {E^2_{3,2}} \\ & {\color{blue}1} & 0 & {E^2_{0,1}} & {E^2_{1,1}}
             & {E^2_{2,1}} & {E^2_{3,1}} \\ & {\color{blue}0} & 0 & {E^2_{0,0}} & {E^2_{1,0}}
             & {E^2_{2,0}} & {E^2_{3,0}} \\ & {\color{blue}-1} & 0 & 0 & 0 & 0 & 0 \\ &
-            {\color{red}q:} & {\color{red}-1} & {\color{red}0} & {\color{red}1} & {\color{red}2}
+            {\color{red}} & {\color{red}-1} & {\color{red}0} & {\color{red}1} & {\color{red}2}
             & {\color{red}3} \arrow[from=2-5, to=1-3] \arrow[from=2-6, to=1-4] \arrow[from=2-7,
             to=1-5] \arrow[from=3-5, to=2-3] \arrow[from=3-6, to=2-4] \arrow[from=3-7,
             to=2-5] \arrow[from=4-5, to=3-3] \arrow[from=4-6, to=3-4] \arrow[from=4-7,
@@ -1394,39 +1371,22 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Da Homologiegruppen mit Koeffizienten in $0$ selbst die triviale Gruppe sind, folgt
     unmittelbar, dass für $q \neq 0,1$ gilt:
     \[
-        H_{p} B;\, H_{q}(S^{1};\mathbb{Z})  = H_{p}(B;0) = 0.
+        H_{p}(B;\, H_{q}(S^{1};\mathbb{Z}))  = H_{p}(B;0) = 0.
     \]
     Daraus ergibt sich, dass $E^{2}_{p,q}= 0$ für alle $q \neq 0,1$. Somit hat die
     Seite $E^{2}$ nur nichttriviale Gruppen in den beiden Reihen $q = 0$ und $q = 1$,
-    wobei $p \geq 0$ gilt. Wir können $E^{2}$ daher wie folgt vereinfachen:
-
-    \[
-        \begin{array}{c|c|c|c|c|c}
-            q & \cdots & 2          & 1          & 0          &        \\
-            \hline
-            1 & \cdots & \mathbb{Z} & \mathbb{Z} & 0          &        \\
-            0 & \cdots & \mathbb{Z} & 0          & \mathbb{Z} &        \\
-            \hline
-            p & \cdots & 0          & 1          & 2          & \cdots
-        \end{array}
-    \]
-
-    Hier sind die Einträge in der Reihe $q = 1$ durch die Homologie von $S^{1}$ in
-    Grad $1$ gegeben, kombiniert mit den Homologiegruppen von $B = \mathbb{C}P^{\infty}$
-    in geraden Graden $p$. Die Einträge in der Reihe $q = 0$ resultieren aus den
-    Homologiegruppen von $B = \mathbb{C}P^{\infty}$ in geraden Graden $p$, kombiniert
-    mit der trivialen Homologie von $S^{1}$ in Grad $0$.
+    wobei $p \geq 0$ gilt.
 
     Da die Differenzialabbildungen $d^{r}$ aufgrund der Gradstruktur trivial sind,
     degeneriert die Serre-Spektralsequenz hier auf der zweiten Seite, d.h., es gilt
     $E^{2} = E^{\infty}$. Dies erlaubt uns, die Homologie von $\mathbb{C}P^{\infty}$
-    direkt aus $E^{2}$ zu bestimmen.
+    direkt aus $E^{2}$ zu bestimmen. Wir können $E^{2}$ daher wie folgt vereinfachen:
     \[
         \begin{tikzcd}
-            [sep=tiny] {\color{blue}p:} & {\color{blue}1} & {E^2_{0,1}} & {E^2_{1,1}} &
+            [sep=tiny] {\color{blue}} & {\color{blue}1} & {E^2_{0,1}} & {E^2_{1,1}} &
             {E^2_{2,1}} & {E^2_{3,1}} & {E^2_{4,1}} & {E^2_{5,1}} \\ & {\color{blue}0}
             & {E^2_{0,0}} & {E^2_{1,0}} & {E^2_{2,0}} & {E^2_{3,0}} & {E^2_{4,0}} & {E^2_{5,0}}
-            \\ & {\color{red}q:} & {\color{red}0} & {\color{red}1} & {\color{red}2} & {\color{red}3}
+            \\ & {\color{red}} & {\color{red}0} & {\color{red}1} & {\color{red}2} & {\color{red}3}
             & {\color{red}4} & {\color{red}5} \arrow[from=2-5, to=1-3] \arrow[from=2-6,
             to=1-4] \arrow[from=2-7, to=1-5] \arrow[from=2-8, to=1-6]
         \end{tikzcd}
@@ -1449,8 +1409,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
 
     Somit erhalten wir für $p \geq 0$ und $q = 0,1$:
     \[
-        E^{2}_{p,q}= H_{p} B; H_{q}(F;\mathbb{Z})  = H_{p}(B;\mathbb{Z}) =
-        H_{p}(B) = H_{p} \mathbb{C}P^{\infty} .
+        E^{2}_{p,q}= H_{p}(B; H_{q}(F;\mathbb{Z}))  = H_{p}(B;\mathbb{Z}) = H_{p}(\mathbb{C}P^{\infty};\mathbb{Z}).
     \]
 
     Damit haben wir die zweite Seite $E^{2}$ vollständig berechnet. Sie sieht wie folgt
@@ -1479,7 +1438,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Da $E^{2}_{p,q}= 0$, sind die Differenziale, die nach $E^{2}_{p,q}$ hinein oder
         aus $E^{2}_{p,q}$ heraus abbilden, alle gleich der Nullabbildung. Somit gilt:
         \[
-            E^{3}_{p,q}= \ker(d^{2}_{p,q}) / \operatorname{im}(d^{2}_{p+2,q-1}) = 0.
+            E^{3}_{p,q}= \ker d^{2}_{p,q}  / \operatorname{im} d^{2}_{p+2,q-1} = 0.
         \]
         Induktiv können wir dasselbe Argument anwenden, da die Gruppen in allen weiteren
         Seiten durch Differenziale aus oder nach $E^{r}_{p,q}$ gebildet werden, die
@@ -1520,9 +1479,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Da $X = S^{\infty}$ kontrahierbar ist, gilt $H_{n}(X;\mathbb{Z}) = 0$ für alle
     $n > 0$ und $H_{0}(X;\mathbb{Z}) = \mathbb{Z}$. Somit ist $F_{n}^{p} = 0$ für alle
     $n > 0$ und $0 \leq p \leq n$, woraus folgt, dass $E^{\infty}_{p,n-p}= 0$ für alle
-    $n,p$, falls $n \neq 0$.
-
-    Für $n = 0$ haben wir $H_{0}(X;\mathbb{Z}) = \mathbb{Z}$, daher gilt:
+    $n,p$, falls $n \neq 0$. Für $n = 0$ haben wir $H_{0}(X;\mathbb{Z}) = \mathbb{Z}$, daher gilt:
     \[
         E^{\infty}_{p,-p}= 0, \quad \text{für }p \neq 0,
     \]
@@ -1539,7 +1496,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
             {\color{red}3} & {\color{red}4} & {\color{red}5}
         \end{tikzcd}
     \]
-    Dies ist bereits der Endspurt. Wir machen noch eine weitere Beobachtung, indem
+    Dies ist bereits der Endspurt. Wir machen noch eine weitere Beobachtung machen, indem
     wir die Homologien auf der stabilisierenden Seite mit denen der zweiten Seite in
     Verbindung bringen.
     \begin{lemma}
