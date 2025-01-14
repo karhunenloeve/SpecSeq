@@ -363,7 +363,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \section{Filtrierungen und exakte Paare}
     Angenommen, wir haben einen topologischen Raum $X$ und einen \textbf{guten} Teilraum
     $A$, wobei das \textbf{Gütekriterium} in diesem Zusammenhang bedeutet, dass es
-    eine Umgebung $U \subset X$ mit $\overline{A}\subset \mathring{U}$ gibt und
+    eine Umgebung $U \subset X$ mit $\widetilde{A}\subset \mathring{U}$ gibt und
     $A$ ein Deformationsretrakt von $U$ ist. Dies stellt sicher, dass die relative
     Homologie
     \[
@@ -797,22 +797,22 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Eine Abbildung $\pi : X \to B$, welche die folgende \textbf{Homotopiehochhebungseigenschaft}
         für beliebige Räume $Z$ erfüllt, heißt eine \textbf{Faserung}:
         \begin{itemize}[noitemsep]
-            \item für jede Homotopie $h : Z \times [0,1] \to B$ und
+            \item für jede Homotopie $h : Z \times [0,1] \to Y$ und
 
-            \item für jeden Lift $\overline{h}_{0} : Z \to X$ mit
+            \item für jeden Lift $\widetilde{h}_{0} : Z \to X$ mit
                 \[
                     h_{0} \;=\; h\vert_{Z\times \{0\}}\quad\text{und}\quad h_{0} \;=\; \pi
-                    \circ \overline{h}_{0},
+                    \circ \widetilde{h}_{0},
                 \]
         \end{itemize}
-        existiert eine \textbf{Homotopie} $\overline{h}: Z \times [0,1] \to X$, die
+        existiert eine \textbf{Homotopie} $\widetilde{h}: Z \times [0,1] \to X$, die
         genau $h$ \textbf{liftet}. Im folgenden kommutativen Diagramm wird das
         veranschaulicht:
         \[
             \begin{tikzcd}
-                [cramped] {Z\times\{0\}} & X \\ {Z\times[0,1]} & B \arrow["{\overline{h}_0}",
+                {Z\times\{0\}} & X \\ {Z\times[0,1]} & Y \arrow["{\widetilde{h}_0}",
                 from=1-1, to=1-2] \arrow["\iota"', hook, from=1-1, to=2-1] \arrow["\pi"{description},
-                from=1-2, to=2-2] \arrow["{\overline{h}}", dashed, from=2-1, to=1-2] \arrow["h",
+                from=1-2, to=2-2] \arrow["{\widetilde{h}}", dashed, from=2-1, to=1-2] \arrow["h",
                 from=2-1, to=2-2]
             \end{tikzcd}
         \]
@@ -834,18 +834,18 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \[
                     h : Z \times [0,1] \;\longrightarrow\; Y
                 \]
-                eine Homotopie und $\overline{h}_{0} : Z \times \{0\} \to X \times Y$
+                eine Homotopie und $\widetilde{h}_{0} : Z \times \{0\} \to X \times Y$
                 ein Lift mit
                 \[
-                    (\pi \circ \overline{h}_{0})(z) \;=\; h_{0}(z) \;=\; h(z,0).
+                    (\pi \circ \widetilde{h}_{0})(z) \;=\; h_{0}(z) \;=\; h(z,0).
                 \]
-                Definiere $\overline{h}: Z \times [0,1] \to X \times Y$ durch
+                Definiere $\widetilde{h}: Z \times [0,1] \to X \times Y$ durch
                 \[
-                    \overline{h}(z,t) \;=\; \Bigl( p_{X} \circ \overline{h}_{0} (
+                    \widetilde{h}(z,t) \;=\; \Bigl( p_{X} \circ \widetilde{h}_{0} (
                     z),\; h(z,t)\Bigr),
                 \]
                 wobei $p_{X} : X \times Y \to X$ die Projektion auf die erste Komponente
-                ist. Offenbar stimmt $\overline{h}$ in der $X$-Komponente mit $\overline{h}
+                ist. Offenbar stimmt $\widetilde{h}$ in der $X$-Komponente mit $\widetilde{h}
                 _{0}$ und in der $Y$-Komponente mit $h$ überein, was genau die benötigte
                 Lifteigenschaft liefert.
 
@@ -912,29 +912,29 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
             h : F_{\gamma(0)}\times [0,1] \;\longrightarrow\; B, \quad h(x,t) \;=\; \gamma
             (t).
         \]
-        Sei $\overline{h}_{0} : F_{\gamma(0)}\times \{0\} \hookrightarrow X$ die
+        Sei $\widetilde{h}_{0} : F_{\gamma(0)}\times \{0\} \hookrightarrow X$ die
         Inklusion. Dann gilt für jedes $x \in F_{\gamma(0)}$:
         \[
-            (\pi \circ \overline{h}_{0})(x) \;=\; \gamma(0) \;=\; h_{0}(x).
+            (\pi \circ \widetilde{h}_{0})(x) \;=\; \gamma(0) \;=\; h_{0}(x).
         \]
         Da $\pi : X \to B$ eine Faserung ist, existiert eine Abbildung
         \[
-            \overline{h}: F_{\gamma(0)}\times [0,1] \;\longrightarrow\; X,
+            \widetilde{h}: F_{\gamma(0)}\times [0,1] \;\longrightarrow\; X,
         \]
         sodass in folgendem Diagramm alles kommutiert:
         \[
             \begin{tikzcd}
                 [cramped] {F_{\gamma(0)}\times\{0\}} & X \\ {F_{\gamma(0)}\times[0,1]} &
-                B \arrow["{\overline{h}_0}", from=1-1, to=1-2] \arrow["\iota"', hook, from=1-1,
-                to=2-1] \arrow["\pi"{description}, from=1-2, to=2-2] \arrow["{\overline{h}}",
+                B \arrow["{\widetilde{h}_0}", from=1-1, to=1-2] \arrow["\iota"', hook, from=1-1,
+                to=2-1] \arrow["\pi"{description}, from=1-2, to=2-2] \arrow["{\widetilde{h}}",
                 dashed, from=2-1, to=1-2] \arrow["h", from=2-1, to=2-2]
             \end{tikzcd}
         \]
-        Insbesondere gilt $h = \pi \circ \overline{h}$, und $\overline{h}(x,t) \in F_{\gamma(t)}$.
+        Insbesondere gilt $h = \pi \circ \widetilde{h}$, und $\widetilde{h}(x,t) \in F_{\gamma(t)}$.
         Für $t=1$ erhalten wir daraus die gesuchte Abbildung
         \[
             L_{\gamma} : F_{\gamma(0)}\;\longrightarrow\; F_{\gamma(1)}, \quad L_{\gamma}
-            (x) \;=\; \overline{h} x,1 .
+            (x) \;=\; \widetilde{h} x,1 .
         \]
         Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des
         Weges $\gamma$, und damit sind sämtliche Fasern über eine wegzusammenhängende
@@ -962,22 +962,22 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     $F_{a}$ und $F_{b}$ Fasern einer Faserung und $\gamma$ ein Weg von $a$ nach
     $b$. Wir betrachten die Abbildungen
     \[
-        L_{\gamma} : F_{a} \longrightarrow F_{b} \quad\text{und}\quad L_{\overline{\gamma}}
+        L_{\gamma} : F_{a} \longrightarrow F_{b} \quad\text{und}\quad L_{\widetilde{\gamma}}
         : F_{b} \longrightarrow F_{a},
     \]
-    wobei $\overline{\gamma}$ ein Weg von $b$ zurück nach $a$ bezeichnet.
+    wobei $\widetilde{\gamma}$ ein Weg von $b$ zurück nach $a$ bezeichnet.
 
     \smallskip
 
-    Sei $\alpha \equiv a$ die konstante Schleife bei $a$, und sei $\overline{h}$ die
+    Sei $\alpha \equiv a$ die konstante Schleife bei $a$, und sei $\widetilde{h}$ die
     Abbildung, mit der wir $L_{\alpha}(x)$ definieren. Da
     \[
         h(x,t) \;=\; \alpha(x) \;=\; a \quad\text{für alle}\; x\in F_{a},\; t\in [0,1
         ],
     \]
-    folgt $\overline{h}(x,t) \in F_{a}$ für alle $x$ und $t$. Somit ist
-    $\overline{h}$ eine Homotopie, welche $\overline{h}(x,0) = \mathrm{Id}_{F_a}(x)$
-    und $\overline{h}(x,1) = L_{\alpha}(x)$ erfüllt. Daher gilt
+    folgt $\widetilde{h}(x,t) \in F_{a}$ für alle $x$ und $t$. Somit ist
+    $\widetilde{h}$ eine Homotopie, welche $\widetilde{h}(x,0) = \mathrm{Id}_{F_a}(x)$
+    und $\widetilde{h}(x,1) = L_{\alpha}(x)$ erfüllt. Daher gilt
     \[
         \mathrm{Id}_{F_a}\;\simeq\; L_{\alpha} \quad\text{und analog}\quad \mathrm{Id}
         _{F_b}\;\simeq\; L_{\beta},
@@ -989,11 +989,11 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Mit den oben genannten Eigenschaften nach \cite[Prop.~4.61]{hatcher2001} erhalten
     wir nun:
     \[
-        L_{\overline{\gamma}}\,\circ\, L_{\gamma} \;\simeq\; L_{\gamma \star
-        \overline{\gamma}}\;\simeq\; L_{\alpha} \;\simeq\; \mathrm{Id}_{F_a},
+        L_{\widetilde{\gamma}}\,\circ\, L_{\gamma} \;\simeq\; L_{\gamma \star
+        \widetilde{\gamma}}\;\simeq\; L_{\alpha} \;\simeq\; \mathrm{Id}_{F_a},
     \]
     \[
-        L_{\gamma}\,\circ\, L_{\overline{\gamma}}\;\simeq\; L_{\overline{\gamma} \star
+        L_{\gamma}\,\circ\, L_{\widetilde{\gamma}}\;\simeq\; L_{\widetilde{\gamma} \star
         \gamma}\;\simeq\; L_{\beta} \;\simeq\; \mathrm{Id}_{F_b}.
     \]
     Daraus folgt, dass $F_{a}$ und $F_{b}$ homotopieäquivalent sind.
