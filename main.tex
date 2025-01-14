@@ -17,7 +17,7 @@
 \usepackage[unicode]{hyperref}
 \usepackage[all]{hypcap}
 
-\usetikzlibrary{angles,calc, decorations.pathreplacing}
+\usetikzlibrary{angles, calc, decorations.pathreplacing}
 
 \definecolor{carminered}{rgb}{1.0, 0.0, 0.22}
 \definecolor{capri}{rgb}{0.0, 0.75, 1.0}
@@ -37,1241 +37,1515 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\ima}{\operatorname{im}}
 
-\usepackage[
-backend=biber,
-style=alphabetic,
-]{biblatex}
+\usepackage[backend=biber, style=alphabetic,]{biblatex}
 \addbibresource{main.bib}
 
 \title{\textbf{Spektralsequenzen\\ Leray–Serre Spektralsequenz}}
-\author{
-\textbf{Luciano Melodia} \\
-Seminar zur Spektraltheorie \\
-Lehrstuhl für Mathematische Physik \\
-Friedrich-Alexander Universität Erlangen-Nürnberg \\
+\author{ \textbf{Luciano Melodia} \\ Seminar zur Spektraltheorie \\ Lehrstuhl
+für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg \\
 \texttt{luciano.melodia@fau.de}}
 \date{\today}
 
 \begin{document}
-\hypersetup{bookmarksnumbered=true,}
-\maketitle
+    \hypersetup{bookmarksnumbered=true,}
+    \maketitle
 
-\begin{abstract}
-Die Homologiedefinition $H_n(A_\bullet)$ eines Kettenkomplexes ist für beliebige Homologietheorien als Quotient 
-\[
-H_n(A_\bullet) \coloneq \frac{\ker d_n}{\operatorname{im} d_{n+1}}
-\] 
-definiert. In Bezug auf Spektralsequenzen gibt es also in einem Kettenkomplex ein Differential, das aus der Gruppe herausgeht, in diesem Fall $d_n$, und eines, das in die Gruppe hineingeht, in diesem Fall $d_{n+1}$.
+    \begin{abstract}
+        Die Homologiedefinition $H_{n}(A_{\bullet})$ eines Kettenkomplexes $A_\bullet$ ist für beliebige
+        Homologietheorien als Quotient
+        \[
+            H_{n}(A_{\bullet}) \coloneq \frac{\ker d_{n}}{\operatorname{im}d_{n+1}}
+        \]
+        definiert. In Bezug auf Spektralsequenzen gibt es also in einem
+        Kettenkomplex ein Differential, das aus der Gruppe herausgeht, in diesem
+        Fall $d_{n}$, und eines, das in die Gruppe hineingeht, in diesem Fall $d_{n+1}$.
 
-Mit dieser Sichtweise können wir verschiedene Homologiegruppen betrachten, je nachdem, welche Differentiale wir verwenden. Eine solche Betrachtung kann nummeriert und in sogenannten \textbf{Seiten} organisiert werden. Eine Spektralsequenz ist wie ein Buch, das aus einer unendlichen Anzahl von Seiten besteht. Jede Seite ist ein zweidimensionales Gitter, das aus Gruppen besteht, die bestimmten Differentialen zugeordnet sind.
+        Mit dieser Sichtweise können wir verschiedene Homologiegruppen betrachten,
+        je nachdem, welche Differentiale wir verwenden. Eine solche Betrachtung kann
+        nummeriert und in sogenannten \textbf{Seiten} organisiert werden. Eine
+        Spektralsequenz ist wie ein Buch, das aus einer unendlichen Anzahl von Seiten
+        besteht. Jede Seite ist ein zweidimensionales Gitter, das aus Gruppen besteht,
+        die bestimmten Differentialen zugeordnet sind.
 
-Wir können eine natürliche Transformation anwenden, um von einer Seite zur nächsten zu gelangen, und im Idealfall stabilisieren sich die Seiten zu einem Seitenlimes im Unendlichen. Die Notation für die Homologien ist 
-\[
-E^r_{p,q},
-\]
-wobei $r$ die Seitenzahl aus einer total geordneten Indexmenge $(I,\leq)$ entnommen, $p \in \mathbb{Z}$ der horizontale Index und $q \in \mathbb{Z}$ der vertikale Index ist.
+        Wir können eine natürliche Transformation anwenden, um von einer Seite zur nächsten
+        zu gelangen, und im Idealfall stabilisieren sich die Seiten zu einem
+        Seitenlimes im Unendlichen. Die Notation für die Homologien ist
+        \[
+            E^{r}_{p,q},
+        \]
+        wobei $r$ die Seitenzahl aus einer total geordneten Indexmenge $(I,\leq)$ entnommen,
+        $p \in \mathbb{Z}$ der horizontale Index und $q \in \mathbb{Z}$ der
+        vertikale Index ist.
 
-In gewisser Weise verhält sich jede Seite einer Spektralsequenz wie ein $2$-dimensionaler Kettenkomplex. Die Gruppen sind durch zwei Parameter statt durch einen indiziert, und für jede Gruppe gibt es genau ein Differential, das aus der Gruppe herausführt, und genau ein Differential, das in die Gruppe hineinführt. Außerdem gilt immer die Eigenschaft 
-\[
-d^2 = 0.
-\]
+        In gewisser Weise verhält sich jede Seite einer Spektralsequenz wie ein $2$-dimensionaler
+        Kettenkomplex. Die Gruppen sind durch zwei Parameter statt durch einen indiziert,
+        und für jede Gruppe gibt es genau ein Differential, das aus der Gruppe herausführt,
+        und genau ein Differential, das in die Gruppe hineinführt. Außerdem gilt
+        immer die Eigenschaft
+        \[
+            d^{2} = 0.
+        \]
 
-Wie sieht nun die Operation aus, die uns von $E^r_{p,q}$ nach $E^{r+1}_{p,q}$ führt? Die Differentiale auf jeder Seite $r$ hängen stark von der Definition der Spektralsequenz ab. Schreiben wir $d_{\operatorname{IN}}, d_{\operatorname{OUT}}$ für die eingehenden und ausgehenden Differentiale von $E^r_{p,q}$, dann definieren wir
-\[
-E^{r+1}_{p,q} \coloneq \frac{\ker d_{\operatorname{OUT}}}{\operatorname{im} d_{\operatorname{IN}}}.
-\]
+        Wie sieht nun die Operation aus, die uns von $E^{r}_{p,q}$ nach
+        $E^{r+1}_{p,q}$ führt? Die Differentiale auf jeder Seite $r$ hängen stark von
+        der Definition der Spektralsequenz ab. Schreiben wir
+        $d_{\operatorname{IN}}, d_{\operatorname{OUT}}$ für die eingehenden und
+        ausgehenden Differentiale von $E^{r}_{p,q}$, dann definieren wir
+        \[
+            E^{r+1}_{p,q}\coloneq \frac{\ker d_{\operatorname{OUT}}}{\operatorname{im}d_{\operatorname{IN}}}
+            .
+        \]
 
-Die Funktionsweise der Spektralsequenz besteht darin, dass die Gruppen auf der ersten Seite $E^1_{p,q}$ definiert werden. Dann lassen wir die Spektralsequenzmaschine arbeiten. Im Falle der Serre-Spektralsequenz stabilisiert sich diese, das heißt, es gibt ein $R$, sodass für alle $r > R$ gilt:
-\[
-E^r_{p,q} = E^R_{p,q}.
-\]
-Dies sind die Einträge der stabilisierten Seite $E^\infty_{p,q}$.
+        Die Funktionsweise der Spektralsequenz besteht darin, dass die Gruppen auf der
+        ersten Seite $E^{1}_{p,q}$ definiert werden. Dann lassen wir die
+        Spektralsequenzmaschine arbeiten. Im Falle der Serre-Spektralsequenz stabilisiert
+        sich diese, das heißt, es gibt ein $R$, sodass für alle $r > R$ gilt:
+        \[
+            E^{r}_{p,q}= E^{R}_{p,q}.
+        \]
+        Dies sind die Einträge der stabilisierten Seite $E^{\infty}_{p,q}$.
 
-Wir beschreiben nun, was wir in unsere Spektralsequenz eintragen müssen und was wir davon als Ergebnis erwarten können, insbesondere am Beispiel der Serre’schen Spektralsequenz.
-\end{abstract}
+        Wir beschreiben nun, was wir in unsere Spektralsequenz eintragen müssen und
+        was wir davon als Ergebnis erwarten können, insbesondere am Beispiel der Serre’schen
+        Spektralsequenz.
+    \end{abstract}
 
-\begin{Large}
-    \tableofcontents
-\end{Large}
+    \begin{Large}
+        \tableofcontents
+    \end{Large}
 
-\section{Homologische Spektralsequenzen}
-Generell besteht die Möglichkeit, Spektralsequenzen über abelsche Kategorien zu definieren, alternativ oder zusätzlich über $R$-Moduln. Gegenstand der vorliegenden Arbeit sind Spektralsequenzen über $\mathbb{Z}$-Moduln, also die Variante für abelsche Gruppen.
+    \section{Homologische Spektralsequenzen}
+    Generell besteht die Möglichkeit, Spektralsequenzen über abelsche Kategorien zu
+    definieren, alternativ oder zusätzlich über $R$-Moduln. Gegenstand der vorliegenden
+    Arbeit sind Spektralsequenzen über $\mathbb{Z}$-Moduln, also die Variante für
+    abelsche Gruppen.
 
-\begin{definition}[Homologische Sequenz]
-    \label{homologischeSequenz}
-    Sei $r_0 \in I$ mit $r_0 \geq 0$. Eine homologische Sequenz $\{A^r_{p,q}, d^r_{p,q}\}_{r \geq r_0}$ besteht aus
-    \begin{enumerate}[nolistsep]
-        \item einer Familie abelscher Gruppen $\{A^r_{p,q}\}_{p,q \in \Z,\, r \geq r_0}$ und
-        \item einer Familie von Gruppenhomomorphismen $\{d^r_{p,q} : A^r_{p,q} \to A^r_{p-r,q+r-1}\}$, die als Differentiale bezeichnet werden,
-    \end{enumerate}
-    sodass für alle $p,q,r$ gilt:
-    \begin{enumerate}[nolistsep]
-        \item $d^r_{p-r,q+r-1} \circ d^r_{p,q} = 0$,
-        \item $E^{r+1}_{p,q}$ ist die zugehörige Homologie von $A^r$, das heißt
-              \[
-                E^{r+1}_{p,q} \;=\; \frac{\ker \bigl(d^r_{p,q}\bigr)}{\mathrm{im}\,\bigl(d^r_{p+r,q-r+1}\bigr)}.
-              \]
-    \end{enumerate}
-\end{definition}
+    \begin{definition}[Homologische Sequenz]
+        \label{homologischeSequenz} Sei $r_{0} \in I$ mit $r_{0} \geq 0$. Eine
+        homologische Sequenz $\{A^{r}_{p,q}, d^{r}_{p,q}\}_{r \geq r_0}$ besteht aus
+        \begin{enumerate}[nolistsep]
+            \item einer Familie abelscher Gruppen $\{A^{r}_{p,q}\}_{p,q \in \Z,\, r
+                \geq r_0}$ und
 
-Die vorliegende Definition einer homologischen Sequenz verdeutlicht, für welche Untergruppen die Quotienten berechnet werden, und zwar in einer Art Kettenkomplex mit zwei Indizes. Es ist jedoch davon auszugehen, dass sich eine Vereinfachung der Notation bei den weiteren Untersuchungen als hilfreich erweisen wird. Konkret wird ein $r$ festgelegt und alle $A^r$ als ein Objekt $A^r$ betrachtet. Diese neu entstandene Gruppe wird als bigraduierte abelsche Gruppe bezeichnet, während die Differentiale $d^r$ auch kollektiv als $d^r$ oder bigraduierte Differentiale bezeichnet werden.
+            \item einer Familie von Gruppenhomomorphismen $\{d^{r}_{p,q}: A^{r}_{p,q}\to
+                A^{r}_{p-r,q+r-1}\}$, die als Differentiale bezeichnet werden,
+        \end{enumerate}
+        sodass für alle $p,q,r$ gilt:
+        \begin{enumerate}[nolistsep]
+            \item $d^{r}_{p-r,q+r-1}\circ d^{r}_{p,q}= 0$,
 
-\begin{definition}[Bigraduierte abelsche Gruppen]
-    Eine \textbf{bigraduierte abelsche Gruppe} $A$ ist eine Familie von abelschen Gruppen
+            \item $E^{r+1}_{p,q}$ ist die zugehörige Homologie von $A^{r}$, das heißt
+                \[
+                    E^{r+1}_{p,q}\;=\; \frac{\ker \bigl(d^{r}_{p,q}\bigr)}{\mathrm{im}\,\bigl(d^{r}_{p+r,q-r+1}\bigr)}
+                    .
+                \]
+        \end{enumerate}
+    \end{definition}
+
+    Die vorliegende Definition einer homologischen Sequenz verdeutlicht, für
+    welche Untergruppen die Quotienten berechnet werden, und zwar in einer Art Kettenkomplex
+    mit zwei Indizes. Es ist jedoch davon auszugehen, dass sich eine Vereinfachung
+    der Notation bei den weiteren Untersuchungen als hilfreich erweisen wird.
+    Konkret wird ein $r$ festgelegt und alle $A^{r}$ als ein Objekt $A^{r}$
+    betrachtet. Diese neu entstandene Gruppe wird als bigraduierte abelsche Gruppe
+    bezeichnet, während die Differentiale $d^{r}$ auch kollektiv als $d^{r}$ oder
+    bigraduierte Differentiale bezeichnet werden.
+
+    \begin{definition}[Bigraduierte abelsche Gruppen]
+        Eine \textbf{bigraduierte abelsche Gruppe} $A$ ist eine Familie von
+        abelschen Gruppen
+        \[
+            A \coloneqq \bigoplus_{p,q \in \Z}A_{p,q},
+        \]
+        die man als direkte Summe auffassen kann, wobei die Indizes $(p,q)$ aus $\Z \times
+        \Z$ stammen. Sind zwei bigraduierte abelsche Gruppen
+        \[
+            A \coloneqq \bigoplus_{p,q \in \Z}A_{p,q}\quad\text{und}\quad B \coloneqq \bigoplus
+            _{p,q \in \Z}B_{p,q}
+        \]
+        gegeben, so bezeichnet man eine \textbf{bigraduierte Abbildung} vom Bigrad
+        $(c,d)$ als die Familie von Gruppenhomomorphismen
+        \[
+            f \coloneqq \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}.
+        \]
+        \[
+            \begin{tikzcd}
+                A & {A_{0,0}} & {A_{1,0}} & {A_{0,1}} & {A_{-1,0}} & \cdots \\ B & {B_{0,0}}
+                & {B_{1,0}} & {B_{0,1}} & {B_{-1,0}} & \cdots \arrow["f", color={rgb,255:red,214;green,92;blue,92},
+                squiggly, from=1-1, to=2-1] \arrow["{f^{(0,0)}_{0,0}}", from=1-2, to=2-2]
+                \arrow["{f^{(0,0)}_{1,0}}", from=1-3, to=2-3] \arrow["{f^{(0,0)}_{0,1}}",
+                from=1-4, to=2-4] \arrow["{f^{(0,0)}_{-1,0}}", from=1-5, to=2-5]
+            \end{tikzcd}
+        \]
+    \end{definition}
+
+    Es sei darauf hingewiesen, dass der direkten Summe keine Bedeutung beigemessen
+    wird, sodass die Reihenfolge der Summation als willkürlich zu betrachten ist.
+    Eine alternative Betrachtungsweise besteht in der Auffassung der einzelnen
+    abelschen Gruppen als Elemente einer Menge. Seien also $A = \bigoplus_{p,q \in
+    \Z}A_{p,q}$ und $B = \bigoplus_{p,q \in \Z}B_{p,q}$ die bigraduierten abelschen
+    Gruppen.
+
+    \begin{definition}[Bigraduierte Abbildung]
+        Wir nennen einen Gruppenhomomorphismus
+        \[
+            f^{(c,d)}_{p,q}: A_{p,q}\;\longrightarrow\; B_{p+c,\,q+d}
+        \]
+        eine Abbildung \textbf{vom Bigrad $(c,d)$}. Eine \textbf{bigraduierte
+        Abbildung} vom Bigrad $(c,d)$ ist dann ein Gruppenhomomorphismus
+        \[
+            f : A \;\longrightarrow\; B,\quad \bigoplus_{p,q \in \Z}a_{p,q}\;\longmapsto
+            \; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}\bigl(a_{p,q}\bigr),
+        \]
+        wobei jedem Summanden $a_{p,q}\in A_{p,q}$ das Element
+        $f^{(c,d)}_{p,q}(a_{p,q}) \in B_{p+c,\,q+d}$ zugeordnet wird.
+    \end{definition}
+
+    $f$ kann als eine Sammlung von Gruppenhomomorphismen vom Bigrad $(c,d)$
+    aufgefasst werden, die \textbf{elementweise} auf der direkten Summe der
+    abelschen Gruppen operieren. Entsprechend können wir sinngemäß schreiben:
     \[
-        A \coloneqq \bigoplus_{p,q \in \Z} A_{p,q},
+        f \;=\; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}.
     \]
-    die man als direkte Summe auffassen kann, wobei die Indizes $(p,q)$ aus $\Z \times \Z$ stammen.
-    Sind zwei bigraduierte abelsche Gruppen 
-    \[
-        A \coloneqq \bigoplus_{p,q \in \Z} A_{p,q}
-        \quad\text{und}\quad
-        B \coloneqq \bigoplus_{p,q \in \Z} B_{p,q}
-    \]
-    gegeben, so bezeichnet man eine \textbf{bigraduierte Abbildung} vom Bigrad $(c,d)$ als die Familie von Gruppenhomomorphismen
-    \[
-        f \coloneqq \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}.
-    \]
-    \[
-        \begin{tikzcd}
-            A & {A_{0,0}} & {A_{1,0}} & {A_{0,1}} & {A_{-1,0}} & \cdots \\
-            B & {B_{0,0}} & {B_{1,0}} & {B_{0,1}} & {B_{-1,0}} & \cdots
-            \arrow["f", color={rgb,255:red,214;green,92;blue,92}, squiggly, from=1-1, to=2-1]
-            \arrow["{f^{(0,0)}_{0,0}}", from=1-2, to=2-2]
-            \arrow["{f^{(0,0)}_{1,0}}", from=1-3, to=2-3]
-            \arrow["{f^{(0,0)}_{0,1}}", from=1-4, to=2-4]
-            \arrow["{f^{(0,0)}_{-1,0}}", from=1-5, to=2-5]
-        \end{tikzcd}
-    \]
-\end{definition}
 
-Es sei darauf hingewiesen, dass der direkten Summe keine Bedeutung beigemessen wird, sodass die Reihenfolge der Summation als willkürlich zu betrachten ist. Eine alternative Betrachtungsweise besteht in der Auffassung der einzelnen abelschen Gruppen als Elemente einer Menge. Seien also $A = \bigoplus_{p,q \in \Z} A_{p,q}$ und $B = \bigoplus_{p,q \in \Z} B_{p,q}$ die bigraduierten abelschen Gruppen. 
+    \begin{example}
+        Sei $R$ ein Ring. Dann trägt $R[x,x^{-1},y,y^{-1}]$ die Struktur einer
+        bigraduierten abelschen Gruppe, indem wir
+        \[
+            A_{p,q}\;=\; R\,x^{p}\,y^{q} \quad\text{für alle}\; p,q \in \Z
+        \]
+        setzen.
+    \end{example}
 
-\begin{definition}[Bigraduierte Abbildung]
-    Wir nennen einen Gruppenhomomorphismus
-    \[
-        f^{(c,d)}_{p,q} : A_{p,q} \;\longrightarrow\; B_{p+c,\,q+d}
-    \]
-    eine Abbildung \textbf{vom Bigrad $(c,d)$}. Eine \textbf{bigraduierte Abbildung} vom Bigrad $(c,d)$ ist dann ein Gruppenhomomorphismus
-    \[
-        f : A \;\longrightarrow\; B,\quad
-        \bigoplus_{p,q \in \Z} a_{p,q}
-        \;\longmapsto\;
-        \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}\bigl(a_{p,q}\bigr),
-    \]
-    wobei jedem Summanden $a_{p,q} \in A_{p,q}$ das Element $f^{(c,d)}_{p,q}(a_{p,q}) \in B_{p+c,\,q+d}$ zugeordnet wird.
-\end{definition}
+    \begin{definition}[Bigraduierte Untergruppen und Quotienten]
+        Seien $A$ und $B$ bigraduierte abelsche Gruppen. Dann definieren wir:
+        \begin{enumerate}[nolistsep]
+            \item $A \subset B \;\colon\Leftrightarrow\; A_{p,q}\subset B_{p,q}$ für alle
+                $p,q \in \Z$,
 
-$f$ kann als eine Sammlung von Gruppenhomomorphismen vom Bigrad $(c,d)$ aufgefasst werden, die \textbf{elementweise} auf der direkten Summe der abelschen Gruppen operieren. Entsprechend können wir sinngemäß schreiben:
-\[
-    f \;=\; \bigoplus_{p,q \in \Z} f^{(c,d)}_{p,q}.
-\]
+            \item Falls $A \subset B$, so sei
+                \[
+                    \displaystyle \frac{B}{A}\;\coloneqq\; \bigoplus_{p,q \in \Z}\frac{B_{p,q}}{A_{p,q}}
+                    .
+                \]
+        \end{enumerate}
+    \end{definition}
 
-\begin{example}
-    Sei $R$ ein Ring. Dann trägt $R[x,x^{-1},y,y^{-1}]$ die Struktur einer bigraduierten abelschen Gruppe, indem wir
-    \[
-        A_{p,q} \;=\; R\,x^p\,y^q
-        \quad\text{für alle}\; p,q \in \Z
-    \]
-    setzen.
-\end{example}
+    \begin{definition}
+        Ist $f: A \to B$ eine bigraduierte Abbildung des Grads $(c,d)$ zwischen bigraduierten
+        abelschen Gruppen, so definieren wir
+        \begin{itemize}[nolistsep]
+            \item $\displaystyle \ker f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ker \bigl(
+                f_{p,q}\bigr)$,
 
-\begin{definition}[Bigraduierte Untergruppen und Quotienten]
-    Seien $A$ und $B$ bigraduierte abelsche Gruppen. Dann definieren wir:
-    \begin{enumerate}[nolistsep]
-        \item $A \subset B \;\colon\Leftrightarrow\; A_{p,q} \subset B_{p,q}$ für alle $p,q \in \Z$,
-        \item Falls $A \subset B$, so sei
-              \[
-                \displaystyle
-                \frac{B}{A}
-                \;\coloneqq\;
-                \bigoplus_{p,q \in \Z}
-                \frac{B_{p,q}}{A_{p,q}}.
-              \]
-    \end{enumerate}
-\end{definition}
+            \item $\displaystyle \ima f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ima \bigl(
+                f_{p-c,q-d}\bigr)$.
+        \end{itemize}
+    \end{definition}
 
-\begin{definition}
-    Ist $f: A \to B$ eine bigraduierte Abbildung des Grads $(c,d)$ zwischen bigraduierten abelschen Gruppen, so definieren wir
-    \begin{itemize}[nolistsep]
-        \item $\displaystyle \ker f \;\coloneqq\; \bigoplus_{p,q \in \Z} \ker \bigl(f_{p,q}\bigr)$,
-        \item $\displaystyle \ima f \;\coloneqq\; \bigoplus_{p,q \in \Z} \ima \bigl(f_{p-c,q-d}\bigr)$.
-    \end{itemize}
-\end{definition}
+    Nun können wir die zuvor definierte homologische Sequenz (Definition \ref{homologischeSequenz})
+    zu einer \textbf{spektralen} homologischen Sequenz erweitern.
 
-Nun können wir die zuvor definierte homologische Sequenz (Definition \ref{homologischeSequenz}) zu einer \textbf{spektralen} homologischen Sequenz erweitern.
+    \begin{definition}
+        \label{homologischeSpektraleSequenz} Sei $r_{0} \geq 0$. Eine \textbf{homologische
+        Spektralsequenz}
+        \[
+            \{E^{r},d^{r}\}_{r \geq r_0}
+        \]
+        besteht aus
+        \begin{enumerate}[nolistsep]
+            \item einer bigraduierten abelschen Gruppe $E^{r}$ und
 
-\begin{definition}
-    \label{homologischeSpektraleSequenz}
-    Sei $r_0 \geq 0$. Eine \textbf{homologische Spektralsequenz} 
-    \[
-        \{E^r,d^r\}_{r \geq r_0}
-    \]
-    besteht aus
-    \begin{enumerate}[nolistsep]
-        \item einer bigraduierten abelschen Gruppe $E^r$ und
-        \item einer bigraduirten Abbildung
-              \[
-                d^r : E^r \;\longrightarrow\; E^r
-              \]
-              vom Bigrad $(r,\,r-1)$, die als \textbf{Differential} bezeichnet wird,
-    \end{enumerate}
-    sodass für jedes $r$ gilt:
-    \begin{itemize}[nolistsep]
-        \item $d^r \circ d^r = 0$, d.\,h.\ $(d^r)^2 = 0$, und
-        \item $E^{r+1}$ ist die Homologie von $E^r$ bezüglich des Differentials $d^r$, das heißt
-              \[
-                E^{r+1}
-                \;=\;
-                \frac{\ker(d^r)}{\mathrm{im}(d^r)}
-                \;=\;
-                \frac{\displaystyle\bigoplus_{p,q \in \Z} \ker\bigl(d^r_{p,q}\bigr)}%
-                {\displaystyle\bigoplus_{p,q \in \Z} \mathrm{im}\!\bigl(d^r_{\,p-r,\,q+r-1}\bigr)}
-                \;=\;
-                \bigoplus_{p,q \in \Z}
-                \frac{\ker\bigl(d^r_{p,q}\bigr)}{\mathrm{im}\!\bigl(d^r_{\,p-r,\,q+r-1}\bigr)}.
-              \]
-    \end{itemize}
-\end{definition}
+            \item einer bigraduirten Abbildung
+                \[
+                    d^{r} : E^{r} \;\longrightarrow\; E^{r}
+                \]
+                vom Bigrad $(r,\,r-1)$, die als \textbf{Differential} bezeichnet wird,
+        \end{enumerate}
+        sodass für jedes $r$ gilt:
+        \begin{itemize}[nolistsep]
+            \item $d^{r} \circ d^{r} = 0$, d.\,h.\ $(d^{r})^{2} = 0$, und
 
-Für jedes $r$ nennt man $E^r$ das \textbf{$r$-te Blatt} oder die \textbf{$r$-te Seite} der Spektralsequenz $\{E^r,d^r\}_{r \geq r_0}$.
+            \item $E^{r+1}$ ist die Homologie von $E^{r}$ bezüglich des Differentials $d
+                ^{r}$, das heißt
+                \[
+                    E^{r+1}\;=\; \frac{\ker(d^{r})}{\mathrm{im}(d^{r})}\;=\; \frac{\displaystyle\bigoplus_{p,q
+                    \in \Z}\ker\bigl(d^{r}_{p,q}\bigr)}%
+                    {\displaystyle\bigoplus_{p,q \in \Z} \mathrm{im}\!\bigl(d^r_{\,p-r,\,q+r-1}\bigr)}
+                    \;=\; \bigoplus_{p,q \in \Z}\frac{\ker\bigl(d^{r}_{p,q}\bigr)}{\mathrm{im}\!\bigl(d^{r}_{\,p-r,\,q+r-1}\bigr)}
+                    .
+                \]
+        \end{itemize}
+    \end{definition}
 
-\begin{remark}
-    Es gibt eine entsprechende Variante als \textbf{kohomologische Spektralsequenz}, die in analoger Weise zu Definition~\ref{homologischeSpektraleSequenz} konstruiert wird. 
-    Dort schreibt man $E_r \coloneqq \bigoplus_{p,q \in \Z} E_{r}^{\,p,q}$ für die Kohomologieanteile und verwendet Differentiale
-    \[
-        d_r : E_r \;\longrightarrow\; E_r
-    \]
-    vom Bigrad $(r,\,-r+1)$. Die homologische Spektralsequenz wird zur Berechnung von Homologiegruppen verwendet, während die kohomologische Spektralsequenz zur Bestimmung von Kohomologiegruppen dient.
-\end{remark}
+    Für jedes $r$ nennt man $E^{r}$ das \textbf{$r$-te Blatt} oder die \textbf{$r$-te
+    Seite} der Spektralsequenz $\{E^{r},d^{r}\}_{r \geq r_0}$.
 
-\begin{definition}
-    Sei $\{E^r, d^r\}_{r \geq r_0}$ eine homologische Spektralsequenz. Angenommen, es existiert für alle $p,q \in \Z$ eine natürliche Zahl
-    \[
-        r(p,q) \in \mathbb{N},
-    \]
-    abhängig von $p$ und $q$, derart, dass für alle $r \ge r(p,q)$
-    \[
-        E^r_{p,q} \;\cong\; E_{p,q}^{\,r(p,q)}.
-    \]
-    Dann sagen wir, dass die bigraduierte abelsche Gruppe
-    \[
-        E^\infty \;\coloneqq\; \bigoplus_{p,q \in \Z} E_{p,q}^{\,r(p,q)}
-    \]
-    der \textbf{Limes} der Spektralsequenz $\{E^r, d^r\}_{r \geq r_0}$ ist. Äquivalent sagen wir auch, dass die Spektralsequenz \textbf{an} $E^\infty$ \textbf{angrenzt}.
-\end{definition}
+    \begin{remark}
+        Es gibt eine entsprechende Variante als \textbf{kohomologische
+        Spektralsequenz}, die in analoger Weise zu Definition~\ref{homologischeSpektraleSequenz}
+        konstruiert wird. Dort schreibt man
+        $E_{r} \coloneqq \bigoplus_{p,q \in \Z}E_{r}^{\,p,q}$ für die
+        Kohomologieanteile und verwendet Differentiale
+        \[
+            d_{r} : E_{r} \;\longrightarrow\; E_{r}
+        \]
+        vom Bigrad $(r,\,-r+1)$. Die homologische Spektralsequenz wird zur Berechnung
+        von Homologiegruppen verwendet, während die kohomologische Spektralsequenz
+        zur Bestimmung von Kohomologiegruppen dient.
+    \end{remark}
 
-\begin{remark}
-    Im Folgenden ist eine schematische Darstellung der ersten drei Seiten einer Serre-Spektralsequenz mit den zugehörigen Differentialen (durch Pfeile $\rightarrow$) und den jeweiligen Definitions- und Zielbereichen (dargestellt durch $\bullet$). Die Symbole $\bullet$ stehen in diesem Kontext für abelsche Gruppen, speziell für Homologiegruppen oder, falls über einem Körper $\mathbb{F}$ betrachtet, für entsprechende Vektorräume. 
-    
-    Der rote Punkt $\color{red}\bullet$ stellt das Element $E^1_{0,2}$ dar, der blaue Punkt $\color{blue}\bullet$ repräsentiert $E^2_{1,-2}$. Diese besondere Spektralsequenz (die Serre-Spektralsequenz) \textbf{stabilisiert} immer, das heißt, für hinreichend große $r$ ändert sich die jeweilige Seite nicht mehr.
-    
-    \[
-        \begin{tikzcd}[sep=tiny]
-            &&& {E^1} &&&&&& {E^2} &&&&&& {E^3} \\
-            & \bullet & \bullet & {\color{red}\bullet} & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\
-            {} & \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet \\
-            & \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet \\
-            & \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet \\
-            & \bullet & \bullet & \bullet & \bullet & \bullet 
-            && \bullet & \bullet & \bullet & {\color{blue}\bullet} & \bullet 
-            && \bullet & \bullet & \bullet & \bullet & \bullet
-            \arrow[from=2-3, to=2-2]
-            \arrow[from=2-4, to=2-3]
-            \arrow[from=2-5, to=2-4]
-            \arrow[from=2-6, to=2-5]
-            \arrow[from=3-3, to=3-2]
-            \arrow[from=3-4, to=3-3]
-            \arrow[from=3-5, to=3-4]
-            \arrow[from=3-6, to=3-5]
-            \arrow[from=3-10, to=2-8]
-            \arrow[from=3-11, to=2-9]
-            \arrow[from=3-12, to=2-10]
-            \arrow[from=4-3, to=4-2]
-            \arrow[from=4-4, to=4-3]
-            \arrow[from=4-5, to=4-4]
-            \arrow[from=4-6, to=4-5]
-            \arrow[shorten <=5pt, Rightarrow, from=4-6, to=4-8]
-            \arrow[from=4-10, to=3-8]
-            \arrow[from=4-11, to=3-9]
-            \arrow[from=4-12, to=3-10]
-            \arrow[shorten <=5pt, Rightarrow, from=4-12, to=4-14]
-            \arrow[from=4-17, to=2-14]
-            \arrow[from=4-18, to=2-15]
-            \arrow[from=5-3, to=5-2]
-            \arrow[from=5-4, to=5-3]
-            \arrow[from=5-5, to=5-4]
-            \arrow[from=5-6, to=5-5]
-            \arrow[from=5-10, to=4-8]
-            \arrow[from=5-11, to=4-9]
-            \arrow[from=5-12, to=4-10]
-            \arrow[from=5-17, to=3-14]
-            \arrow[from=5-18, to=3-15]
-            \arrow[from=6-3, to=6-2]
-            \arrow[from=6-4, to=6-3]
-            \arrow[from=6-5, to=6-4]
-            \arrow[from=6-6, to=6-5]
-            \arrow[from=6-10, to=5-8]
-            \arrow[from=6-11, to=5-9]
-            \arrow[from=6-12, to=5-10]
-            \arrow[from=6-17, to=4-14]
-            \arrow[from=6-18, to=4-15]
-        \end{tikzcd}
-    \]
-\end{remark}
+    \begin{definition}
+        Sei $\{E^{r}, d^{r}\}_{r \geq r_0}$ eine homologische Spektralsequenz.
+        Angenommen, es existiert für alle $p,q \in \Z$ eine natürliche Zahl
+        \[
+            r(p,q) \in \mathbb{N},
+        \]
+        abhängig von $p$ und $q$, derart, dass für alle $r \ge r(p,q)$
+        \[
+            E^{r}_{p,q}\;\cong\; E_{p,q}^{\,r(p,q)}.
+        \]
+        Dann sagen wir, dass die bigraduierte abelsche Gruppe
+        \[
+            E^{\infty} \;\coloneqq\; \bigoplus_{p,q \in \Z}E_{p,q}^{\,r(p,q)}
+        \]
+        der \textbf{Limes} der Spektralsequenz $\{E^{r}, d^{r}\}_{r \geq r_0}$ ist.
+        Äquivalent sagen wir auch, dass die Spektralsequenz \textbf{an} $E^{\infty}$
+        \textbf{angrenzt}.
+    \end{definition}
 
-\section{Filtrierungen und exakte Paare}
-Angenommen, wir haben einen topologischen Raum $X$ und einen \textbf{guten} Teilraum $A$, wobei das \textbf{Gütekriterium} in diesem Zusammenhang bedeutet, dass es eine Umgebung $U \subset X$ mit $\overline{A} \subset \mathring{U}$ gibt und $A$ ein Deformationsretrakt von $U$ ist. Dies stellt sicher, dass die relative Homologie
-\[
-    H_n(X,A) \;\cong\; \tilde{H}_n\bigl(X/A\bigr)
-\]
-isomorph zur \textbf{reduzierten} Homologie des Quotienten $X/A$ ist. Falls wir nun die Homologien von $A$ und $X/A$ kennen, so ist es naheliegend, zur Berechnung der Homologie von $X$ die lange exakte \textbf{reduzierte} Homologiesequenz zu verwenden:
-\[
-    \cdots \;\longrightarrow\; \tilde{H}_n(A)
-    \;\longrightarrow\; \tilde{H}_n(X)
-    \;\longrightarrow\; \tilde{H}_n\bigl(X/A\bigr)
-    \;\longrightarrow\;
-    \tilde{H}_{n-1}(A)
-    \;\longrightarrow\;
-    \tilde{H}_{n-1}(X)
-    \;\longrightarrow\; \cdots.
-\]
+    \begin{remark}
+        Im Folgenden ist eine schematische Darstellung der ersten drei Seiten einer Serre-Spektralsequenz
+        mit den zugehörigen Differentialen (durch Pfeile $\rightarrow$) und den jeweiligen
+        Definitions- und Zielbereichen (dargestellt durch $\bullet$). Die Symbole $\bullet$
+        stehen in diesem Kontext für abelsche Gruppen, speziell für Homologiegruppen
+        oder, falls über einem Körper $\mathbb{F}$ betrachtet, für entsprechende
+        Vektorräume.
 
-Erweitern wir unsere Situation auf \textbf{drei} ineinanderliegende Teilräume
-\[
-    B \;\subset\; A \;\subset\; X,
-\]
-wobei wir wieder annehmen, dass alle Teilräume \textbf{gut} im obigen Sinne sind und wir bereits die Homologien von $B$, $A/B$ sowie $X/A$ kennen. Dann wünschen wir uns eine Verallgemeinerung der langen exakten Sequenz, die auch für ein solches verschachteltes Paar von Räumen funktioniert. Im Allgemeinen kann man eine solche \textbf{Matroschka} von topologischen Räumen als \textbf{Filtrierung} auffassen:
+        Der rote Punkt $\color{red}
+        \bullet$ stellt das Element $E^{1}_{0,2}$ dar, der blaue Punkt $\color{blue}
+        \bullet$ repräsentiert $E^{2}_{1,-2}$. Diese besondere Spektralsequenz (die Serre-Spektralsequenz)
+        \textbf{stabilisiert} immer, das heißt, für hinreichend große $r$ ändert sich
+        die jeweilige Seite nicht mehr.
 
-\begin{definition}
-    Eine \textbf{Filtrierung} eines topologischen Raumes $X$ ist eine aufsteigende Folge von Teilräumen
-    \[
-        \mathcal{X}:\quad
-        \cdots \;\subset\; X_{-2} \;\subset\; X_{-1}
-        \;\subset\; X_{0} \;\subset\; X_{1} \;\subset\; \cdots \;\subset\; X.
-    \]
-\end{definition}
+        \[
+            \begin{tikzcd}
+                [sep=tiny] &&& {E^1} &&&&&& {E^2} &&&&&& {E^3} \\ & \bullet & \bullet & {\color{red}\bullet}
+                & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet &&
+                \bullet & \bullet & \bullet & \bullet & \bullet \\ {} & \bullet & \bullet
+                & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet &
+                \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\ & \bullet &
+                \bullet & \bullet & \bullet & \bullet && \bullet & \bullet & \bullet &
+                \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet \\ &
+                \bullet & \bullet & \bullet & \bullet & \bullet && \bullet & \bullet &
+                \bullet & \bullet & \bullet && \bullet & \bullet & \bullet & \bullet & \bullet
+                \\ & \bullet & \bullet & \bullet & \bullet & \bullet && \bullet &
+                \bullet & \bullet & {\color{blue}\bullet} & \bullet && \bullet & \bullet
+                & \bullet & \bullet & \bullet \arrow[from=2-3, to=2-2] \arrow[from=2-4,
+                to=2-3] \arrow[from=2-5, to=2-4] \arrow[from=2-6, to=2-5] \arrow[from=3-3,
+                to=3-2] \arrow[from=3-4, to=3-3] \arrow[from=3-5, to=3-4] \arrow[from=3-6,
+                to=3-5] \arrow[from=3-10, to=2-8] \arrow[from=3-11, to=2-9] \arrow[from=3-12,
+                to=2-10] \arrow[from=4-3, to=4-2] \arrow[from=4-4, to=4-3] \arrow[from=4-5,
+                to=4-4] \arrow[from=4-6, to=4-5] \arrow[shorten <=5pt, Rightarrow, from=4-6,
+                to=4-8] \arrow[from=4-10, to=3-8] \arrow[from=4-11, to=3-9] \arrow[from=4-12,
+                to=3-10] \arrow[shorten <=5pt, Rightarrow, from=4-12, to=4-14] \arrow[from=4-17,
+                to=2-14] \arrow[from=4-18, to=2-15] \arrow[from=5-3, to=5-2] \arrow[from=5-4,
+                to=5-3] \arrow[from=5-5, to=5-4] \arrow[from=5-6, to=5-5] \arrow[from=5-10,
+                to=4-8] \arrow[from=5-11, to=4-9] \arrow[from=5-12, to=4-10] \arrow[from=5-17,
+                to=3-14] \arrow[from=5-18, to=3-15] \arrow[from=6-3, to=6-2] \arrow[from=6-4,
+                to=6-3] \arrow[from=6-5, to=6-4] \arrow[from=6-6, to=6-5] \arrow[from=6-10,
+                to=5-8] \arrow[from=6-11, to=5-9] \arrow[from=6-12, to=5-10] \arrow[from=6-17,
+                to=4-14] \arrow[from=6-18, to=4-15]
+            \end{tikzcd}
+        \]
+    \end{remark}
 
-Nun stellt sich die Frage, was wir über die Homologien von $X$ aussagen können, wenn wir unser Wissen über die Homologien der $X_i$ aus einer Filtrierung $\mathcal{X}$ und/oder über die Quotientenräume $X_i/X_{i-1}$ einsetzen. Beschränken wir uns auf den Spezialfall, dass $X$ der Totalraum einer Faserung ist, so erhalten wir eine zufriedenstellende Antwort auf diese Frage.
+    \section{Filtrierungen und exakte Paare}
+    Angenommen, wir haben einen topologischen Raum $X$ und einen \textbf{guten} Teilraum
+    $A$, wobei das \textbf{Gütekriterium} in diesem Zusammenhang bedeutet, dass es
+    eine Umgebung $U \subset X$ mit $\overline{A}\subset \mathring{U}$ gibt und
+    $A$ ein Deformationsretrakt von $U$ ist. Dies stellt sicher, dass die relative
+    Homologie
+    \[
+        H_{n}(X,A) \;\cong\; \tilde{H}_{n}\bigl(X/A\bigr)
+    \]
+    isomorph zur \textbf{reduzierten} Homologie des Quotienten $X/A$ ist. Falls
+    wir nun die Homologien von $A$ und $X/A$ kennen, so ist es naheliegend, zur
+    Berechnung der Homologie von $X$ die lange exakte \textbf{reduzierte} Homologiesequenz
+    zu verwenden:
+    \[
+        \cdots \;\longrightarrow\; \tilde{H}_{n}(A) \;\longrightarrow\; \tilde{H}_{n}
+        (X) \;\longrightarrow\; \tilde{H}_{n}\bigl(X/A\bigr) \;\longrightarrow\; \tilde
+        {H}_{n-1}(A) \;\longrightarrow\; \tilde{H}_{n-1}(X) \;\longrightarrow\; \cdots
+        .
+    \]
 
-\begin{definition}
-    In einer Spektralsequenz kommt es häufig vor, dass $E^r$ und $d^r$ aus einer anderen Struktur hervorgehen, nämlich aus einem \textbf{exakten Paar}.
-    
-    Ein \textbf{exaktes Paar} besteht aus einem Paar bigraduierter abelscher Gruppen $A$ und $E$ zusammen mit bigraduierten Abbildungen
+    Erweitern wir unsere Situation auf \textbf{drei} ineinanderliegende Teilräume
     \[
-        i : A \to A,
-        \quad
-        j : A \to E,
-        \quad
-        k : E \to A,
+        B \;\subset\; A \;\subset\; X,
     \]
-    sodass das folgende Diagramm exakt ist:
-    \[
-        \begin{tikzcd}
-            A && A \\
-            & E
-            \arrow["i", from=1-1, to=1-3]
-            \arrow["j", from=1-3, to=2-2]
-            \arrow["k", from=2-2, to=1-1]
-        \end{tikzcd}
-    \]
-    Die \textbf{Exaktheit} ist analog zu der für kurze exakte Sequenzen oder Kettenkomplexe definiert:
-    \begin{itemize}[nolistsep]
-        \item $\ker i = \ima k$,
-        \item $\ker j = \ima i$,
-        \item $\ker k = \ima j$.
-    \end{itemize}
-\end{definition}
+    wobei wir wieder annehmen, dass alle Teilräume \textbf{gut} im obigen Sinne
+    sind und wir bereits die Homologien von $B$, $A/B$ sowie $X/A$ kennen. Dann
+    wünschen wir uns eine Verallgemeinerung der langen exakten Sequenz, die auch für
+    ein solches verschachteltes Paar von Räumen funktioniert. Im Allgemeinen kann
+    man eine solche \textbf{Matroschka} von topologischen Räumen als \textbf{Filtrierung}
+    auffassen:
 
-Haben wir ein solches exaktes Paar $(A,E,i,j,k)$, so gibt es eine natürliche Art und Weise, das Differential
-\[
-    d = j \,\circ\, k : E \;\longrightarrow\; E
-\]
-zu definieren, sodass
-\[
-    d^2 = (j \circ k)(j \circ k) \;=\; j\,(k \circ j)\,k = 0
-\]
-gilt. Dieses Differential wird dann verwendet, um ein zweites exaktes Paar, das sogenannte \textbf{derivierte Paar}, zu definieren.
+    \begin{definition}
+        Eine \textbf{Filtrierung} eines topologischen Raumes $X$ ist eine
+        aufsteigende Folge von Teilräumen
+        \[
+            \mathcal{X}:\quad \cdots \;\subset\; X_{-2}\;\subset\; X_{-1}\;\subset\; X_{0}
+            \;\subset\; X_{1}\;\subset\; \cdots \;\subset\; X.
+        \]
+    \end{definition}
 
-\begin{lemma}
-    Sei $(A,E,i,j,k)$ ein exaktes Paar. Dann gibt es ein zweites exaktes Paar
-    \[
-        (A',\,E',\,i',\,j',\,k'),
-    \]
-    das \textbf{deriviertes Paar} genannt wird, und in folgendem Diagramm beschrieben ist:
-    \[
-        \begin{tikzcd}
-            A' && A' \\
-            & E'
-            \arrow["i'", from=1-1, to=1-3]
-            \arrow["j'", from=1-3, to=2-2]
-            \arrow["k'", from=2-2, to=1-1]
-        \end{tikzcd}
-    \]
-    wobei die Definitionen mittels
-    \begin{itemize}[nolistsep]
-        \item $A' \;=\; i(A)$,
-        \item $E' \;=\; \ker(d)\big/\ima(d) \;=\; \ker(jk)\big/\ima(jk)$,
-        \item $i' = i\vert_{i(A)}$ (Einschränkung von $i$ auf $i(A)$),
-        \item Für alle $i(a) \in A':\; j'\bigl(i(a)\bigr) \;=\; \bigl[j(a)\bigr] \;\in\; E'$,
-        \item Für alle $[e] \in E':\; k'\bigl([e]\bigr) \;=\; k(e)$
-    \end{itemize}
-    gegeben sind.
-\end{lemma}
+    Nun stellt sich die Frage, was wir über die Homologien von $X$ aussagen können,
+    wenn wir unser Wissen über die Homologien der $X_{i}$ aus einer Filtrierung $\mathcal{X}$
+    und/oder über die Quotientenräume $X_{i}/X_{i-1}$ einsetzen. Beschränken wir
+    uns auf den Spezialfall, dass $X$ der Totalraum einer Faserung ist, so
+    erhalten wir eine zufriedenstellende Antwort auf diese Frage.
 
-\begin{proof}
-    Der Beweis gliedert sich in drei Teile. Wir zeigen die Wohldefiniertheit von $j'$ und $k'$ sowie die Exaktheit des entstehenden Diagramms.
-    
-    \begin{enumerate}[nolistsep]
-        \item \textbf{Wohldefiniertheit von $j'$.} \\
-              Sei $i(a_1) = i(a_2)$ für $a_1, a_2 \in A$. Da $a_1 - a_2 \in \ker(i)$ liegt und nach Exaktheit $\ker(i) = \ima(k)$ gilt, existiert ein $e \in E$ mit $k(e) = a_1 - a_2$. Dann folgt
-              \[
-                j(a_1) - j(a_2) \;=\; j(a_1 - a_2)
-                \;\in\; \ima(j\,k) \;=\; \ima(d).
-              \]
-              In anderen Worten ist $j(a_1) - j(a_2)$ ein \textbf{Rand} im Bild von $d$. Somit stimmen die Äquivalenzklassen überein:
-              \[
-                \bigl[j(a_1)\bigr]
-                \;=\;
-                \bigl[j(a_2)\bigr]
-                \quad\text{in } E'.
-              \]
-              Also ist $j'$ wohldefiniert und hängt nicht von der Wahl des Repräsentanten ab.
-              
-        \item \textbf{Wohldefiniertheit von $k'$.} \\
-              Für jedes $e \in \ker(d) = \ker(jk)$ gilt zunächst $k(e) \in \ker(j)$. Nach Exaktheit ist $\ker(j) = \ima(i)$, also $k(e) \in \ima(i) = A'$. Für $[e_1] = [e_2]$ in $E'$ (d.\,h.\ $[e_1 - e_2] = 0$) ist $e_1 - e_2$ ein Rand, also
-              \[
-                e_1 - e_2 \;\in\; \ima(d) = \ima(jk) \subset \ima(j) = \ker(k).
-              \]
-              Folglich gilt
-              \[
-                k(e_1 - e_2) = 0
-                \;\Longrightarrow\;
-                k'\bigl([\,e_1 - e_2\,]\bigr) = 0
-                \;\Longrightarrow\;
-                k'\bigl([\,e_1\,]\bigr) = k'\bigl([\,e_2\,]\bigr).
-              \]
-              Damit ist auch $k'$ wohldefiniert.
-              
-        \item \textbf{Exaktheit des Diagramms.} \\
-              \textbf{(a) $\ima(i') \subset \ker(j')$}:\\
-              Sei $a' \in A'$. Dann existiert $a \in A$ mit $i(a) = a'$. Nun
-              \[
-                (j' \circ i')(a')
-                \;=\;
-                j'\bigl(i'(a')\bigr)
-                \;=\;
-                j'\bigl(i\vert_{i(A)}(a')\bigr).
-              \]
-              Da $a' = i(a)$, folgt
-              \[
-                (j' \circ i')(i(a))
-                \;=\; j'(i(a))
-                \;=\; \bigl[j(a)\bigr].
-              \]
-              Aber $j(i(a)) = (j \circ i)(a) = 0$ (aus der Exaktheit folgt $j \circ i = 0$). Somit ist
-              \[
-                \bigl[j(a)\bigr] = \bigl[\,0\,\bigr]
-                \quad\Longrightarrow\quad
-                (j' \circ i')(a') = 0
-                \quad\Longrightarrow\quad
-                \ima(i') \;\subset\; \ker(j').
-              \]
-              
-              \textbf{(b) $\ker(j') \subset \ima(i')$}:\\
-              Sei $a' \in \ker(j')$. Dann ist $j'(a') = 0$. Da $a' \in A'$ gilt $a' = i(a)$ für ein $a \in A$. Also
-              \[
-                j'\bigl(i(a)\bigr) = \bigl[j(a)\bigr] = 0 
-                \;\Longrightarrow\;
-                j(a) \;\in\; \ima(d).
-              \]
-              Somit existiert $e \in E$ mit $j(a) = (jk)(e) = d(e)$. Folglich ist
-              \[
-                a - k(e) \;\in\; \ker(j) = \ima(i).
-              \]
-              Also gibt es ein $b \in A$, sodass $a - k(e) = i(b)$. Daraus folgt
-              \[
-                a' \;=\; i(a)
-                \;=\; i(a) \;-\; i(k(e)) \;=\; i\bigl(a - k(e)\bigr)
-                \;=\; i\bigl(i(b)\bigr)
-                \;=\; i^2(b).
-              \]
-              Da $i(a') = a'$ in $A'$ bereits als Bild vorliegt, folgt $a' \in \ima(i')$. Somit $\ker(j') = \ima(i')$.
-              
-              \textbf{(c) $\ima(j') \subset \ker(k')$}:\\
-              Sei $a' = i(a) \in A'$. Dann
-              \[
-                \bigl(k' \circ j'\bigr)(a')
-                \;=\;
-                k'\bigl(j'\bigl(i(a)\bigr)\bigr)
-                \;=\;
-                k'\bigl([\,j(a)\bigr])
-                \;=\;
-                k\bigl(j(a)\bigr).
-              \]
-              Doch aus Exaktheit folgt $k \circ j = 0$, also
-              \[
-                k\bigl(j(a)\bigr) = 0.
-              \]
-              Damit ist $\ima(j') \subset \ker(k')$.
-              
-              \textbf{(d) $\ker(k') \subset \ima(j')$}:\\
-              Sei $[e] \in \ker(k')$. Dann ist $k'( [e] ) = k(e) = 0$, woraus $e \in \ker(k)$. Nach Exaktheit ist $\ker(k) = \ima(j)$, also existiert $a \in A$ mit $e = j(a)$. Daher
-              \[
-                [e] = [\,j(a)\bigr] = j'\bigl(i(a)\bigr) \;\in\; \ima\bigl(j'\bigr).
-              \]
-              Somit $\ker(k') = \ima(j')$.
-              
-              \textbf{(e) $\ima(k') \subset \ker(i')$ und $\ker(i') \subset \ima(k')$}:\\
-              Für jedes $[e] \in E'$ ist
-              \[
-                (i' \circ k')\bigl([e]\bigr)
-                \;=\;
-                i'\bigl(k'( [e] )\bigr)
-                \;=\;
-                i\bigl(k(e)\bigr)
-                \;=\;
-                (i \circ k)(e)
-                \;=\;
-                0
-              \]
-              (aus $i \circ k = 0$). Also $\ima(k') \subset \ker(i')$.
-              
-              Ist umgekehrt $a' \in \ker(i') \subset A'$, so ist $i'(a') = 0$ in $A'$. Da $i'(a') = i(a')$ (Einschränkung) und $a' \in A' = i(A)$, existiert ein $a \in A$ mit $a' = i(a)$. Dann
-              \[
-                0 = i'(a') = i'(i(a)) = i\bigl(i(a)\bigr).
-              \]
-              Aufgrund der Exaktheit $\ker(i) = \ima(k)$ folgt, dass $i(a) \in \ima(k)$, also $i(a) = k(e)$ für ein $e \in E$. Damit ist $a' = k(e)$ und somit $a' = k'\bigl([e]\bigr)$. Also $\ker(i') \subset \ima(k')$. 
-              
-              Insgesamt folgt aus (a)--(e), dass das so konstruierte Diagramm exakt ist. Damit ist $(A', E', i', j', k')$ in der Tat ein exaktes Paar.
-    \end{enumerate}
-\end{proof}
+    \begin{definition}
+        In einer Spektralsequenz kommt es häufig vor, dass $E^{r}$ und $d^{r}$ aus
+        einer anderen Struktur hervorgehen, nämlich aus einem \textbf{exakten Paar}.
 
-Der Prozess, bei dem aus einem exakten Paar ein deriviertes Paar erzeugt wird, kann beliebig oft wiederholt werden. Dadurch erhalten wir für jedes $r \in \mathbb{N}$ ein \textbf{$r$-fach deriviertes Paar} $(A^r, E^r, i^r, j^r, k^r)$. Setzen wir
-\[
-    d^r \;=\; j^r \circ k^r,
-\]
-so entsteht die zugehörige \textbf{homologische Spektralsequenz} gerade durch die Paare
-\[
-    \{\,E^r,\, d^r\}_{r \in \mathbb{N}}.
-\]
-Allerdings haben wir auf diese Weise zunächst keine Graduierung, das heißt, es handelt sich nur um einfache abelsche Gruppen. Die Graduierung ergibt sich aus der Filtrierung
-\[
-    X_0 \;\subset\; X_1 \;\subset\; \cdots \;\subset\; X,
-\]
-indem wir daraus ein \textbf{exaktes Paar} konstruieren.
+        Ein \textbf{exaktes Paar} besteht aus einem Paar bigraduierter abelscher Gruppen
+        $A$ und $E$ zusammen mit bigraduierten Abbildungen
+        \[
+            i : A \to A, \quad j : A \to E, \quad k : E \to A,
+        \]
+        sodass das folgende Diagramm exakt ist:
+        \[
+            \begin{tikzcd}
+                A && A \\ & E \arrow["i", from=1-1, to=1-3] \arrow["j", from=1-3, to=2-2]
+                \arrow["k", from=2-2, to=1-1]
+            \end{tikzcd}
+        \]
+        Die \textbf{Exaktheit} ist analog zu der für kurze exakte Sequenzen oder Kettenkomplexe
+        definiert:
+        \begin{itemize}[nolistsep]
+            \item $\ker i = \ima k$,
 
-\begin{definition}[Exakte Paare einer Filtrierung]\label{exaktFiltration}
-    Für alle $p,q \in \Z$ setze
-    \[
-        E^1_{p,q} \;=\; H_{p+q}\bigl(X_p,\,X_{p-1}\bigr)
-        \quad\text{und}\quad
-        A^1_{p,q} \;=\; H_{p+q}\bigl(X_p\bigr).
-    \]
-    Die Abbildungen $i^1, j^1, k^1$ definieren wir auf jedem $A^1_{p,q}$ bzw.\ $E^1_{p,q}$ in Übereinstimmung mit der langen exakten Homologiesequenz. Im Folgenden illustriert das Diagramm die Konstruktion:
-    \[
-        \begin{tikzcd}[cramped]
-            \cdots & H_{p+q}(X_{p-1}) & H_{p+q}(X_{p}) & H_{p+q}(X_{p},X_{p-1}) \\
-            & {} & \cdots & H_{p+q-1}(X_{p-1})
-            \arrow["{k^1_{p,q+1}}", from=1-1, to=1-2]
-            \arrow["{i^1_{p,q}}", from=1-2, to=1-3]
-            \arrow["{j^1_{p,q}}", from=1-3, to=1-4]
-            \arrow["{k^1_{p,q}}", from=1-4, to=2-4]
-            \arrow["{i^1_{p,q-1}}"', from=2-4, to=2-3]
-        \end{tikzcd}
-    \]
-    Dabei gilt:
-    \begin{itemize}[nolistsep]
-        \item $i^1_{p,q} \;=\; H_{p+q}(\iota) : A^1_{p,q} \to A^1_{p,q}$ ist der funktorielle Homomorphismus, der aus der Inklusion 
-              \(\iota: X_{p-1} \hookrightarrow X_p\) entsteht.
-        \item $j^1_{p,q} : A^1_{p,q} \to E^1_{p,q}$ wird durch die Quotientenabbildung in der Kettengruppenfolge induziert.
-        \item $k^1_{p,q} : E^1_{p,q} \to A^1_{p,q-1}$ ist der \textbf{verbindende Homomorphismus}
-              \[
-                k^1_{p,q} \;=\; \partial : H_{p+q}(X_p,X_{p-1}) \;\longrightarrow\; H_{p+q-1}(X_{p-1}).
-              \]
-    \end{itemize}
-    Da die lange exakte Homologiesequenz exakt ist, bildet
-    \[
-        \bigl(E^1_{p,q},\,A^1_{p,q},\,i^1_{p,q},\,j^1_{p,q},\,k^1_{p,q}\bigr)
-    \]
-    ein \textbf{exaktes Paar}.
-\end{definition}
+            \item $\ker j = \ima i$,
 
-Aus Definition~\ref{exaktFiltration} erhalten wir für jedes $r$ ein entsprechendes exaktes Paar und damit \textbf{unendlich viele} exakte Paare (möglicherweise abzählbar oder überabzählbar unendlich). Definieren wir 
-\[
-    d^r \;=\; j^r \,\circ\, k^r,
-\]
-wie oben, so erhalten wir aus diesen exakten Paaren die zugehörige homologische Spektralsequenz.
+            \item $\ker k = \ima j$.
+        \end{itemize}
+    \end{definition}
 
-\begin{theorem}[Homologische Spektralsequenz einer Filtrierung]
-    Sei ein deriviertes exaktes Paar
+    Haben wir ein solches exaktes Paar $(A,E,i,j,k)$, so gibt es eine natürliche
+    Art und Weise, das Differential
     \[
-        \bigl(E^1_{p,q}, A^1_{p+q}, i^1_{p,q}, j^1_{p,q}, k^1_{p,q}\bigr)
+        d = j \,\circ\, k : E \;\longrightarrow\; E
     \]
-    aus einer homologisch exakten Sequenz einer Filtrierung gegeben. Dann gibt es eine homologische Spektralsequenz
+    zu definieren, sodass
     \[
-        \{\,E^r,\,d^r\}\quad\text{mit}\quad d^r \;=\; j^r \circ k^r.
+        d^{2} = (j \circ k)(j \circ k) \;=\; j\,(k \circ j)\,k = 0
     \]
-\end{theorem}
+    gilt. Dieses Differential wird dann verwendet, um ein zweites exaktes Paar, das
+    sogenannte \textbf{derivierte Paar}, zu definieren.
 
-\begin{proof}
-    Wir wissen bereits, dass \(\,d^r \circ d^r = 0\) gilt und dass \(E^{r+1}\) die Homologie von \(E^r\) bezüglich \(d^r\) ist. Es bleibt also zu zeigen, dass
-    \[
-        d^r : E^r \;\longrightarrow\; E^r
-        \quad\text{vom Grad}\; (-r,\,r-1)
-    \]
-    ist. Auf der ersten Seite folgt aus \(d^1 = j^1 \circ k^1\), dass wir für
-    \[
-        \bigl(H_{p+q}(X_p,\,X_{p-1}),\,d^1\bigr)
-    \]
-    die Abbildungen
-    \[
-        H_{p+q}(X_p,\,X_{p-1})
-        \;\xrightarrow{\;k^1\;}\;
-        H_{p+q-1}(X_{p-1})
-        \;\xrightarrow{\;j^1\;}\;
-        H_{p+q-1}(X_{p-1},\,X_{p-2})
-    \]
-    erhalten. Damit sehen wir, dass
-    \[
-        d^1 : E^1_{p,q} \;=\; H_{p+q}(X_p,\,X_{p-1})
-        \;\longrightarrow\;
-        H_{p+q-1}\bigl(X_{p-1},\,X_{p-2}\bigr)
-        \;=\;
-        E^1_{p-1,\,q},
-    \]
-    also ist \(d^1\) vom Grad \((-1,\,0)\).
-    
-    Für den allgemeinen Fall teilen wir den Beweis in drei Schritte auf:
-    
-    \begin{enumerate}[nolistsep]
-        \item \(A^r_{p,q} = i^{r-1}\bigl(A^1_{p,q}\bigr)\).
-        \item \(k^r_{p,q}: E^r_{p,q} \;\longrightarrow\; A^r_{p-1,q}\).
-        \item \(j^r_{p,q}: A^r_{p,q} \;\longrightarrow\; E^r_{p-r+1,\,q+r-1}\).
-    \end{enumerate}
-    
-    \noindent
-    \textbf{Zu (1).} Dies folgt unmittelbar aus der Definition der derivierten Paare.
-    
-    \smallskip
-    \noindent
-    \textbf{Zu (2).} Der Homomorphismus \(k^{r+1}_{p,q}\) wird durch \(k^r_{p,q}\) auf \(\ker(d^r) / \ima(d^r)\) induziert. Für die erste Seite wissen wir bereits, dass 
-    \[
-        k^1_{p,q} : E^1_{p,q} \;\longrightarrow\; A^1_{p-1,q}
-    \]
-    gilt. Durch Induktion definiert man analog
-    \[
-        k^n_{p,q} : E^n_{p,q} \;\longrightarrow\; A^n_{p-1,q}
-    \]
-    für beliebige \(n\). Somit ist auch \(k^r_{p,q}: E^r_{p,q} \to A^r_{p-1,q}\) wohldefiniert.
-    
-    \smallskip
-    \noindent
-    \textbf{Zu (3).} Sei \(a \in A^r_{p,q}\). Dann gibt es ein \(b \in A^1_{p,q}\) mit \(i^{r-1}(b) = a\), weil nach (1) \(\,A^r_{p,q} = i^{r-1}\bigl(A^1_{p,q}\bigr)\). Folglich
-    \begin{align}
-        j^r(a)
-          & \;=\;                                                     
-        j^r\bigl(i^{r-1}(b)\bigr)
-        \;=\;
-        \bigl[j^{r-1}\bigl(i^{r-2}(b)\bigr)\bigr] \\\nonumber
-          & \;= \bigl[\bigl[j^{r-2}\bigl(i^{r-3}(b)\bigr)\bigr]\bigr] 
-        \;=\;
-        \cdots
-        \;=\;
-        \bigl[\cdots \bigl[j^1(b)\bigr]\cdots\bigr].
-    \end{align}
-    Hier kennzeichnen wir durch mehrfaches Einklammern, dass wir zunächst eine Äquivalenzklasse \([\,\alpha]\) in \(E^r_{p,q}\) und anschließend eine weitere Klasse \([[\,\alpha]]\) in \(E^{r+1}_{p,q}\) betrachten. Weil sowohl
-    \(\,[\cdots [j^1(b)] \cdots] \in E^{r+k}_{p,q}\) 
-    als auch 
-    \(\,j^1(b) \in E^1_{p,q}\)
-    in derselben \textbf{homologischen Ordnung} liegen, folgt, dass sich nur der \textbf{Grad des derivierten Paares} ändert, nicht jedoch die zugrundeliegenden Homologiegruppen. Insbesondere gilt
-    \[
-        b \;\in\; A^1_{p-r+1,\,q+r-1},
-        \quad
-        j^1(b) \;\in\; E^1_{p-r+1,\,q+r-1},
-    \]
-    und entsprechend
-    \[
-        j^r_{p,q} : A^r_{p,q} \;\longrightarrow\; E^r_{p-r+1,\,q+r-1}.
-    \]
-    Verkettet man nun
-    \[
-        E^r_{p,q} \;\xrightarrow{k^r}\; A^r_{p-1,q}
-        \;\xrightarrow{j^r}\; E^r_{p-r,\,q+r-1},
-    \]
-    erhält man \(d^r = j^r \circ k^r\). Damit ist \(d^r\) vom Bigrad \((-r,\,r-1)\).
-    
-    \bigskip
-    
-    \noindent
-    Somit ist gezeigt, dass die Abbildung
-    \[
-        d^r : E^r \;\longrightarrow\; E^r
-    \]
-    tatsächlich vom Grad \(\,(-r,\,r-1)\) ist, was die Behauptung abschließt.
-\end{proof}
+    \begin{lemma}
+        Sei $(A,E,i,j,k)$ ein exaktes Paar. Dann gibt es ein zweites exaktes Paar
+        \[
+            (A',\,E',\,i',\,j',\,k'),
+        \]
+        das \textbf{deriviertes Paar} genannt wird, und in folgendem Diagramm
+        beschrieben ist:
+        \[
+            \begin{tikzcd}
+                A' && A' \\ & E' \arrow["i'", from=1-1, to=1-3] \arrow["j'", from=1-3,
+                to=2-2] \arrow["k'", from=2-2, to=1-1]
+            \end{tikzcd}
+        \]
+        wobei die Definitionen mittels
+        \begin{itemize}[nolistsep]
+            \item $A' \;=\; i(A)$,
 
-\section{Presentation der Serre spektralen Sequenz}
-Die \textbf{Serre-Spektralsequenz} wurde entwickelt, um die Homologiegruppen der verschiedenen Bestandteile einer sogenannten \textbf{Faserung} miteinander in Beziehung zu setzen. Bei einer Faserung 
-\[
-    Z \;\longrightarrow\; X \;\longrightarrow\; Y
-\]
-denkt man an eine Abbildung 
-\[
-    \pi : X \;\longrightarrow\; Y,
-\]
-so dass sämtliche Urbilder \(\,\pi^{-1}(y)\) für jedes \(y \in Y\) homotopieäquivalent zu \(Z\) sind. 
+            \item $E' \;=\; \ker(d)\big/\ima(d) \;=\; \ker(jk)\big/\ima(jk)$,
 
-Bevor wir die Konstruktion der Serre-Spektralsequenz genauer vorstellen können, benötigen wir die Definition einer Faserung, die die \textbf{Homotopiehochhebungseigenschaft} erfüllt. Diese Eigenschaft erlaubt es uns, aus einfacheren und bereits bekannten Räumen durch Anwendung der Faserung neue, komplexere Räume zu konstruieren. 
+            \item $i' = i\vert_{i(A)}$ (Einschränkung von $i$ auf $i(A)$),
 
-Die Faserung verallgemeinert dabei das Konzept eines Vektorbündels, kommt jedoch ohne lineare oder affine Struktur aus. Die Homotopiehochhebungseigenschaft wird sich anschließend in kompatiblen Eigenschaften auf der Ebene der Homologie niederschlagen und so die Grundlage für die Serre-Spektralsequenz bilden.
+            \item Für alle $i(a) \in A':\; j'\bigl(i(a)\bigr) \;=\; \bigl[j(a)\bigr] \;
+                \in\; E'$,
 
-\begin{definition}[Faserung]
-    Eine Abbildung \(\pi : X \to B\), welche die folgende \textbf{Homotopiehochhebungseigenschaft} für beliebige Räume \(Z\) erfüllt, heißt eine \textbf{Faserung}:
-    \begin{itemize}[noitemsep]
-        \item für jede Homotopie \(h : Z \times [0,1] \to B\) und
-        \item für jeden Lift \(\overline{h}_0 : Z \to X\) mit 
-              \[
-                h_0 \;=\; h\vert_{Z\times \{0\}}
-                \quad\text{und}\quad 
-                h_0 \;=\; \pi \circ \overline{h}_0,
-              \]
-    \end{itemize}
-    existiert eine \textbf{Homotopie} \(\overline{h} : Z \times [0,1] \to X\), die genau \(h\) \textbf{liftet}. Im folgenden kommutativen Diagramm wird das veranschaulicht:
-    \[\begin{tikzcd}[cramped]
-        {Z\times\{0\}} & X \\
-        {Z\times[0,1]} & B
-        \arrow["{\overline{h}_0}", from=1-1, to=1-2]
-        \arrow["\iota"', hook, from=1-1, to=2-1]
-        \arrow["\pi"{description}, from=1-2, to=2-2]
-        \arrow["{\overline{h}}", dashed, from=2-1, to=1-2]
-        \arrow["h", from=2-1, to=2-2]
-        \end{tikzcd}\]
-        \end{definition}
-        
+            \item Für alle $[e] \in E':\; k'\bigl([e]\bigr) \;=\; k(e)$
+        \end{itemize}
+        gegeben sind.
+    \end{lemma}
+
+    \begin{proof}
+        Der Beweis gliedert sich in drei Teile. Wir zeigen die Wohldefiniertheit von
+        $j'$ und $k'$ sowie die Exaktheit des entstehenden Diagramms.
+
+        \begin{enumerate}[nolistsep]
+            \item \textbf{Wohldefiniertheit von $j'$.} \\ Sei $i(a_{1}) = i(a_{2})$
+                für $a_{1}, a_{2} \in A$. Da $a_{1} - a_{2} \in \ker(i)$ liegt und nach Exaktheit
+                $\ker(i) = \ima(k)$ gilt, existiert ein $e \in E$ mit
+                $k(e) = a_{1} - a_{2}$. Dann folgt
+                \[
+                    j(a_{1}) - j(a_{2}) \;=\; j(a_{1} - a_{2}) \;\in\; \ima(j\,k) \;=\; \ima
+                    (d).
+                \]
+                In anderen Worten ist $j(a_{1}) - j(a_{2})$ ein \textbf{Rand} im Bild
+                von $d$. Somit stimmen die Äquivalenzklassen überein:
+                \[
+                    \bigl[j(a_{1})\bigr] \;=\; \bigl[j(a_{2})\bigr] \quad\text{in }E'.
+                \]
+                Also ist $j'$ wohldefiniert und hängt nicht von der Wahl des
+                Repräsentanten ab.
+
+            \item \textbf{Wohldefiniertheit von $k'$.} \\ Für jedes
+                $e \in \ker(d) = \ker(jk)$ gilt zunächst $k(e) \in \ker(j)$. Nach Exaktheit
+                ist $\ker(j) = \ima(i)$, also $k(e) \in \ima(i) = A'$. Für $[e_{1}] = [e_{2}
+                ]$ in $E'$ (d.\,h.\ $[e_{1} - e_{2}] = 0$) ist $e_{1} - e_{2}$ ein Rand,
+                also
+                \[
+                    e_{1} - e_{2} \;\in\; \ima(d) = \ima(jk) \subset \ima(j) = \ker(k).
+                \]
+                Folglich gilt
+                \[
+                    k(e_{1} - e_{2}) = 0 \;\Longrightarrow\; k'\bigl([\,e_{1} - e_{2}\,]\bigr
+                    ) = 0 \;\Longrightarrow\; k'\bigl([\,e_{1}\,]\bigr) = k'\bigl([\,e_{2}\,
+                    ]\bigr).
+                \]
+                Damit ist auch $k'$ wohldefiniert.
+
+            \item \textbf{Exaktheit des Diagramms.} \\ \textbf{(a)
+                $\ima(i') \subset \ker(j')$}:\\ Sei $a' \in A'$. Dann existiert
+                $a \in A$ mit $i(a) = a'$. Nun
+                \[
+                    (j' \circ i')(a') \;=\; j'\bigl(i'(a')\bigr) \;=\; j'\bigl(i\vert_{i(A)}
+                    (a')\bigr).
+                \]
+                Da $a' = i(a)$, folgt
+                \[
+                    (j' \circ i')(i(a)) \;=\; j'(i(a)) \;=\; \bigl[j(a)\bigr].
+                \]
+                Aber $j(i(a)) = (j \circ i)(a) = 0$ (aus der Exaktheit folgt $j \circ i =
+                0$). Somit ist
+                \[
+                    \bigl[j(a)\bigr] = \bigl[\,0\,\bigr] \quad\Longrightarrow\quad (j' \circ
+                    i')(a') = 0 \quad\Longrightarrow\quad \ima(i') \;\subset\; \ker(j').
+                \]
+
+                \textbf{(b) $\ker(j') \subset \ima(i')$}:\\ Sei $a' \in \ker(j')$. Dann
+                ist $j'(a') = 0$. Da $a' \in A'$ gilt $a' = i(a)$ für ein $a \in A$.
+                Also
+                \[
+                    j'\bigl(i(a)\bigr) = \bigl[j(a)\bigr] = 0 \;\Longrightarrow\; j(a) \;\in
+                    \; \ima(d).
+                \]
+                Somit existiert $e \in E$ mit $j(a) = (jk)(e) = d(e)$. Folglich ist
+                \[
+                    a - k(e) \;\in\; \ker(j) = \ima(i).
+                \]
+                Also gibt es ein $b \in A$, sodass $a - k(e) = i(b)$. Daraus folgt
+                \[
+                    a' \;=\; i(a) \;=\; i(a) \;-\; i(k(e)) \;=\; i\bigl(a - k(e)\bigr) \;=\;
+                    i\bigl(i(b)\bigr) \;=\; i^{2}(b).
+                \]
+                Da $i(a') = a'$ in $A'$ bereits als Bild vorliegt, folgt
+                $a' \in \ima(i')$. Somit $\ker(j') = \ima(i')$.
+
+                \textbf{(c) $\ima(j') \subset \ker(k')$}:\\ Sei $a' = i(a) \in A'$. Dann
+                \[
+                    \bigl(k' \circ j'\bigr)(a') \;=\; k'\bigl(j'\bigl(i(a)\bigr)\bigr) \;=\;
+                    k'\bigl([\,j(a)\bigr]) \;=\; k\bigl(j(a)\bigr).
+                \]
+                Doch aus Exaktheit folgt $k \circ j = 0$, also
+                \[
+                    k\bigl(j(a)\bigr) = 0.
+                \]
+                Damit ist $\ima(j') \subset \ker(k')$.
+
+                \textbf{(d) $\ker(k') \subset \ima(j')$}:\\ Sei $[e] \in \ker(k')$. Dann
+                ist $k'( [e] ) = k(e) = 0$, woraus $e \in \ker(k)$. Nach Exaktheit ist
+                $\ker(k) = \ima(j)$, also existiert $a \in A$ mit $e = j(a)$. Daher
+                \[
+                    [e] = [\,j(a)\bigr] = j'\bigl(i(a)\bigr) \;\in\; \ima\bigl(j'\bigr).
+                \]
+                Somit $\ker(k') = \ima(j')$.
+
+                \textbf{(e) $\ima(k') \subset \ker(i')$ und $\ker(i') \subset \ima(k')$}:\\
+                Für jedes $[e] \in E'$ ist
+                \[
+                    (i' \circ k')\bigl([e]\bigr) \;=\; i'\bigl(k'( [e] )\bigr) \;=\; i\bigl
+                    (k(e)\bigr) \;=\; (i \circ k)(e) \;=\; 0
+                \]
+                (aus $i \circ k = 0$). Also $\ima(k') \subset \ker(i')$.
+
+                Ist umgekehrt $a' \in \ker(i') \subset A'$, so ist $i'(a') = 0$ in $A'$.
+                Da $i'(a') = i(a')$ (Einschränkung) und $a' \in A' = i(A)$, existiert ein
+                $a \in A$ mit $a' = i(a)$. Dann
+                \[
+                    0 = i'(a') = i'(i(a)) = i\bigl(i(a)\bigr).
+                \]
+                Aufgrund der Exaktheit $\ker(i) = \ima(k)$ folgt, dass $i(a) \in \ima(k)$,
+                also $i(a) = k(e)$ für ein $e \in E$. Damit ist $a' = k(e)$ und somit $a'
+                = k'\bigl([e]\bigr)$. Also $\ker(i') \subset \ima(k')$.
+
+                Insgesamt folgt aus (a)--(e), dass das so konstruierte Diagramm exakt
+                ist. Damit ist $(A', E', i', j', k')$ in der Tat ein exaktes Paar.
+        \end{enumerate}
+    \end{proof}
+
+    Der Prozess, bei dem aus einem exakten Paar ein deriviertes Paar erzeugt wird,
+    kann beliebig oft wiederholt werden. Dadurch erhalten wir für jedes
+    $r \in \mathbb{N}$ ein \textbf{$r$-fach deriviertes Paar} $(A^{r}, E^{r}, i^{r}
+    , j^{r}, k^{r})$. Setzen wir
+    \[
+        d^{r} \;=\; j^{r} \circ k^{r},
+    \]
+    so entsteht die zugehörige \textbf{homologische Spektralsequenz} gerade durch die
+    Paare
+    \[
+        \{\,E^{r},\, d^{r}\}_{r \in \mathbb{N}}.
+    \]
+    Allerdings haben wir auf diese Weise zunächst keine Graduierung, das heißt, es
+    handelt sich nur um einfache abelsche Gruppen. Die Graduierung ergibt sich aus
+    der Filtrierung
+    \[
+        X_{0} \;\subset\; X_{1} \;\subset\; \cdots \;\subset\; X,
+    \]
+    indem wir daraus ein \textbf{exaktes Paar} konstruieren.
+
+    \begin{definition}[Exakte Paare einer Filtrierung]
+        \label{exaktFiltration} Für alle $p,q \in \Z$ setze
+        \[
+            E^{1}_{p,q}\;=\; H_{p+q}\bigl(X_{p},\,X_{p-1}\bigr) \quad\text{und}\quad A^{1}
+            _{p,q}\;=\; H_{p+q}\bigl(X_{p}\bigr).
+        \]
+        Die Abbildungen $i^{1}, j^{1}, k^{1}$ definieren wir auf jedem $A^{1}_{p,q}$
+        bzw.\ $E^{1}_{p,q}$ in Übereinstimmung mit der langen exakten
+        Homologiesequenz. Im Folgenden illustriert das Diagramm die Konstruktion:
+        \[
+            \begin{tikzcd}
+                [cramped] \cdots & H_{p+q}(X_{p-1}) & H_{p+q}(X_{p}) & H_{p+q}(X_{p},X_{p-1})
+                \\ & {} & \cdots & H_{p+q-1}(X_{p-1}) \arrow["{k^1_{p,q+1}}", from=1-1,
+                to=1-2] \arrow["{i^1_{p,q}}", from=1-2, to=1-3] \arrow["{j^1_{p,q}}", from=1-3,
+                to=1-4] \arrow["{k^1_{p,q}}", from=1-4, to=2-4] \arrow["{i^1_{p,q-1}}"',
+                from=2-4, to=2-3]
+            \end{tikzcd}
+        \]
+        Dabei gilt:
+        \begin{itemize}[nolistsep]
+            \item $i^{1}_{p,q}\;=\; H_{p+q}(\iota) : A^{1}_{p,q}\to A^{1}_{p,q}$ ist der
+                funktorielle Homomorphismus, der aus der Inklusion
+                $\iota: X_{p-1}\hookrightarrow X_{p}$ entsteht.
+
+            \item $j^{1}_{p,q}: A^{1}_{p,q}\to E^{1}_{p,q}$ wird durch die Quotientenabbildung
+                in der Kettengruppenfolge induziert.
+
+            \item $k^{1}_{p,q}: E^{1}_{p,q}\to A^{1}_{p,q-1}$ ist der \textbf{verbindende
+                Homomorphismus}
+                \[
+                    k^{1}_{p,q}\;=\; \partial : H_{p+q}(X_{p},X_{p-1}) \;\longrightarrow\;
+                    H_{p+q-1}(X_{p-1}).
+                \]
+        \end{itemize}
+        Da die lange exakte Homologiesequenz exakt ist, bildet
+        \[
+            \bigl(E^{1}_{p,q},\,A^{1}_{p,q},\,i^{1}_{p,q},\,j^{1}_{p,q},\,k^{1}_{p,q}\bigr
+            )
+        \]
+        ein \textbf{exaktes Paar}.
+    \end{definition}
+
+    Aus Definition~\ref{exaktFiltration} erhalten wir für jedes $r$ ein
+    entsprechendes exaktes Paar und damit \textbf{unendlich viele} exakte Paare (möglicherweise
+    abzählbar oder überabzählbar unendlich). Definieren wir
+    \[
+        d^{r} \;=\; j^{r} \,\circ\, k^{r},
+    \]
+    wie oben, so erhalten wir aus diesen exakten Paaren die zugehörige homologische
+    Spektralsequenz.
+
+    \begin{theorem}[Homologische Spektralsequenz einer Filtrierung]
+        Sei ein deriviertes exaktes Paar
+        \[
+            \bigl(E^{1}_{p,q}, A^{1}_{p+q}, i^{1}_{p,q}, j^{1}_{p,q}, k^{1}_{p,q}\bigr)
+        \]
+        aus einer homologisch exakten Sequenz einer Filtrierung gegeben. Dann gibt
+        es eine homologische Spektralsequenz
+        \[
+            \{\,E^{r},\,d^{r}\}\quad\text{mit}\quad d^{r} \;=\; j^{r} \circ k^{r}.
+        \]
+    \end{theorem}
+
+    \begin{proof}
+        Wir wissen bereits, dass $\,d^{r} \circ d^{r} = 0$ gilt und dass $E^{r+1}$
+        die Homologie von $E^{r}$ bezüglich $d^{r}$ ist. Es bleibt also zu zeigen,
+        dass
+        \[
+            d^{r} : E^{r} \;\longrightarrow\; E^{r} \quad\text{vom Grad}\; (-r,\,r-1)
+        \]
+        ist. Auf der ersten Seite folgt aus $d^{1} = j^{1} \circ k^{1}$, dass wir
+        für
+        \[
+            \bigl(H_{p+q}(X_{p},\,X_{p-1}),\,d^{1}\bigr)
+        \]
+        die Abbildungen
+        \[
+            H_{p+q}(X_{p},\,X_{p-1}) \;\xrightarrow{\;k^1\;}\; H_{p+q-1}(X_{p-1}) \;\xrightarrow
+            {\;j^1\;}\; H_{p+q-1}(X_{p-1},\,X_{p-2})
+        \]
+        erhalten. Damit sehen wir, dass
+        \[
+            d^{1} : E^{1}_{p,q}\;=\; H_{p+q}(X_{p},\,X_{p-1}) \;\longrightarrow\; H_{p+q-1}
+            \bigl(X_{p-1},\,X_{p-2}\bigr) \;=\; E^{1}_{p-1,\,q},
+        \]
+        also ist $d^{1}$ vom Grad $(-1,\,0)$.
+
+        Für den allgemeinen Fall teilen wir den Beweis in drei Schritte auf:
+
+        \begin{enumerate}[nolistsep]
+            \item $A^{r}_{p,q}= i^{r-1}\bigl(A^{1}_{p,q}\bigr)$.
+
+            \item $k^{r}_{p,q}: E^{r}_{p,q}\;\longrightarrow\; A^{r}_{p-1,q}$.
+
+            \item $j^{r}_{p,q}: A^{r}_{p,q}\;\longrightarrow\; E^{r}_{p-r+1,\,q+r-1}$.
+        \end{enumerate}
+
         \noindent
-        Nun betrachten wir einige Beispiele von Faserungen, um ein besseres \textbf{Gefühl} für diese Struktur zu bekommen.
-        
-        \begin{example}
-            \label{examplesFibrations}
-            Beispiele für Faserungen:
-            \begin{enumerate}[nolistsep]
-                \item Seien \(X,Y\) topologische Räume. Dann ist die Projektion
-                      \[
-                        \pi : X \times Y \;\longrightarrow\; Y
-                      \]
-                      eine Faserung. Jede Faser ist homöomorph zu \(X\). Zur Verifikation der Homotopiehochhebungseigenschaft sei
-                      \[
-                        h : Z \times [0,1] \;\longrightarrow\; Y
-                      \]
-                      eine Homotopie und \(\overline{h}_0 : Z \times \{0\} \to X \times Y\) ein Lift mit 
-                      \[
-                        (\pi \circ \overline{h}_0)(z) \;=\; h_0(z) \;=\; h(z,0).
-                      \]
-                      Definiere \(\overline{h} : Z \times [0,1] \to X \times Y\) durch
-                      \[
-                        \overline{h}(z,t)
-                        \;=\;
-                        \Bigl(\bigl(p_X \circ \overline{h}_0\bigr)(z),\; h(z,t)\Bigr),
-                      \]
-                      wobei \(p_X : X \times Y \to X\) die Projektion auf die erste Komponente ist. Offenbar stimmt \(\overline{h}\) in der \(X\)-Komponente mit \(\overline{h}_0\) und in der \(Y\)-Komponente mit \(h\) überein, was genau die benötigte Lifteigenschaft liefert.
-                      
-                \item Die kanonische Surjektion 
-                      \[
-                        \pi : S^n \;\longrightarrow\; \mathbb{R}P^n,\quad x \;\mapsto\; [x]
-                      \]
-                      ist eine Faserung, deren Fasern homöomorph zu \(S^0\) sind (man kann sich das als \(\{\pm x\}\subset S^n\) über einem Punkt \([x]\) in \(\mathbb{R}P^n\) vorstellen).
-                      
-                \item Die kanonische Surjektion 
-                      \[
-                        \pi : S^{2n+1} \;\longrightarrow\; \mathbb{C}P^n,\quad x \;\mapsto\; [x]
-                      \]
-                      ist eine Faserung, deren Fasern homöomorph zu \(S^1\) sind. Hier interpretiert man die Punkte im \(\,S^{2n+1}\subset \mathbb{C}^{n+1}\) als Einheitsvektoren und deren Bilder in \(\,\mathbb{C}P^n\) als komplexe Geraden.
-            \end{enumerate}
-        \end{example}
-        
-        Als gegebene Daten verwenden wir eine Faserung \(\pi : X \to B\), wobei \(B\) ein wegzusammenhängender CW-Komplex und \(X\) ein topologischer Raum ist. Man beachte, dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern. Eine solche Faserung heißt auch eine \textbf{Serre-Faserung}. Der Raum \(B\) wird \textbf{Basisraum} genannt, \(X\) der \textbf{Totalraum}. 
-        
-        Wir erzeugen eine Filtrierung von \(X\), indem wir das \(p\)-Skelett \(B^p\) von \(B\) betrachten und
-        \[
-            X_p \;\coloneqq\; \pi^{-1}\bigl(B^p\bigr)
-        \]
-        setzen. Aus dieser Filtrierung erhalten wir ein exaktes Paar, aus dem wiederum eine homologische Sequenz entsteht. In dieser Konstellation heißt die resultierende Spektralsequenz auch \textbf{Serre-Spektralsequenz}.
-        
+        \textbf{Zu (1).} Dies folgt unmittelbar aus der Definition der derivierten
+        Paare.
+
         \smallskip
-        
-        Für einen Weg \(\gamma: [0,1] \to B\) in den Basisraum \(B\) benötigen wir eine stetige Abbildung
+        \noindent
+        \textbf{Zu (2).} Der Homomorphismus $k^{r+1}_{p,q}$ wird durch $k^{r}_{p,q}$
+        auf $\ker(d^{r}) / \ima(d^{r})$ induziert. Für die erste Seite wissen wir
+        bereits, dass
         \[
-            L_\gamma : F_a \;\longrightarrow\; F_b,
+            k^{1}_{p,q}: E^{1}_{p,q}\;\longrightarrow\; A^{1}_{p-1,q}
         \]
-        wobei \(F_a = \pi^{-1}(a)\) und \(F_b = \pi^{-1}(b)\) die Fasern über \(a = \gamma(0)\) bzw.\ \(b = \gamma(1)\) sind. Die Existenz einer solchen Abbildung wird durch die Homotopieäquivalenz der Fasern \(\,F_{\gamma(s)}\) für alle \(s\in[0,1]\) garantiert, sobald \(\pi : X \to B\) eine Serre-Faserung ist. Dies führt zur folgenden Aussage:
-        
-        \begin{proposition}
-            Falls \(\pi : X \to B\) eine Faserung ist, so sind die Fasern 
-            \[
-                F_b \;=\; \pi^{-1}(b)
-            \]
-            über jede wegzusammenhängende Komponente von \(B\) zueinander homotopieäquivalent.
-        \end{proposition}
-        
-        \begin{proof}
-            Sei \(\gamma : [0,1] \to B\) ein Weg und \(F_{\gamma(s)} \coloneqq \pi^{-1}(\gamma(s))\) eine Faser. Wir definieren eine Homotopie
-            \[
-                h : F_{\gamma(0)} \times [0,1] \;\longrightarrow\; B,
-                \quad
-                h(x,t) \;=\; \gamma(t).
-            \]
-            Sei \(\overline{h}_0 : F_{\gamma(0)} \times \{0\} \hookrightarrow X\) die Inklusion. Dann gilt für jedes \(x \in F_{\gamma(0)}\):
-            \[
-                (\pi \circ \overline{h}_0)(x) \;=\; \gamma(0)
-                \;=\;
-                h_0(x).
-            \]
-            Da \(\pi : X \to B\) eine Faserung ist, existiert eine Abbildung
-            \[
-                \overline{h} : F_{\gamma(0)} \times [0,1] \;\longrightarrow\; X,
-            \]
-            sodass in folgendem Diagramm alles kommutiert:
-            \[\begin{tikzcd}[cramped]
-                {F_{\gamma(0)}\times\{0\}} & X \\
-                {F_{\gamma(0)}\times[0,1]} & B
-                \arrow["{\overline{h}_0}", from=1-1, to=1-2]
-                \arrow["\iota"', hook, from=1-1, to=2-1]
-                \arrow["\pi"{description}, from=1-2, to=2-2]
-                \arrow["{\overline{h}}", dashed, from=2-1, to=1-2]
-                \arrow["h", from=2-1, to=2-2]
-                \end{tikzcd}\]
-                Insbesondere gilt \(h = \pi \circ \overline{h}\), und \(\overline{h}(x,t) \in F_{\gamma(t)}\). Für \(t=1\) erhalten wir daraus die gesuchte Abbildung
-                \[
-                    L_\gamma : F_{\gamma(0)} \;\longrightarrow\; F_{\gamma(1)},
-                    \quad
-                    L_\gamma(x) \;=\; \overline{h}\bigl(x,1\bigr).
-                \]
-                Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des Weges \(\gamma\), und damit sind sämtliche Fasern über eine wegzusammenhängende Komponente von \(B\) untereinander homotopieäquivalent.
-                \end{proof}
-                
-                
-                Wir zeigen als Nächstes, dass sich die Abbildung \(\gamma \mapsto L_\gamma\) bezüglich Homotopien \cite[Prop.~4.61]{hatcher2001} \textbf{gutartig} verhält:
-                \begin{itemize}[noitemsep]
-                    \item Falls \(\gamma\) und \(\gamma'\) Wege von \(a\) nach \(b\) sind und
-                          \(\gamma \simeq_{\{0,1\}} \gamma'\)
-                          (d.\,h.\ es existiert eine Homotopie \(h : \gamma \Rightarrow \gamma'\), die auf den Basispunkten \(0\) und \(1\) konstant ist), dann gilt
-                          \[
-                            L_\gamma \;\simeq\; L_{\gamma'}.
-                          \]
-                    \item Falls \(\gamma_0\) und \(\gamma_1\) Wege sind, sodass \(\gamma_1(0) = \gamma_0(1)\), dann gilt
-                          \[
-                            L_{\gamma_0 \star \gamma_1}
-                            \;\simeq\;
-                            L_{\gamma_1} \,\circ\, L_{\gamma_0}.
-                          \]
-                \end{itemize}
-                Im Folgenden leiten wir aus diesen Eigenschaften die Proposition her. Seien \(F_a\) und \(F_b\) Fasern einer Faserung und \(\gamma\) ein Weg von \(a\) nach \(b\). Wir betrachten die Abbildungen
-                \[
-                    L_\gamma : F_a \longrightarrow F_b
-                    \quad\text{und}\quad
-                    L_{\overline{\gamma}} : F_b \longrightarrow F_a,
-                \]
-                wobei \(\overline{\gamma}\) ein Weg von \(b\) zurück nach \(a\) bezeichnet.
-                
-                \smallskip
-                
-                Sei \(\alpha \equiv a\) die konstante Schleife bei \(a\), und sei \(\overline{h}\) die Abbildung, mit der wir \(L_\alpha(x)\) definieren. Da
-                \[
-                    h(x,t) \;=\; \alpha(x) \;=\; a
-                    \quad\text{für alle}\;
-                    x\in F_a,\; t\in [0,1],
-                \]
-                folgt \(\overline{h}(x,t) \in F_a\) für alle \(x\) und \(t\). Somit ist \(\overline{h}\) eine Homotopie, welche \(\overline{h}(x,0) = \mathrm{Id}_{F_a}(x)\) und \(\overline{h}(x,1) = L_\alpha(x)\) erfüllt. Daher gilt
-                \[
-                    \mathrm{Id}_{F_a}
-                    \;\simeq\;
-                    L_\alpha
-                    \quad\text{und analog}\quad
-                    \mathrm{Id}_{F_b}
-                    \;\simeq\;
-                    L_\beta,
-                \]
-                wobei \(\beta\) die konstante Schleife bei \(b\) ist.
-                
-                \smallskip
-                
-                Mit den oben genannten Eigenschaften nach \cite[Prop.~4.61]{hatcher2001} erhalten wir nun:
-                \[
-                    L_{\overline{\gamma}} \,\circ\, L_\gamma
-                    \;\simeq\;
-                    L_{\gamma \star \overline{\gamma}}
-                    \;\simeq\;
-                    L_\alpha
-                    \;\simeq\;
-                    \mathrm{Id}_{F_a},
-                \]
-                \[
-                    L_{\gamma} \,\circ\, L_{\overline{\gamma}}
-                    \;\simeq\;
-                    L_{\overline{\gamma} \star \gamma}
-                    \;\simeq\;
-                    L_\beta
-                    \;\simeq\;
-                    \mathrm{Id}_{F_b}.
-                \]
-                Daraus folgt, dass \(F_a\) und \(F_b\) homotopieäquivalent sind.
-                
-                \smallskip
-                
-                Durch diese Proposition hat sich die Konvention etabliert, für einen gegebenen (wegzusammenhängenden) Basisraum stets Bezug auf \textbf{die} Faser der Faserung zu nehmen, denn alle Fasern sind untereinander homotopieäquivalent. Üblich ist es daher, eine Faserung auch kurz in der Form
-                \[
-                    F \;\longrightarrow\; X \;\longrightarrow\; B
-                \]
-                anzugeben, wobei \(F\) ein Raum ist, der homotopieäquivalent zu den jeweiligen Fasern \(\pi^{-1}(b)\) ist.
-                
-                \smallskip
-                
-                Entsprechend lassen sich unsere Beispiele aus \autoref{examplesFibrations} wie folgt umschreiben:
-                \begin{itemize}[nolistsep]
-                    \item \(F \;\longrightarrow\; F \times B \;\longrightarrow\; B,\)
-                    \item \(S^0 \;\longrightarrow\; S^n \;\longrightarrow\; \mathbb{R}P^n,\)
-                    \item \(S^1 \;\longrightarrow\; S^{2n+1} \;\longrightarrow\; \mathbb{C}P^n.\)
-                \end{itemize}
-                In all diesen Beispielen sind die jeweiligen Fasern sogar \textbf{homeomorph}. 
-                
-                \noindent
-                Für jeden Weg \(\gamma : [0,1] \to B\) erhalten wir eine Abbildung 
-                \[
-                    L_\gamma : F_{\gamma(0)} \;\longrightarrow\; F_{\gamma(1)},
-                \]
-                indem wir die Homotopiehochhebungseigenschaft auf die Faser \(F_{\gamma(0)}\) anwenden.
-                
-                \smallskip
-                
-                Um das Faserbündel
-                \[
-                    S^1 \;\longrightarrow\; S^\infty \;\longrightarrow\; \mathbb{C}P^\infty
-                \]
-                mit der kanonischen Surjektion \(\pi : S^\infty \to \mathbb{C}P^\infty\) in unserem Beispiel nutzbar zu machen, müssen wir zeigen, dass es sich tatsächlich um eine \textbf{Faserung} handelt. Dabei verwenden wir, dass \(\mathbb{C}P^\infty\) als \textbf{CW-Komplex} konstruiert wird, der zugleich wegzusammenhängend und einfach zusammenhängend ist.
-                
-                \smallskip
-                
-                Sei nun \(X\) ein topologischer Raum und \(\mathcal{U}\) eine offene Überdeckung von \(X\).
-                
-                \begin{definition}
-                    Eine \textbf{Verfeinerung} von \(\mathcal{U}\) ist eine offene Überdeckung \(\mathcal{V}\) von \(X\), sodass für jedes \(V \in \mathcal{V}\) ein \(U \in \mathcal{U}\) existiert mit \(V \subset U\).
-                    
-                    Wir sagen, dass eine Verfeinerung \(\mathcal{V}\) \textbf{lokal endlich} ist, falls für alle Punkte \(x \in X\) und jede offene Umgebung \(U_x\) von \(x\) nur endlich viele Mengen \(V \in \mathcal{V}\) die Bedingung \(U_x \cap V \neq \emptyset\) erfüllen.
-                \end{definition}
-                
-                \begin{definition}
-                    Ein topologischer Raum heißt \textbf{parakompakt}, falls jede offene Überdeckung eine lokal endliche Verfeinerung besitzt.
-                \end{definition}
-                
-                \begin{remark}
-                    Alle kompakten topologischen Räume sind parakompakt.
-                \end{remark}
-                
-                \begin{lemma}
-                    Jeder \textbf{CW-Komplex} ist parakompakt.
-                \end{lemma}
-                
-                \begin{proof}
-                    Sei $X$ ein CW-Komplex mit $n$-Skeletten $X^n$. Wir können jedes $X^n$ als Vereinigung 
-                    \[
-                        X^n \;=\; \bigcup_{\alpha} K^n_{\alpha}
-                    \]
-                    von endlichen CW-Komplexen schreiben. Sei $\mathcal{U}$ eine offene Überdeckung von $X$. Für jedes $n$ und jedes $\alpha$ betrachten wir
-                    \[
-                        \mathcal{U}^n_\alpha \;=\; \{\,U \cap K^n_{\alpha} \,\mid\, U \in \mathcal{U}\},
-                    \]
-                    das eine offene Überdeckung von $K^n_{\alpha}$ darstellt. Da jedes $K^n_{\alpha}$ kompakt ist, existiert eine Verfeinerung $\mathcal{V}^n_\alpha$ von $\mathcal{U}^n_\alpha$. Für jede offene Menge $A \in \mathcal{V}^n_\alpha$ gibt es eine offene Menge $V_A \subset X$, sodass
-                    \[
-                        A \;=\; V_A \,\cap\, K^n_{\alpha}.
-                    \]
-                    Da $A \subset U_A \cap K^n_{\alpha}$ für ein $U_A \in \mathcal{U}$ gilt, können wir durch Bildung des Durchschnitts $V_A \cap U_A$ (falls nötig) annehmen, dass $V_A \subset U_A$ gilt.
-                    
-                    Setzen wir nun
-                    \[
-                        \mathcal{V} \;=\; \bigl\{\,V_A \;\mid\; A \in \mathcal{V}^n_{\alpha}\bigr\}_{n,\alpha}.
-                    \]
-                    Weil jede Familie $\{\,V_A \,\mid\, A \in \mathcal{V}^n_{\alpha}\}$ lokal endlich ist, ist $\mathcal{V}$ eine \textbf{abzählbar lokal endliche} Verfeinerung von $\mathcal{U}$ (d.\,h.\ $\mathcal{V}$ ist eine Verfeinerung, die eine abzählbare Vereinigung lokal endlicher Familien ist). Da CW-Komplexe regulär sind, können wir nach Lemma~41.3 aus \cite{hatcher2001} (bzw.\ [7]) darauf schließen, dass $X$ parakompakt ist.
-                \end{proof}
-                
-                \begin{theorem}[{\cite[Theorem 1]{huebsch1955}}]
-                    Falls \(\pi : X \to B\) ein Faserbündel ist und \(B\) parakompakt, dann ist \(\pi\) eine Faserung.
-                \end{theorem}
-                
-                \noindent
-                Aus diesem Satz und der Tatsache, dass alle CW-Komplexe parakompakt sind, ergibt sich das gewünschte Korollar:
-                
-                \begin{corollary}
-                    Jedes Faserbündel mit einem CW-Komplex als Basisraum ist eine Faserung.
-                \end{corollary}
-                
-                \noindent
-                Angenommen, wir haben eine Faserung 
-                \[
-                    \pi: X \;\longrightarrow\; B,
-                \]
-                wobei wir der Einfachheit halber voraussetzen, dass $B$ ein wegzusammenhängender CW-Komplex ist. Für jedes $p$ sei $B^p$ das $p$-dimensionale Skelett von $B$, und wir definieren
-                \[
-                    X_p \;\coloneqq\; \pi^{-1}\bigl(B^p\bigr).
-                \]
-                Die Räume $X_p$ bilden eine Filtrierung von $X$, auf die wir später noch zurückkommen werden. Für eine gegebene Gruppe $G$ definieren wir die \textbf{erste Seite} der Serre-Spektralsequenz durch
-                \[
-                    E^1_{p,q}
-                    \;\coloneqq\;
-                    H_{p+q}\bigl(X_p,\,X_{p-1};\,G\bigr).
-                \]
-                Sobald wir diese erste Seite festgelegt haben, \textbf{läuft} die Serre-Spektralsequenz weiter, bis sie schließlich bei der $E^\infty$-Seite \textbf{stabilisiert} und in einer Form vorliegt, die eng mit $H_{\bullet}(X;G)$ verwandt ist. Genauer erhalten wir den folgenden Satz, welchen wir hier nicht beweisen werden.
-                
-                \begin{theorem}{\cite[Proposition 4E.1]{hatcher2001}}
-                    \label{thm:SerreSpectralSequence}
-                    Sei 
-                    \[
-                        F \;\longrightarrow\; X \;\longrightarrow\; B
-                    \]
-                    eine Faserung, wobei $B$ ein einfach zusammenhängender CW-Komplex ist. Dann gibt es eine Spektralsequenz 
-                    \[
-                        E^r_{p,q}
-                    \]
-                    mit folgenden Eigenschaften:
-                    \begin{enumerate}[label=(\alph*)]
-                        \item Die Differentiale auf der $r$-ten Seite haben die Form
-                              \[
-                                d^r : E^r_{p,q} \;\longrightarrow\; E^r_{\,p-r,\,q+r-1}.
-                              \]
-                        \item $E^{r+1}_{p,q}$ ist die Homologie von $E^r_{\bullet,\bullet}$ an der Stelle $E^r_{p,q}$, 
-                              das heißt
-                              \[
-                                E^{r+1}_{p,q}
-                                \;=\;
-                                \frac{\ker\bigl(d^r : E^r_{p,q} \to E^r_{\!*}\bigr)}{\mathrm{im}\bigl(d^r : E^r_{\!*} \to E^r_{p,q}\bigr)}.
-                              \]
-                        \item Auf der zweiten Seite gilt
-                              \[
-                                E^2_{p,q}
-                                \;\cong\;
-                                H_{p}\bigl(B;\,H_{q}(F;G)\bigr).
-                              \]
-                        \item Die stabilen Terme $E^\infty_{p,q}$ sind isomorph zu den assoziierten Graden der gefilterten Gruppe $H_{p+q}(X;G)$,
-                              \[
-                                E^\infty_{p,q}
-                                \;\cong\;
-                                \frac{F_pH_{p+q}(X;G)}{F_{p-1}H_{p+q}(X;G)},
-                              \]
-                              wobei 
-                              \[
-                                0
-                                \;=\;
-                                F_{-1}H_{n}(X;G)
-                                \;\subset\;
-                                F_0H_{n}(X;G)
-                                \;\subset\;
-                                \dots
-                                \;\subset\;
-                                F_nH_{n}(X;G)
-                                \;=\;
-                                H_{n}(X;G)
-                              \]
-                              eine bestimmte aufsteigende Filtrierung ist.
-                    \end{enumerate}
-                \end{theorem}
-                
-                \section{Homologie von $\mathbb{C}P^\infty$}
-                \noindent
-                Zunächst möchten wir in diesem Kapitel die Homologiegruppen von \(\mathbb{C}P^\infty\) mithilfe \textbf{zellulärer Homologie} bestimmen, indem wir dessen Struktur als CW-Komplex explizit verwenden und das Ergebnis anschließend mit dem aus der Spektralsequenz vergleichen. 
-                
-                Der Raum \(\mathbb{C}P^n\) besteht aus den komplexen Geraden durch den Ursprung in \(\mathbb{C}^{n+1} \cong \mathbb{R}^{2n+2}\). Ein isometrischer Isomorphismus wird hierbei gegeben durch
-                \[
-                    \phi \colon \mathbb{R}^{2n+2} \;\longrightarrow\; \mathbb{C}^{n+1},
-                    \quad
-                    (x_1, \dots, x_{2n+2})
-                    \;\mapsto\;
-                    \bigl(x_1 + i x_2,\; \dots,\; x_{2n+1} + i x_{2n+2}\bigr).
-                \]
-                Wir können \(\mathbb{C}P^n\) als Quotientenraum
-                \[
-                    \mathbb{C}P^n \;=\; S^{2n+1} \,/\,\sim
-                \]
-                auffassen, wobei die Äquivalenzrelation gegeben ist durch
-                \[
-                    (x_1, \ldots, x_{2n+2})
-                    \;\sim\;
-                    \bigl(R(x_1,x_2),\,\dots,\,R(x_{2n+1},x_{2n+2})\bigr)
-                    \quad
-                    \forall\, R \in \mathrm{SO}(2).
-                \]
-                Diese Beschreibung führt zu folgender Filtrierung in Skelette:
-                \begin{align*}
-                    \emptyset
-                      & \;\subset\; 
-                    \bullet
-                    \;\subset\;
-                    \bullet
-                    \;\subset\;
-                    \mathbb{C}P^1
-                    \;\subset\;
-                    \mathbb{C}P^1
-                    \;\subset\;
-                    \dots\\
-                      & \;\subset\; 
-                    \mathbb{C}P^{n-1}
-                    \;\subset\;
-                    \mathbb{C}P^{n-1}
-                    \;\subset\;
-                    \mathbb{C}P^n
-                    \;\subset\;
-                    \mathbb{C}P^n
-                    \;\subset\;
-                    \dots
-                    \;\subset\;
-                    \mathbb{C}P^\infty,
-                \end{align*}
-                wobei \(\mathbb{C}P^k\) jeweils aus \(\mathbb{C}P^{k-1}\) durch Anheften von \((2k)\)-Scheiben \(D^{2k}\) (mittels der kanonischen Surjektion \(\pi \colon S^{2k-1} \to \mathbb{C}P^{k-1}\)) entsteht. Das entsprechende Pushout-Diagramm lautet:
-                \[\begin{tikzcd}[sep=large]
-                    {\mathbb{C}P^k} & {\mathbb{C}P^{k-1}} \\
-                    {D^{2k}} & {S^{2k-1}}.
-                    \arrow["{[x] \mapsto[(x,0,0)]}"', from=1-2, to=1-1]
-                    \arrow["c", from=2-1, to=1-1]
-                    \arrow["\pi"', from=2-2, to=1-2]
-                    \arrow["\iota", from=2-2, to=2-1]
-                    \end{tikzcd}\]
-                    In \(\mathbb{C}P^\infty\) sind die Skelette durch
-                    \[
-                        X_{2k} = X_{2k+1} = \mathbb{C}P^k
-                        \quad
-                        \text{für alle } k \in \mathbb{N}_0
-                    \]
-                    gegeben. Für den zugehörigen zellulären Kettenkomplex erhalten wir
-                    \[
-                        C_{2k}\bigl(\mathbb{C}P^\infty\bigr)
-                        \;\cong\;
-                        H_{2k}\bigl(X_{2k},\,X_{2k-1}\bigr)
-                        \;\cong\;
-                        \mathbb{Z}
-                        \quad
-                        \text{für }
-                        0 \,\leq\, k \,\leq\, n,
-                    \]
-                    sowie 
-                    \[
-                        C_k\bigl(\mathbb{C}P^n\bigr)
-                        \;\cong\;
-                        H_k\bigl(X_k,\,X_{k-1}\bigr) 
-                        \;=\; 0
-                        \quad
-                        \text{für }
-                        k > 2n
-                        \text{ und für alle ungeraden } k.
-                    \]
-                    Der zelluläre Komplex hat somit die Form
-                    \[
-                        0 \;\longrightarrow\;
-                        \mathbb{Z}
-                        \,\xrightarrow{d_{2n}}\,
-                        0
-                        \,\xrightarrow{d_{2n-1}}\,
-                        \mathbb{Z}
-                        \,\xrightarrow{d_{2n-2}}\,
-                        0
-                        \,\xrightarrow{d_{2n-3}}\,
-                        \cdots
-                        \,\xrightarrow{d_{3}}\,
-                        \mathbb{Z}
-                        \,\xrightarrow{d_{2}}\,
-                        0
-                        \,\xrightarrow{d_{1}}\,
-                        \mathbb{Z}
-                        \,\xrightarrow{d_{0}}\,
-                        0.
-                    \]
-                    Seine Homologiegruppen sind folglich
-                    \[
-                        H_k\bigl(\mathbb{C}P^\infty\bigr)
-                        \;=\;
-                        \begin{cases}
-                            \mathbb{Z}, & \text{falls } k \in \mathbb{N}_0 \text{ gerade}, \\
-                            0,          & \text{sonst}.                                    
-                        \end{cases}
-                    \]
-                    
-                    \smallskip
-                    
-                    Betrachten wir nun die \textbf{Serre-Spektralsequenz} zur Berechnung der Homologie von \(\mathbb{C}P^\infty\). Dort \textbf{ignorieren} wir in gewisser Weise die erste Seite \(E^1\) und beginnen direkt mit \(E^2\), die wir auf allen weiteren Seiten fortsetzen. Dies liegt daran, dass wir für diese Faserung \(
-                    S^1 \;\longrightarrow\; S^\infty \;\longrightarrow\; \mathbb{C}P^\infty
-                    \)
-                    eine besonders einfache, aber äußerst hilfreiche Formel für die Gruppen auf der zweiten Seite haben. Im konkreten Fall können wir also die gesamte Seite \(E^2\) auf einen Blick niederschreiben.
-                    
-                    
-                    Sei also $B = \mathbb{C}P^\infty, X = S^\infty, F = S^1$, dann ist unsere Faserung gegeben durch $F \to X \to B. $Nach Teil c) von Satz \ref{thm:SerreSpectralSequence} ist die zweite $E^2$ gegeben durch die Homologien
-                    \begin{align}
-                    E^2_{p,q} = H_p(B;H_q(F;\mathbb{Z})).
-                    \end{align}
-                    Wir bemerken, dass $E^2_{p,q}$ nur nicht trivial sein kann für $p \geq 0$ und $q \geq 0$, da alle Homologiegruppen gleich der trivialen Gruppe sind für $p<0$ oder $q<0$. Damit sieht die Seite $E^2$ in einer Umgebung von $(p,q) = (0,0)$ wie folgt aus:
-                    \[\begin{tikzcd}[sep=tiny]
-                        {\color{blue}p:} & {\color{blue}2} & 0 & {E^2_{0,2}} & {E^2_{1,2}} & {E^2_{2,2}} & {E^2_{3,2}} \\
-                        & {\color{blue}1} & 0 & {E^2_{0,1}} & {E^2_{1,1}} & {E^2_{2,1}} & {E^2_{3,1}} \\
-                        & {\color{blue}0} & 0 & {E^2_{0,0}} & {E^2_{1,0}} & {E^2_{2,0}} & {E^2_{3,0}} \\
-                        & {\color{blue}-1} & 0 & 0 & 0 & 0 & 0 \\
-                        & {\color{red}q:} & {\color{red}-1} & {\color{red}0} & {\color{red}1} & {\color{red}2} & {\color{red}3}
-                        \arrow[from=2-5, to=1-3]
-                        \arrow[from=2-6, to=1-4]
-                        \arrow[from=2-7, to=1-5]
-                        \arrow[from=3-5, to=2-3]
-                        \arrow[from=3-6, to=2-4]
-                        \arrow[from=3-7, to=2-5]
-                        \arrow[from=4-5, to=3-3]
-                        \arrow[from=4-6, to=3-4]
-                        \arrow[from=4-7, to=3-5]
-                    \end{tikzcd}\]
-                    Weil $F = S^1$, kennen wir die Homologien von $F$:
-                    \begin{align}
-                        H_q(F;\mathbb{Z}) = H_q(S^1;\mathbb{Z}) = \begin{cases}
-                        \mathbb{Z} \quad q = 0,1, \\
-                        0 \quad \text{sonst.}
-                        \end{cases}
-                    \end{align}
-                    Da Homologiegruppen mit Koeffizienten in $0$ selbst die triviale Gruppe sind, wissen wir auch, dass für $q \neq 0,1$ folgt $H_p(B;H_q(S^1;\mathbb{Z})) = H_p(B;0) = 0$ und damit ist $E^2_{p,q}=0$. Also hat $E^2$ nur nicht triviale Gruppen in den beiden Reihen $q = 0,1$ mit $p \geq 0$. Wir können $E^2$ wie folgt vereinfachen:
-                    \[\begin{tikzcd}[sep=tiny]
-                        {\color{blue}p:} & {\color{blue}1} & {E^2_{0,1}} & {E^2_{1,1}} & {E^2_{2,1}} & {E^2_{3,1}} & {E^2_{4,1}} & {E^2_{5,1}} \\
-                        & {\color{blue}0} & {E^2_{0,0}} & {E^2_{1,0}} & {E^2_{2,0}} & {E^2_{3,0}} & {E^2_{4,0}} & {E^2_{5,0}} \\
-                        & {\color{red}q:} & {\color{red}0} & {\color{red}1} & {\color{red}2} & {\color{red}3} & {\color{red}4} & {\color{red}5}
-                        \arrow[from=2-5, to=1-3]
-                        \arrow[from=2-6, to=1-4]
-                        \arrow[from=2-7, to=1-5]
-                        \arrow[from=2-8, to=1-6]
-                    \end{tikzcd}\]
-                    Man beachte, dass es stets ein Differential gibt, dass für jedes $E^r_{p,q}$ in die Gruppe hinein abbildet und auch eins, das wieder hinausgeht, aber alle nicht grafisch dargestellten Differenziale bildet entweder in die triviale Gruppe ab oder stammen aus der trivialen Gruppe, sind also die triviale Abbildung, da die triviale Gruppe in der Kategorie abelscher Gruppen sowohl initiales als auch finales Objekt ist.
+        gilt. Durch Induktion definiert man analog
+        \[
+            k^{n}_{p,q}: E^{n}_{p,q}\;\longrightarrow\; A^{n}_{p-1,q}
+        \]
+        für beliebige $n$. Somit ist auch $k^{r}_{p,q}: E^{r}_{p,q}\to A^{r}_{p-1,q}$
+        wohldefiniert.
 
-                    Da $q=0,1$ ist, vereinfacht sich der folgende Term $H_q(F;\mathbb{Z}) = H_{0/1}(S^1;\mathbb{Z}) = \mathbb{Z}$ und wir wissen, für $p \geq 0$ und $q = 0,1$ erhalten wir
-                    \begin{align}
-                        E^2_{p,q} = H_p(B; H_q(F;\mathbb{Z})) = H_p(B;\mathbb{Z}) = H_p(B) = H_p(\mathbb{C}P^\infty).
-                    \end{align}
-                    Damit haben wir die zweite Seite berechnet, die wie folgt aussieht:
-                    \[\begin{tikzcd}[sep=tiny]
-                        {\color{blue}1} & {H_0(\mathbb{C}P^\infty)} & {H_1(\mathbb{C}P^\infty)} & {H_2(\mathbb{C}P^\infty)} & {H_3(\mathbb{C}P^\infty)} & {H_4(\mathbb{C}P^\infty)} & {H_5(\mathbb{C}P^\infty)} \\
-                        {\color{blue}0} & {H_0(\mathbb{C}P^\infty)} & {H_1(\mathbb{C}P^\infty)} & {H_2(\mathbb{C}P^\infty)} & {H_3(\mathbb{C}P^\infty)} & {H_4(\mathbb{C}P^\infty)} & {H_5(\mathbb{C}P^\infty)} \\
-                        & {\color{red}0} & {\color{red}1} & {\color{red}2} & {\color{red}3} & {\color{red}4} & {\color{red}5}
-                        \arrow[from=2-4, to=1-2]
-                        \arrow[from=2-5, to=1-3]
-                        \arrow[from=2-6, to=1-4]
-                        \arrow[from=2-7, to=1-5]
-                    \end{tikzcd}\]
-                    Als nächstes betrachten wir die Seite $E^\infty$, also die stabilisierende Seite. Dazu machen wir folgende Beobachtung:
-                    \begin{lemma}
-                        \label{lemma:infinitysection}
-                        Falls $E^2_{p,q} = 0$, dann ist $E^\infty_{p,q} = 0$.
-                    \end{lemma}
-                    \begin{proof}
-                    Weil $E^2_{p,q} = 0$, sind die Differenziale nach $E^2_{p,q}$ hinein und heraus alle gleich der Nullabbildung. Deshalb ist auch $E^3_{p,q} = 0$ und mit demselben Argument auch $E^r_{p,q}$ für alle $r \geq 2$, also auch $E^\infty_{p,q} = 0$.
-                    \end{proof}
+        \smallskip
+        \noindent
+        \textbf{Zu (3).} Sei $a \in A^{r}_{p,q}$. Dann gibt es ein $b \in A^{1}_{p,q}$
+        mit $i^{r-1}(b) = a$, weil nach (1)
+        $\,A^{r}_{p,q}= i^{r-1}\bigl(A^{1}_{p,q}\bigr)$. Folglich
+        \begin{align}
+            j^{r}(a)  & \;=\; j^{r}\bigl(i^{r-1}(b)\bigr) \;=\; \bigl[j^{r-1}\bigl(i^{r-2}(b)\bigr)\bigr]                                           \\
+            \nonumber & \;= \bigl[\bigl[j^{r-2}\bigl(i^{r-3}(b)\bigr)\bigr]\bigr] \;=\; \cdots \;=\; \bigl[\cdots \bigl[j^{1}(b)\bigr]\cdots\bigr].
+        \end{align}
+        Hier kennzeichnen wir durch mehrfaches Einklammern, dass wir zunächst eine
+        Äquivalenzklasse $[\,\alpha]$ in $E^{r}_{p,q}$ und anschließend eine weitere
+        Klasse $[[\,\alpha]]$ in $E^{r+1}_{p,q}$ betrachten. Weil sowohl $\,[\cdots [
+        j^{1}(b)] \cdots] \in E^{r+k}_{p,q}$ als auch $\,j^{1}(b) \in E^{1}_{p,q}$ in
+        derselben \textbf{homologischen Ordnung} liegen, folgt, dass sich nur der
+        \textbf{Grad des derivierten Paares} ändert, nicht jedoch die
+        zugrundeliegenden Homologiegruppen. Insbesondere gilt
+        \[
+            b \;\in\; A^{1}_{p-r+1,\,q+r-1}, \quad j^{1}(b) \;\in\; E^{1}_{p-r+1,\,q+r-1}
+            ,
+        \]
+        und entsprechend
+        \[
+            j^{r}_{p,q}: A^{r}_{p,q}\;\longrightarrow\; E^{r}_{p-r+1,\,q+r-1}.
+        \]
+        Verkettet man nun
+        \[
+            E^{r}_{p,q}\;\xrightarrow{k^r}\; A^{r}_{p-1,q}\;\xrightarrow{j^r}\; E^{r}_{p-r,\,q+r-1}
+            ,
+        \]
+        erhält man $d^{r} = j^{r} \circ k^{r}$. Damit ist $d^{r}$ vom Bigrad
+        $(-r,\,r-1)$.
 
-                    Nach Lemma \ref{lemma:infinitysection} sieht $E^\infty$ demnach wie folgt aus, wobei die Einträge alle $0$ sind, außer in den Reihen für $q = 0,1$ und den Spalten $p \geq 0$:
+        \bigskip
 
-                    \nocite{*}
-                    \printbibliography
+        \noindent
+        Somit ist gezeigt, dass die Abbildung
+        \[
+            d^{r} : E^{r} \;\longrightarrow\; E^{r}
+        \]
+        tatsächlich vom Grad $\,(-r,\,r-1)$ ist, was die Behauptung abschließt.
+    \end{proof}
+
+    \section{Presentation der Serre spektralen Sequenz}
+    Die \textbf{Serre-Spektralsequenz} wurde entwickelt, um die Homologiegruppen der
+    verschiedenen Bestandteile einer sogenannten \textbf{Faserung} miteinander in
+    Beziehung zu setzen. Bei einer Faserung
+    \[
+        Z \;\longrightarrow\; X \;\longrightarrow\; Y
+    \]
+    denkt man an eine Abbildung
+    \[
+        \pi : X \;\longrightarrow\; Y,
+    \]
+    so dass sämtliche Urbilder $\,\pi^{-1}(y)$ für jedes $y \in Y$ homotopieäquivalent
+    zu $Z$ sind.
+
+    Bevor wir die Konstruktion der Serre-Spektralsequenz genauer vorstellen können,
+    benötigen wir die Definition einer Faserung, die die \textbf{Homotopiehochhebungseigenschaft}
+    erfüllt. Diese Eigenschaft erlaubt es uns, aus einfacheren und bereits
+    bekannten Räumen durch Anwendung der Faserung neue, komplexere Räume zu konstruieren.
+
+    Die Faserung verallgemeinert dabei das Konzept eines Vektorbündels, kommt
+    jedoch ohne lineare oder affine Struktur aus. Die Homotopiehochhebungseigenschaft
+    wird sich anschließend in kompatiblen Eigenschaften auf der Ebene der Homologie
+    niederschlagen und so die Grundlage für die Serre-Spektralsequenz bilden.
+
+    \begin{definition}[Faserung]
+        Eine Abbildung $\pi : X \to B$, welche die folgende \textbf{Homotopiehochhebungseigenschaft}
+        für beliebige Räume $Z$ erfüllt, heißt eine \textbf{Faserung}:
+        \begin{itemize}[noitemsep]
+            \item für jede Homotopie $h : Z \times [0,1] \to B$ und
+
+            \item für jeden Lift $\overline{h}_{0} : Z \to X$ mit
+                \[
+                    h_{0} \;=\; h\vert_{Z\times \{0\}}\quad\text{und}\quad h_{0} \;=\; \pi
+                    \circ \overline{h}_{0},
+                \]
+        \end{itemize}
+        existiert eine \textbf{Homotopie} $\overline{h}: Z \times [0,1] \to X$, die
+        genau $h$ \textbf{liftet}. Im folgenden kommutativen Diagramm wird das
+        veranschaulicht:
+        \[
+            \begin{tikzcd}
+                [cramped] {Z\times\{0\}} & X \\ {Z\times[0,1]} & B \arrow["{\overline{h}_0}",
+                from=1-1, to=1-2] \arrow["\iota"', hook, from=1-1, to=2-1] \arrow["\pi"{description},
+                from=1-2, to=2-2] \arrow["{\overline{h}}", dashed, from=2-1, to=1-2] \arrow["h",
+                from=2-1, to=2-2]
+            \end{tikzcd}
+        \]
+    \end{definition}
+
+    \noindent
+    Nun betrachten wir einige Beispiele von Faserungen, um ein besseres \textbf{Gefühl}
+    für diese Struktur zu bekommen.
+
+    \begin{example}
+        \label{examplesFibrations} Beispiele für Faserungen:
+        \begin{enumerate}[nolistsep]
+            \item Seien $X,Y$ topologische Räume. Dann ist die Projektion
+                \[
+                    \pi : X \times Y \;\longrightarrow\; Y
+                \]
+                eine Faserung. Jede Faser ist homöomorph zu $X$. Zur Verifikation der
+                Homotopiehochhebungseigenschaft sei
+                \[
+                    h : Z \times [0,1] \;\longrightarrow\; Y
+                \]
+                eine Homotopie und $\overline{h}_{0} : Z \times \{0\} \to X \times Y$
+                ein Lift mit
+                \[
+                    (\pi \circ \overline{h}_{0})(z) \;=\; h_{0}(z) \;=\; h(z,0).
+                \]
+                Definiere $\overline{h}: Z \times [0,1] \to X \times Y$ durch
+                \[
+                    \overline{h}(z,t) \;=\; \Bigl(\bigl(p_{X} \circ \overline{h}_{0}\bigr)(
+                    z),\; h(z,t)\Bigr),
+                \]
+                wobei $p_{X} : X \times Y \to X$ die Projektion auf die erste Komponente
+                ist. Offenbar stimmt $\overline{h}$ in der $X$-Komponente mit $\overline{h}
+                _{0}$ und in der $Y$-Komponente mit $h$ überein, was genau die benötigte
+                Lifteigenschaft liefert.
+
+            \item Die kanonische Surjektion
+                \[
+                    \pi : S^{n} \;\longrightarrow\; \mathbb{R}P^{n},\quad x \;\mapsto\; [x]
+                \]
+                ist eine Faserung, deren Fasern homöomorph zu $S^{0}$ sind (man kann sich
+                das als $\{\pm x\}\subset S^{n}$ über einem Punkt $[x]$ in $\mathbb{R}P^{n}$
+                vorstellen).
+
+            \item Die kanonische Surjektion
+                \[
+                    \pi : S^{2n+1}\;\longrightarrow\; \mathbb{C}P^{n},\quad x \;\mapsto\; [
+                    x]
+                \]
+                ist eine Faserung, deren Fasern homöomorph zu $S^{1}$ sind. Hier interpretiert
+                man die Punkte im $\,S^{2n+1}\subset \mathbb{C}^{n+1}$ als Einheitsvektoren
+                und deren Bilder in $\,\mathbb{C}P^{n}$ als komplexe Geraden.
+        \end{enumerate}
+    \end{example}
+
+    Als gegebene Daten verwenden wir eine Faserung $\pi : X \to B$, wobei $B$ ein
+    wegzusammenhängender CW-Komplex und $X$ ein topologischer Raum ist. Man beachte,
+    dass wir die Homotopiehochhebungseigenschaften nur für CW-Komplexe fordern. Eine
+    solche Faserung heißt auch eine \textbf{Serre-Faserung}. Der Raum $B$ wird \textbf{Basisraum}
+    genannt, $X$ der \textbf{Totalraum}.
+
+    Wir erzeugen eine Filtrierung von $X$, indem wir das $p$-Skelett $B^{p}$ von $B$
+    betrachten und
+    \[
+        X_{p} \;\coloneqq\; \pi^{-1}\bigl(B^{p}\bigr)
+    \]
+    setzen. Aus dieser Filtrierung erhalten wir ein exaktes Paar, aus dem wiederum
+    eine homologische Sequenz entsteht. In dieser Konstellation heißt die
+    resultierende Spektralsequenz auch \textbf{Serre-Spektralsequenz}.
+
+    \smallskip
+
+    Für einen Weg $\gamma: [0,1] \to B$ in den Basisraum $B$ benötigen wir eine
+    stetige Abbildung
+    \[
+        L_{\gamma} : F_{a} \;\longrightarrow\; F_{b},
+    \]
+    wobei $F_{a} = \pi^{-1}(a)$ und $F_{b} = \pi^{-1}(b)$ die Fasern über
+    $a = \gamma(0)$ bzw.\ $b = \gamma(1)$ sind. Die Existenz einer solchen
+    Abbildung wird durch die Homotopieäquivalenz der Fasern $\,F_{\gamma(s)}$ für
+    alle $s\in[0,1]$ garantiert, sobald $\pi : X \to B$ eine Serre-Faserung ist.
+    Dies führt zur folgenden Aussage:
+
+    \begin{proposition}
+        Falls $\pi : X \to B$ eine Faserung ist, so sind die Fasern
+        \[
+            F_{b} \;=\; \pi^{-1}(b)
+        \]
+        über jede wegzusammenhängende Komponente von $B$ zueinander
+        homotopieäquivalent.
+    \end{proposition}
+
+    \begin{proof}
+        Sei $\gamma : [0,1] \to B$ ein Weg und $F_{\gamma(s)}\coloneqq \pi^{-1}(\gamma
+        (s))$ eine Faser. Wir definieren eine Homotopie
+        \[
+            h : F_{\gamma(0)}\times [0,1] \;\longrightarrow\; B, \quad h(x,t) \;=\; \gamma
+            (t).
+        \]
+        Sei $\overline{h}_{0} : F_{\gamma(0)}\times \{0\} \hookrightarrow X$ die
+        Inklusion. Dann gilt für jedes $x \in F_{\gamma(0)}$:
+        \[
+            (\pi \circ \overline{h}_{0})(x) \;=\; \gamma(0) \;=\; h_{0}(x).
+        \]
+        Da $\pi : X \to B$ eine Faserung ist, existiert eine Abbildung
+        \[
+            \overline{h}: F_{\gamma(0)}\times [0,1] \;\longrightarrow\; X,
+        \]
+        sodass in folgendem Diagramm alles kommutiert:
+        \[
+            \begin{tikzcd}
+                [cramped] {F_{\gamma(0)}\times\{0\}} & X \\ {F_{\gamma(0)}\times[0,1]} &
+                B \arrow["{\overline{h}_0}", from=1-1, to=1-2] \arrow["\iota"', hook, from=1-1,
+                to=2-1] \arrow["\pi"{description}, from=1-2, to=2-2] \arrow["{\overline{h}}",
+                dashed, from=2-1, to=1-2] \arrow["h", from=2-1, to=2-2]
+            \end{tikzcd}
+        \]
+        Insbesondere gilt $h = \pi \circ \overline{h}$, und $\overline{h}(x,t) \in F_{\gamma(t)}$.
+        Für $t=1$ erhalten wir daraus die gesuchte Abbildung
+        \[
+            L_{\gamma} : F_{\gamma(0)}\;\longrightarrow\; F_{\gamma(1)}, \quad L_{\gamma}
+            (x) \;=\; \overline{h}\bigl(x,1\bigr).
+        \]
+        Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des
+        Weges $\gamma$, und damit sind sämtliche Fasern über eine wegzusammenhängende
+        Komponente von $B$ untereinander homotopieäquivalent.
+    \end{proof}
+
+    Wir zeigen als Nächstes, dass sich die Abbildung $\gamma \mapsto L_{\gamma}$ bezüglich
+    Homotopien \cite[Prop.~4.61]{hatcher2001} \textbf{gutartig} verhält:
+    \begin{itemize}[noitemsep]
+        \item Falls $\gamma$ und $\gamma'$ Wege von $a$ nach $b$ sind und $\gamma \simeq
+            _{\{0,1\}}\gamma'$ (d.\,h.\ es existiert eine Homotopie
+            $h : \gamma \Rightarrow \gamma'$, die auf den Basispunkten $0$ und $1$ konstant
+            ist), dann gilt
+            \[
+                L_{\gamma} \;\simeq\; L_{\gamma'}.
+            \]
+
+        \item Falls $\gamma_{0}$ und $\gamma_{1}$ Wege sind, sodass
+            $\gamma_{1}(0) = \gamma_{0}(1)$, dann gilt
+            \[
+                L_{\gamma_0 \star \gamma_1}\;\simeq\; L_{\gamma_1}\,\circ\, L_{\gamma_0}.
+            \]
+    \end{itemize}
+    Im Folgenden leiten wir aus diesen Eigenschaften die Proposition her. Seien
+    $F_{a}$ und $F_{b}$ Fasern einer Faserung und $\gamma$ ein Weg von $a$ nach
+    $b$. Wir betrachten die Abbildungen
+    \[
+        L_{\gamma} : F_{a} \longrightarrow F_{b} \quad\text{und}\quad L_{\overline{\gamma}}
+        : F_{b} \longrightarrow F_{a},
+    \]
+    wobei $\overline{\gamma}$ ein Weg von $b$ zurück nach $a$ bezeichnet.
+
+    \smallskip
+
+    Sei $\alpha \equiv a$ die konstante Schleife bei $a$, und sei $\overline{h}$ die
+    Abbildung, mit der wir $L_{\alpha}(x)$ definieren. Da
+    \[
+        h(x,t) \;=\; \alpha(x) \;=\; a \quad\text{für alle}\; x\in F_{a},\; t\in [0,1
+        ],
+    \]
+    folgt $\overline{h}(x,t) \in F_{a}$ für alle $x$ und $t$. Somit ist
+    $\overline{h}$ eine Homotopie, welche $\overline{h}(x,0) = \mathrm{Id}_{F_a}(x)$
+    und $\overline{h}(x,1) = L_{\alpha}(x)$ erfüllt. Daher gilt
+    \[
+        \mathrm{Id}_{F_a}\;\simeq\; L_{\alpha} \quad\text{und analog}\quad \mathrm{Id}
+        _{F_b}\;\simeq\; L_{\beta},
+    \]
+    wobei $\beta$ die konstante Schleife bei $b$ ist.
+
+    \smallskip
+
+    Mit den oben genannten Eigenschaften nach \cite[Prop.~4.61]{hatcher2001} erhalten
+    wir nun:
+    \[
+        L_{\overline{\gamma}}\,\circ\, L_{\gamma} \;\simeq\; L_{\gamma \star
+        \overline{\gamma}}\;\simeq\; L_{\alpha} \;\simeq\; \mathrm{Id}_{F_a},
+    \]
+    \[
+        L_{\gamma}\,\circ\, L_{\overline{\gamma}}\;\simeq\; L_{\overline{\gamma} \star
+        \gamma}\;\simeq\; L_{\beta} \;\simeq\; \mathrm{Id}_{F_b}.
+    \]
+    Daraus folgt, dass $F_{a}$ und $F_{b}$ homotopieäquivalent sind.
+
+    \smallskip
+
+    Durch diese Proposition hat sich die Konvention etabliert, für einen gegebenen
+    (wegzusammenhängenden) Basisraum stets Bezug auf \textbf{die} Faser der
+    Faserung zu nehmen, denn alle Fasern sind untereinander homotopieäquivalent.
+    Üblich ist es daher, eine Faserung auch kurz in der Form
+    \[
+        F \;\longrightarrow\; X \;\longrightarrow\; B
+    \]
+    anzugeben, wobei $F$ ein Raum ist, der homotopieäquivalent zu den jeweiligen Fasern
+    $\pi^{-1}(b)$ ist.
+
+    \smallskip
+
+    Entsprechend lassen sich unsere Beispiele aus \autoref{examplesFibrations} wie
+    folgt umschreiben:
+    \begin{itemize}[nolistsep]
+        \item $F \;\longrightarrow\; F \times B \;\longrightarrow\; B,$
+
+        \item $S^{0} \;\longrightarrow\; S^{n} \;\longrightarrow\; \mathbb{R}P^{n},$
+
+        \item $S^{1} \;\longrightarrow\; S^{2n+1}\;\longrightarrow\; \mathbb{C}P^{n}.$
+    \end{itemize}
+    In all diesen Beispielen sind die jeweiligen Fasern sogar \textbf{homeomorph}.
+
+    \noindent
+    Für jeden Weg $\gamma : [0,1] \to B$ erhalten wir eine Abbildung
+    \[
+        L_{\gamma} : F_{\gamma(0)}\;\longrightarrow\; F_{\gamma(1)},
+    \]
+    indem wir die Homotopiehochhebungseigenschaft auf die Faser $F_{\gamma(0)}$
+    anwenden.
+
+    \smallskip
+
+    Um das Faserbündel
+    \[
+        S^{1} \;\longrightarrow\; S^{\infty} \;\longrightarrow\; \mathbb{C}P^{\infty}
+    \]
+    mit der kanonischen Surjektion $\pi : S^{\infty} \to \mathbb{C}P^{\infty}$ in unserem
+    Beispiel nutzbar zu machen, müssen wir zeigen, dass es sich tatsächlich um eine
+    \textbf{Faserung} handelt. Dabei verwenden wir, dass $\mathbb{C}P^{\infty}$
+    als \textbf{CW-Komplex} konstruiert wird, der zugleich wegzusammenhängend und
+    einfach zusammenhängend ist.
+
+    \smallskip
+
+    Sei nun $X$ ein topologischer Raum und $\mathcal{U}$ eine offene Überdeckung von
+    $X$.
+
+    \begin{definition}
+        Eine \textbf{Verfeinerung} von $\mathcal{U}$ ist eine offene Überdeckung
+        $\mathcal{V}$ von $X$, sodass für jedes $V \in \mathcal{V}$ ein $U \in \mathcal{U}$
+        existiert mit $V \subset U$.
+
+        Wir sagen, dass eine Verfeinerung $\mathcal{V}$ \textbf{lokal endlich} ist,
+        falls für alle Punkte $x \in X$ und jede offene Umgebung $U_{x}$ von $x$ nur
+        endlich viele Mengen $V \in \mathcal{V}$ die Bedingung
+        $U_{x} \cap V \neq \emptyset$ erfüllen.
+    \end{definition}
+
+    \begin{definition}
+        Ein topologischer Raum heißt \textbf{parakompakt}, falls jede offene Überdeckung
+        eine lokal endliche Verfeinerung besitzt.
+    \end{definition}
+
+    \begin{remark}
+        Alle kompakten topologischen Räume sind parakompakt.
+    \end{remark}
+
+    \begin{lemma}
+        Jeder \textbf{CW-Komplex} ist parakompakt.
+    \end{lemma}
+
+    \begin{proof}
+        Sei $X$ ein CW-Komplex mit $n$-Skeletten $X^{n}$. Wir können jedes $X^{n}$
+        als Vereinigung
+        \[
+            X^{n} \;=\; \bigcup_{\alpha}K^{n}_{\alpha}
+        \]
+        von endlichen CW-Komplexen schreiben. Sei $\mathcal{U}$ eine offene Überdeckung
+        von $X$. Für jedes $n$ und jedes $\alpha$ betrachten wir
+        \[
+            \mathcal{U}^{n}_{\alpha} \;=\; \{\,U \cap K^{n}_{\alpha}\,\mid\, U \in \mathcal{U}
+            \},
+        \]
+        das eine offene Überdeckung von $K^{n}_{\alpha}$ darstellt. Da jedes $K^{n}_{\alpha}$
+        kompakt ist, existiert eine Verfeinerung $\mathcal{V}^{n}_{\alpha}$ von
+        $\mathcal{U}^{n}_{\alpha}$. Für jede offene Menge $A \in \mathcal{V}^{n}_{\alpha}$
+        gibt es eine offene Menge $V_{A} \subset X$, sodass
+        \[
+            A \;=\; V_{A} \,\cap\, K^{n}_{\alpha}.
+        \]
+        Da $A \subset U_{A} \cap K^{n}_{\alpha}$ für ein $U_{A} \in \mathcal{U}$
+        gilt, können wir durch Bildung des Durchschnitts $V_{A} \cap U_{A}$ (falls
+        nötig) annehmen, dass $V_{A} \subset U_{A}$ gilt.
+
+        Setzen wir nun
+        \[
+            \mathcal{V}\;=\; \bigl\{\,V_{A} \;\mid\; A \in \mathcal{V}^{n}_{\alpha}\bigr
+            \}_{n,\alpha}.
+        \]
+        Weil jede Familie $\{\,V_{A} \,\mid\, A \in \mathcal{V}^{n}_{\alpha}\}$
+        lokal endlich ist, ist $\mathcal{V}$ eine \textbf{abzählbar lokal endliche}
+        Verfeinerung von $\mathcal{U}$ (d.\,h.\ $\mathcal{V}$ ist eine Verfeinerung,
+        die eine abzählbare Vereinigung lokal endlicher Familien ist). Da CW-Komplexe
+        regulär sind, können wir nach Lemma~41.3 aus \cite{hatcher2001} (bzw.\ [7])
+        darauf schließen, dass $X$ parakompakt ist.
+    \end{proof}
+
+    \begin{theorem}[{\cite[Theorem 1]{huebsch1955}}]
+        Falls $\pi : X \to B$ ein Faserbündel ist und $B$ parakompakt, dann ist
+        $\pi$ eine Faserung.
+    \end{theorem}
+
+    \noindent
+    Aus diesem Satz und der Tatsache, dass alle CW-Komplexe parakompakt sind, ergibt
+    sich das gewünschte Korollar:
+
+    \begin{corollary}
+        Jedes Faserbündel mit einem CW-Komplex als Basisraum ist eine Faserung.
+    \end{corollary}
+
+    \noindent
+    Angenommen, wir haben eine Faserung
+    \[
+        \pi: X \;\longrightarrow\; B,
+    \]
+    wobei wir der Einfachheit halber voraussetzen, dass $B$ ein
+    wegzusammenhängender CW-Komplex ist. Für jedes $p$ sei $B^{p}$ das $p$-dimensionale
+    Skelett von $B$, und wir definieren
+    \[
+        X_{p} \;\coloneqq\; \pi^{-1}\bigl(B^{p}\bigr).
+    \]
+    Die Räume $X_{p}$ bilden eine Filtrierung von $X$, auf die wir später noch zurückkommen
+    werden. Für eine gegebene Gruppe $G$ definieren wir die \textbf{erste Seite} der
+    Serre-Spektralsequenz durch
+    \[
+        E^{1}_{p,q}\;\coloneqq\; H_{p+q}\bigl(X_{p},\,X_{p-1};\,G\bigr).
+    \]
+    Sobald wir diese erste Seite festgelegt haben, \textbf{läuft} die Serre-Spektralsequenz
+    weiter, bis sie schließlich bei der $E^{\infty}$-Seite \textbf{stabilisiert} und
+    in einer Form vorliegt, die eng mit $H_{\bullet}(X;G)$ verwandt ist. Genauer erhalten
+    wir den folgenden Satz, welchen wir hier nicht beweisen werden.
+
+    \begin{theorem}
+        {\cite[Proposition 4E.1]{hatcher2001}} \label{SerreSpectralSequence} Sei
+        \[
+            F \;\longrightarrow\; X \;\longrightarrow\; B
+        \]
+        eine Faserung, wobei $B$ ein einfach zusammenhängender CW-Komplex ist. Dann gibt
+        es eine Spektralsequenz
+        \[
+            E^{r}_{p,q}
+        \]
+        mit folgenden Eigenschaften:
+        \begin{enumerate}[label=(\alph{*})]
+            \item Die Differentiale auf der $r$-ten Seite haben die Form
+                \[
+                    d^{r} : E^{r}_{p,q}\;\longrightarrow\; E^{r}_{\,p-r,\,q+r-1}.
+                \]
+
+            \item $E^{r+1}_{p,q}$ ist die Homologie von $E^{r}_{\bullet,\bullet}$ an der
+                Stelle $E^{r}_{p,q}$, das heißt
+                \[
+                    E^{r+1}_{p,q}\;=\; \frac{\ker\bigl(d^{r} : E^{r}_{p,q}\to E^{r}_{\!*}\bigr)}{\mathrm{im}\bigl(d^{r}
+                    : E^{r}_{\!*}\to E^{r}_{p,q}\bigr)}.
+                \]
+
+            \item Auf der zweiten Seite gilt
+                \[
+                    E^{2}_{p,q}\;\cong\; H_{p}\bigl(B;\,H_{q}(F;G)\bigr).
+                \]
+
+            \item Die stabilen Terme $E^{\infty}_{p,q}$ sind isomorph zu den assoziierten
+                Graden der gefilterten Gruppe $H_{p+q}(X;G)$,
+                \[
+                    E^{\infty}_{p,q}\;\cong\; \frac{F_{p}H_{p+q}(X;G)}{F_{p-1}H_{p+q}(X;G)}
+                    ,
+                \]
+                wobei
+                \[
+                    0 \;=\; F_{-1}H_{n}(X;G) \;\subset\; F_{0}H_{n}(X;G) \;\subset\; \dots
+                    \;\subset\; F_{n}H_{n}(X;G) \;=\; H_{n}(X;G)
+                \]
+                eine bestimmte aufsteigende Filtrierung ist.
+        \end{enumerate}
+    \end{theorem}
+
+    \section{Homologie von $\mathbb{C}P^{\infty}$}
+    \noindent
+    Zunächst möchten wir in diesem Kapitel die Homologiegruppen von $\mathbb{C}P^{\infty}$
+    mithilfe der \textbf{zellulären Homologie} bestimmen. Dazu verwenden wir explizit
+    die Struktur von $\mathbb{C}P^{\infty}$ als CW-Komplex und vergleichen das erhaltene
+    Ergebnis anschließend mit dem Resultat aus der Spektralsequenz.
+
+    Der Raum $\mathbb{C}P^{n}$ besteht aus den komplexen Geraden durch den Ursprung
+    in $\mathbb{C}^{n+1}\cong \mathbb{R}^{2n+2}$. Ein isometrischer Isomorphismus
+    wird durch die Abbildung
+    \[
+        \phi \colon \mathbb{R}^{2n+2}\to \mathbb{C}^{n+1}, \quad (x_{1}, \dots, x_{2n+2}
+        ) \mapsto \bigl(x_{1} + i x_{2},\, x_{3} + i x_{4},\, \dots,\, x_{2n+1}+ i x_{2n+2}
+        \bigr)
+    \]
+    gegeben. Wir können $\mathbb{C}P^{n}$ als Quotientenraum
+    \[
+        \mathbb{C}P^{n} = S^{2n+1}/ \sim
+    \]
+    auffassen, wobei die Äquivalenzrelation durch
+    \[
+        (x_{1}, \ldots, x_{2n+2}) \sim \lambda \cdot (x_{1}, \ldots, x_{2n+2}) \quad
+        \text{für alle }\lambda \in \mathbb{C},\, |\lambda| = 1
+    \]
+    definiert ist. Dies entspricht der Wirkung der Einheitssphäre $S^{1} \subset \mathbb{C}$
+    auf $S^{2n+1}$ durch skalare Multiplikation.
+
+    Die Struktur als CW-Komplex ergibt sich aus der Tatsache, dass
+    $\mathbb{C}P^{n}$ für jedes $n \in \mathbb{N}$ eine Zellzerlegung besitzt, die
+    aus genau einer Zelle jeder geraden Dimension $0, 2, 4, \dots, 2n$ besteht.
+    Der Übergang von $\mathbb{C}P^{n}$ zu $\mathbb{C}P^{\infty}$ geschieht durch
+    den Limes $n \to \infty$, wobei $\mathbb{C}P^{\infty}$ ebenfalls genau eine Zelle
+    jeder geraden Dimension enthält.
+
+    Die Berechnung der zellulären Homologie zeigt, dass die Homologiegruppen von
+    $\mathbb{C}P^{\infty}$ gegeben sind durch
+    \[
+        H_{k}(\mathbb{C}P^{\infty}) =
+        \begin{cases}
+            \mathbb{Z}, & \text{für } k \text{ gerade},   \\
+            0,          & \text{für } k \text{ ungerade}.
+        \end{cases}
+    \]
+    Dieses Ergebnis werden wir später mit der Homologie aus der Serre-Spektralsequenz
+    vergleichen.
+
+    Diese Beschreibung führt zu folgender Filtrierung in Skelette:
+    \begin{align*}
+        \emptyset & \;\subset\; \bullet \;\subset\; \bullet \;\subset\; \mathbb{C}P^{1} \;\subset\; \mathbb{C}P^{1} \;\subset\; \dots                                                     \\
+                  & \;\subset\; \mathbb{C}P^{n-1}\;\subset\; \mathbb{C}P^{n-1}\;\subset\; \mathbb{C}P^{n} \;\subset\; \mathbb{C}P^{n} \;\subset\; \dots \;\subset\; \mathbb{C}P^{\infty},
+    \end{align*}
+    wobei $\mathbb{C}P^{k}$ jeweils aus $\mathbb{C}P^{k-1}$ durch Anheften von $2k$-Zellen
+    $D^{2k}$ entsteht. Das Anheften erfolgt mittels der kanonischen Surjektion
+    $\pi \colon S^{2k-1}\to \mathbb{C}P^{k-1}$, die durch die Projektion von der Einheitssphäre
+    des komplexen Vektorraums auf die komplexe projektive Ebene definiert ist.
+
+    Das entsprechende Pushout-Diagramm lautet:
+    \[
+        \begin{tikzcd}
+            S^{2k-1} \arrow[r, "\pi"] \arrow[d, hook] & \mathbb{C}P^{k-1} \arrow[d, hook]
+            \\ D^{2k} \arrow[r] & \mathbb{C}P^k
+        \end{tikzcd}
+    \]
+    Hierbei ist die untere horizontale Abbildung die Anheftung der $2k$-Zelle
+    $D^{2k}$ an das $(k-1)$-te Skelett $\mathbb{C}P^{k-1}$, was die zelluläre Struktur
+    von $\mathbb{C}P^{k}$ vollständig beschreibt.
+
+    Diese Filtrierung zeigt anschaulich die schrittweise Konstruktion von $\mathbb{C}
+    P^{\infty}$ als Limes der endlichen komplexen projektiven Räume $\mathbb{C}P^{k}$,
+    wobei in jedem Schritt genau eine Zelle hinzukommt.
+    \[
+        \begin{tikzcd}
+            [sep=large] {\mathbb{C}P^k} & {\mathbb{C}P^{k-1}} \\ {D^{2k}} & {S^{2k-1}}.
+            \arrow["{[x] \mapsto[(x,0,0)]}"', from=1-2, to=1-1] \arrow["c", from=2-1,
+            to=1-1] \arrow["\pi"', from=2-2, to=1-2] \arrow["\iota", from=2-2, to=2-1]
+        \end{tikzcd}
+    \]
+    In $\mathbb{C}P^{\infty}$ sind die Skelette durch
+    \[
+        X_{2k}= X_{2k+1}= \mathbb{C}P^{k} \quad \text{für alle }k \in \mathbb{N}_{0}
+    \]
+    gegeben. Für den zugehörigen zellulären Kettenkomplex erhalten wir
+    \[
+        C_{2k}\bigl(\mathbb{C}P^{\infty}\bigr) \;\cong\; H_{2k}\bigl(X_{2k},\,X_{2k-1}
+        \bigr) \;\cong\; \mathbb{Z}\quad \text{für }k \geq 0,
+    \]
+    sowie
+    \[
+        C_{k}\bigl(\mathbb{C}P^{\infty}\bigr) \;\cong\; H_{k}\bigl(X_{k},\,X_{k-1}\bigr
+        ) \;=\; 0 \quad \text{für alle ungeraden }k \text{ und }k < 0.
+    \]
+
+    Der zelluläre Kettenkomplex hat somit die Form
+    \[
+        0 \;\longrightarrow\; \mathbb{Z}\,\xrightarrow{d_{2n}}\, 0 \,\xrightarrow{d_{2n-1}}
+        \, \mathbb{Z}\,\xrightarrow{d_{2n-2}}\, 0 \,\xrightarrow{d_{2n-3}}\, \cdots \,
+        \xrightarrow{d_3}\, \mathbb{Z}\,\xrightarrow{d_2}\, 0 \,\xrightarrow{d_1}\, \mathbb{Z}
+        \,\xrightarrow{d_0}\, 0.
+    \]
+
+    Die Differenzialabbildungen $d_{k}$ des Kettenkomplexes verschwinden aufgrund
+    der Zellsymmetrie, sodass die Homologiegruppen direkt abgelesen werden können.
+    Es gilt:
+    \[
+        H_{k}\bigl(\mathbb{C}P^{\infty}\bigr) \;=\;
+        \begin{cases}
+            \mathbb{Z}, & \text{falls }k \in 2\mathbb{N}_{0} \text{ (gerade)}, \\
+            0,          & \text{falls }k \text{ ungerade}.
+        \end{cases}
+    \]
+
+    Diese Struktur illustriert, dass $\mathbb{C}P^{\infty}$ ein \textit{classifying
+    space} für $\mathbb{Z}$-Koohomologie ist.
+
+    \smallskip
+
+    Betrachten wir nun die \textbf{Serre-Spektralsequenz}, um die Homologie von $\mathbb{C}
+    P^{\infty}$ zu berechnen. Dabei \textbf{ignorieren} wir in gewisser Weise die erste
+    Seite $E^{1}$ und beginnen direkt mit $E^{2}$, die wir auf allen weiteren
+    Seiten fortsetzen. Dies ist möglich, da die Faserung
+    \[
+        S^{1} \;\longrightarrow\; S^{\infty} \;\longrightarrow\; \mathbb{C}P^{\infty}
+    \]
+    eine besonders einfache und äußerst nützliche Struktur besitzt, die es erlaubt,
+    die Gruppen auf der zweiten Seite direkt zu bestimmen.
+
+    Im konkreten Fall können wir die gesamte Seite $E^{2}$ wie folgt beschreiben: Die
+    Basis $\mathbb{C}P^{\infty}$ hat nichttriviale Homologie nur in geraden Graden,
+    während die Faser $S^{1}$ nur in Grad $1$ Homologie hat. Die Tensorstruktur des
+    Spektralsequenz-Produkts liefert somit:
+    \[
+        E^{2}_{p,q}= H_{p}\bigl(\mathbb{C}P^{\infty}\bigr) \otimes H_{q}\bigl(S^{1}\bigr
+        ).
+    \]
+
+    Dies ergibt:
+    \[
+        E^{2}_{p,q}=
+        \begin{cases}
+            \mathbb{Z}, & \text{falls } p \text{ gerade und } q \in \{0,1\}, \\
+            0,          & \text{sonst}.
+        \end{cases}
+    \]
+
+    Die Spektralsequenz degeneriert in diesem Fall auf der zweiten Seite ($E^{2} =
+    E^{\infty}$), da die differentielle Abbildung $d^{2}$ wegen der geraden
+    Homologie der Basis trivial ist. Somit erhalten wir direkt:
+    \[
+        H_{k}\bigl(\mathbb{C}P^{\infty}\bigr) =
+        \begin{cases}
+            \mathbb{Z}, & \text{falls } k \text{ gerade}, \\
+            0,          & \text{sonst}.
+        \end{cases}
+    \]
+
+    Dies stimmt mit den Ergebnissen aus der zellulären Homologie überein und illustriert
+    die Effizienz der Serre-Spektralsequenz in diesem Kontext.
+
+    Sei also $B = \mathbb{C}P^{\infty}$, $X = S^{\infty}$, $F = S^{1}$, dann ist
+    unsere Faserung gegeben durch $F \to X \to B$. Nach Teil c) von Satz
+    \ref{SerreSpectralSequence} ist die zweite Seite $E^{2}$ der Serre-Spektralsequenz
+    durch die Homologien
+    \[
+        E^{2}_{p,q}= H_{p}\bigl(B;\, H_{q}(F;\mathbb{Z})\bigr)
+    \]
+    gegeben.
+
+    Wir bemerken, dass $E^{2}_{p,q}$ nur dann nichttrivial sein kann, wenn
+    $p \geq 0$ und $q \geq 0$, da alle Homologiegruppen für $p < 0$ oder $q < 0$ trivial
+    sind. Damit sieht die Seite $E^{2}$ in einer Umgebung von $(p,q) = (0,0)$ wie
+    folgt aus:
+    \[
+        \begin{array}{c|c|c|c|c|c}
+            q      & \cdots & 2          & 1          & 0          &        \\
+            \hline
+            \vdots & \ddots & \vdots     & \vdots     & \vdots     &        \\
+            2      & \cdots & \mathbb{Z} & 0          & 0          &        \\
+            1      & \cdots & 0          & \mathbb{Z} & 0          &        \\
+            0      & \cdots & 0          & 0          & \mathbb{Z} &        \\
+            \hline
+            p      & \cdots & 0          & 1          & 2          & \cdots
+        \end{array}
+    \]
+
+    Hierbei stehen die Einträge $\mathbb{Z}$ an Positionen, die durch die Tensorstruktur
+    der Homologien von $B = \mathbb{C}P^{\infty}$ (nichttrivial nur in geraden
+    Graden) und $F = S^{1}$ (nichttrivial nur in Grad $1$) entstehen. Die
+    nichttrivialen Beiträge von $H_{q}(F;\mathbb{Z})$ für $q = 0,1$ kombinieren
+    sich mit $H_{p}(B;\mathbb{Z})$, was die Struktur der Seite $E^{2}$ ergibt.
+    \[
+        \begin{tikzcd}
+            [sep=tiny] {\color{blue}p:} & {\color{blue}2} & 0 & {E^2_{0,2}} & {E^2_{1,2}}
+            & {E^2_{2,2}} & {E^2_{3,2}} \\ & {\color{blue}1} & 0 & {E^2_{0,1}} & {E^2_{1,1}}
+            & {E^2_{2,1}} & {E^2_{3,1}} \\ & {\color{blue}0} & 0 & {E^2_{0,0}} & {E^2_{1,0}}
+            & {E^2_{2,0}} & {E^2_{3,0}} \\ & {\color{blue}-1} & 0 & 0 & 0 & 0 & 0 \\ &
+            {\color{red}q:} & {\color{red}-1} & {\color{red}0} & {\color{red}1} & {\color{red}2}
+            & {\color{red}3} \arrow[from=2-5, to=1-3] \arrow[from=2-6, to=1-4] \arrow[from=2-7,
+            to=1-5] \arrow[from=3-5, to=2-3] \arrow[from=3-6, to=2-4] \arrow[from=3-7,
+            to=2-5] \arrow[from=4-5, to=3-3] \arrow[from=4-6, to=3-4] \arrow[from=4-7,
+            to=3-5]
+        \end{tikzcd}
+    \]
+    Weil $F = S^{1}$, kennen wir die Homologien von $F$:
+    \begin{align}
+        H_{q}(F;\mathbb{Z}) = H_{q}(S^{1};\mathbb{Z}) = \begin{cases}\mathbb{Z} \quad q = 0,1, \\ 0 \quad \text{sonst.}\end{cases}
+    \end{align}
+    Da Homologiegruppen mit Koeffizienten in $0$ selbst die triviale Gruppe sind, folgt
+    unmittelbar, dass für $q \neq 0,1$ gilt:
+    \[
+        H_{p}\bigl(B;\, H_{q}(S^{1};\mathbb{Z})\bigr) = H_{p}(B;0) = 0.
+    \]
+    Daraus ergibt sich, dass $E^{2}_{p,q}= 0$ für alle $q \neq 0,1$. Somit hat die
+    Seite $E^{2}$ nur nichttriviale Gruppen in den beiden Reihen $q = 0$ und $q = 1$,
+    wobei $p \geq 0$ gilt. Wir können $E^{2}$ daher wie folgt vereinfachen:
+
+    \[
+        \begin{array}{c|c|c|c|c|c}
+            q & \cdots & 2          & 1          & 0          &        \\
+            \hline
+            1 & \cdots & \mathbb{Z} & \mathbb{Z} & 0          &        \\
+            0 & \cdots & \mathbb{Z} & 0          & \mathbb{Z} &        \\
+            \hline
+            p & \cdots & 0          & 1          & 2          & \cdots
+        \end{array}
+    \]
+
+    Hier sind die Einträge in der Reihe $q = 1$ durch die Homologie von $S^{1}$ in
+    Grad $1$ gegeben, kombiniert mit den Homologiegruppen von $B = \mathbb{C}P^{\infty}$
+    in geraden Graden $p$. Die Einträge in der Reihe $q = 0$ resultieren aus den
+    Homologiegruppen von $B = \mathbb{C}P^{\infty}$ in geraden Graden $p$, kombiniert
+    mit der trivialen Homologie von $S^{1}$ in Grad $0$.
+
+    Da die Differenzialabbildungen $d^{r}$ aufgrund der Gradstruktur trivial sind,
+    degeneriert die Serre-Spektralsequenz hier auf der zweiten Seite, d.h., es gilt
+    $E^{2} = E^{\infty}$. Dies erlaubt uns, die Homologie von $\mathbb{C}P^{\infty}$
+    direkt aus $E^{2}$ zu bestimmen.
+    \[
+        \begin{tikzcd}
+            [sep=tiny] {\color{blue}p:} & {\color{blue}1} & {E^2_{0,1}} & {E^2_{1,1}} &
+            {E^2_{2,1}} & {E^2_{3,1}} & {E^2_{4,1}} & {E^2_{5,1}} \\ & {\color{blue}0}
+            & {E^2_{0,0}} & {E^2_{1,0}} & {E^2_{2,0}} & {E^2_{3,0}} & {E^2_{4,0}} & {E^2_{5,0}}
+            \\ & {\color{red}q:} & {\color{red}0} & {\color{red}1} & {\color{red}2} & {\color{red}3}
+            & {\color{red}4} & {\color{red}5} \arrow[from=2-5, to=1-3] \arrow[from=2-6,
+            to=1-4] \arrow[from=2-7, to=1-5] \arrow[from=2-8, to=1-6]
+        \end{tikzcd}
+    \]
+    Man beachte, dass es stets ein Differential gibt, das für jedes $E^{r}_{p,q}$
+    in die Gruppe hinein abbildet, sowie eines, das aus der Gruppe hinausgeht. Alle
+    nicht grafisch dargestellten Differentiale bilden jedoch entweder in die triviale
+    Gruppe ab oder stammen aus der trivialen Gruppe. Diese sind daher die triviale
+    Abbildung, da die triviale Gruppe in der Kategorie abelscher Gruppen sowohl initiales
+    als auch finales Objekt ist.
+
+    Da $q = 0,1$ ist, vereinfacht sich der Term $H_{q}(F;\mathbb{Z})$ wie folgt:
+    \[
+        H_{q}(F;\mathbb{Z}) = H_{q}(S^{1};\mathbb{Z}) =
+        \begin{cases}
+            \mathbb{Z}, & \text{für } q = 0,1, \\
+            0,          & \text{sonst}.
+        \end{cases}
+    \]
+
+    Somit erhalten wir für $p \geq 0$ und $q = 0,1$:
+    \[
+        E^{2}_{p,q}= H_{p}\bigl(B; H_{q}(F;\mathbb{Z})\bigr) = H_{p}(B;\mathbb{Z}) =
+        H_{p}(B) = H_{p}\bigl(\mathbb{C}P^{\infty}\bigr).
+    \]
+
+    Damit haben wir die zweite Seite $E^{2}$ vollständig berechnet. Sie sieht wie folgt
+    aus:
+    \[
+        \begin{tikzcd}
+            [sep=tiny] {\color{blue}1} & {H_0(\mathbb{C}P^\infty)} & {H_1(\mathbb{C}P^\infty)}
+            & {H_2(\mathbb{C}P^\infty)} & {H_3(\mathbb{C}P^\infty)} & {H_4(\mathbb{C}P^\infty)}
+            & {H_5(\mathbb{C}P^\infty)} \\ {\color{blue}0} & {H_0(\mathbb{C}P^\infty)}
+            & {H_1(\mathbb{C}P^\infty)} & {H_2(\mathbb{C}P^\infty)} & {H_3(\mathbb{C}P^\infty)}
+            & {H_4(\mathbb{C}P^\infty)} & {H_5(\mathbb{C}P^\infty)} \\ & {\color{red}0}
+            & {\color{red}1} & {\color{red}2} & {\color{red}3} & {\color{red}4} & {\color{red}5}
+            \arrow[from=2-4, to=1-2] \arrow[from=2-5, to=1-3] \arrow[from=2-6, to=1-4]
+            \arrow[from=2-7, to=1-5]
+        \end{tikzcd}
+    \]
+    Als nächstes betrachten wir die Seite $E^{\infty}$, also die stabilisierende Seite.
+    Dazu machen wir folgende Beobachtung:
+
+    \begin{lemma}
+        \label{lemma:infinitysection} Falls $E^{2}_{p,q}= 0$, dann ist
+        $E^{\infty}_{p,q}= 0$.
+    \end{lemma}
+
+    \begin{proof}
+        Da $E^{2}_{p,q}= 0$, sind die Differenziale, die nach $E^{2}_{p,q}$ hinein oder
+        aus $E^{2}_{p,q}$ heraus abbilden, alle gleich der Nullabbildung. Somit gilt:
+        \[
+            E^{3}_{p,q}= \ker(d^{2}_{p,q}) / \operatorname{im}(d^{2}_{p+2,q-1}) = 0.
+        \]
+        Induktiv können wir dasselbe Argument anwenden, da die Gruppen in allen weiteren
+        Seiten durch Differenziale aus oder nach $E^{r}_{p,q}$ gebildet werden, die
+        ebenfalls trivial sind. Daher gilt:
+        \[
+            E^{r}_{p,q}= 0 \quad \text{für alle }r \geq 2.
+        \]
+        Insbesondere folgt:
+        \[
+            E^{\infty}_{p,q}= 0.
+        \]
+        Damit ist die Behauptung gezeigt.
+    \end{proof}
+
+    Nach Lemma \ref{lemma:infinitysection} sieht $E^{\infty}$ demnach wie folgt
+    aus, wobei die Einträge alle $0$ sind, außer in den Reihen für $q = 0,1$ und
+    den Spalten $p \geq 0$:
+    \[
+        \begin{tikzcd}
+            [sep=tiny] {\color{blue}1} & {E^\infty_{0,1}} & {E^\infty_{1,1}} & {E^\infty_{2,1}}
+            & {E^\infty_{3,1}} & {E^\infty_{4,1}} & {E^\infty_{5,1}} \\ {\color{blue}0}
+            & {E^\infty_{0,0}} & {E^\infty_{1,0}} & {E^\infty_{2,0}} & {E^\infty_{3,0}}
+            & {E^\infty_{4,0}} & {E^\infty_{5,0}} \\ & {\color{red}0} & {\color{red}1}
+            & {\color{red}2} & {\color{red}3} & {\color{red}4} & {\color{red}5}
+        \end{tikzcd}
+    \]
+
+    Nach Satz \ref{SerreSpectralSequence} d) gibt es für jedes
+    $n \in \mathbb{Z}$ eine Filtrierung
+    \[
+        0 \subset F^{0}_{n} \subset \cdots \subset F^{n}_{n} = H_{n}(X;\mathbb{Z}),
+    \]
+    so dass
+    \[
+        E^{\infty}_{p,n-p}\cong F_{n}^{p} / F_{n}^{p-1}.
+    \]
+
+    Da $X = S^{\infty}$ kontrahierbar ist, gilt $H_{n}(X;\mathbb{Z}) = 0$ für alle
+    $n > 0$ und $H_{0}(X;\mathbb{Z}) = \mathbb{Z}$. Somit ist $F_{n}^{p} = 0$ für alle
+    $n > 0$ und $0 \leq p \leq n$, woraus folgt, dass $E^{\infty}_{p,n-p}= 0$ für alle
+    $n,p$, falls $n \neq 0$.
+
+    Für $n = 0$ haben wir $H_{0}(X;\mathbb{Z}) = \mathbb{Z}$, daher gilt:
+    \[
+        E^{\infty}_{p,-p}= 0, \quad \text{für }p \neq 0,
+    \]
+    und
+    \[
+        E^{\infty}_{0,0}= F_{0}^{0} = H_{0}(X;\mathbb{Z}) = \mathbb{Z}.
+    \]
+
+    Damit kennen wir die gesamte Seite $E^{\infty}$, die wie folgt aussieht:
+    \[
+        \begin{tikzcd}
+            [sep=tiny] {\color{blue}1} & 0 & 0 & 0 & 0 & 0 & 0 \\ {\color{blue}0} & {\mathbb{Z}}
+            & 0 & 0 & 0 & 0 & 0 \\ & {\color{red}0} & {\color{red}1} & {\color{red}2} &
+            {\color{red}3} & {\color{red}4} & {\color{red}5}
+        \end{tikzcd}
+    \]
+    Dies ist bereits der Endspurt. Wir machen noch eine weitere Beobachtung, indem
+    wir die Homologien auf der stabilisierenden Seite mit denen der zweiten Seite in
+    Verbindung bringen.
+    \begin{lemma}
+        $E^{2}_{0,0}= E^{\infty}_{0,0}$.
+    \end{lemma}
+    \nocite{*}
+    \printbibliography
 \end{document}
