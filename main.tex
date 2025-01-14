@@ -1500,9 +1500,85 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     wir die Homologien auf der stabilisierenden Seite mit denen der zweiten Seite in
     Verbindung bringen.
     \begin{lemma}
+        \label{E2}
         $E^{2}_{0,0}= E^{\infty}_{0,0}$.
     \end{lemma}
 
+    \begin{proof}
+    Sei $d_{\operatorname{IN}}$ das Differenzial, welches nach $E^2_{0,0}$ abbildet und dementsprechend $d_{\operatorname{OUT}}$ das Differenzial welches hinaus abbildet. Weil die Abbildungen durch $d_{\operatorname{IN}}: E^{2}_{2,-1} = 0 \to E^2_{0,0}$ und $d_{\operatorname{OUT}}: E^2_{0,0} \to E^2_{-2,1} = 0$ gegeben sind, sind beide Differenziale trivial und somit ist 
+    \begin{align}
+    E^3_{0,0} = \ker d_{\operatorname{OUT}} / \ima d_{\operatorname{IN}} = E^2_{0,0} / 0 = E^2_{0,0}.
+    \end{align}
+    Aus dem Beweis von Lemma \ref{E2} wissen wir für $p<0$ oder $q \neq 0,1$, dass $E^r_{p,q} = 0$ für alle $r \geq 2$. Auf der $r$ten Seite gibt es ein Differenzial $E^r_{r,-r+1} \to E^r_{0,0}$ und eines $E^r_{0,0} \to E^r_{-r,r-1}$. Weil $-r+1 < 0$ und $-r < 0$, sind beide Gruppen Null, also beide Differenziale die Nullabbildung. Somit erhalten wir $E^{r+1}_{0,0} = E^r_{0,0}$. Also ist für $r \geq 2, E^r_{0,0} = E^2_{0,0}$ und wir schlussfolgern $E^\infty_{0,0} = E^2_{0,0}$.
+    \end{proof}
+    Dieses Ergebnis lässt sich wie folgt verallgemeinern:
+    \begin{lemma}
+    \label{E3}
+    Für alle $p,q$ gilt $E^3_{p,q} = E^\infty_{p,q}$.
+    \end{lemma}
+    \begin{proof}
+    Aus dem Beweis von Lemma \ref{E2} wissen wir, dass für \( p < 0 \) oder \( q \notin \{0,1\} \) gilt $E^r_{p,q} = 0 \quad \text{für alle } r \geq 2$. Daher folgt für \( p < 0 \) oder \( q \notin \{0,1\} \), dass $E^3_{p,q} = E^\infty_{p,q}$.
+
+    Angenommen, \( p \geq 0 \) und \( q \in \{0,1\} \). Auf der \( r \)-ten Seite für ein \( r \geq 3 \) kommt das Differential, das in \( E^r_{p,q} \) eingeht, von \( E^r_{p+r, q-r+1} \), und das Differential, das aus \( E^r_{p,q} \) hinausgeht, führt zu \( E^r_{p-r, q+r-1} \).
+
+    Da \( r \geq 3 \) und \( q \leq 1 \), folgt:
+    \[
+    q - r + 1 \leq q - 2 \leq -1 \quad \Rightarrow \quad E^r_{p+r, q-r+1} = 0.
+    \]
+    Weiterhin gilt für \( r \geq 3 \) und \( q \geq 0 \):
+    \[
+    q + r - 1 \geq q + 2 \geq 2 \quad \Rightarrow \quad E^r_{p-r, q+r-1} = 0.
+    \]
+
+    Damit sind beide Differentiale gleich null, also: $E^{r+1}_{p,q} = E^r_{p,q}$. Daher gilt für alle \( r \geq 3 \), dass $E^r_{p,q} = E^3_{p,q}$.
+    \end{proof}
+
+    Wir wissen nun, wie sowohl die \( E_2 \)- als auch die \( E_3 \)-Seite aussehen, wobei die erste in Bezug auf die Homologie von \( \mathbb{CP}^\infty \) und die zweite explizit dargestellt ist. Um die Homologiegruppen von \( \mathbb{CP}^\infty \) zu berechnen, genügt es, zu betrachten, wie die \( E_3 \)-Seite aus der \( E_2 \)-Seite hervorgegangen ist.
+
+    Nach Lemma \ref{E3} können wir bereits schlussfolgern, dass $H_0(\mathbb{CP}^\infty) = E_2^{0,0} = E_3^{0,0} = \mathbb{Z}$. Das Berechnen der anderen Gruppen erfordert jedoch etwas mehr Arbeit.
+
+    \begin{theorem}
+    \label{CPunendlich}
+    Für alle \( k \geq 1 \) gilt \( H_k(\mathbb{CP}^\infty) \cong H_{k-2}(\mathbb{CP}^\infty) \).
+    \end{theorem}
+
+    \begin{proof}
+    Da Differentiale immer \( 0 \) ergeben, wenn sie miteinander komponiert werden, können wir für jedes \( k \) aus der \( E_2 \)-Seite den Kettenkomplex
+    \[
+    E_2^{k+2, -1} = 0 \to E_2^{k, 0} \to E_2^{k-2, 1} \to E_2^{k-4, 2} = 0
+    \]
+    ableiten. 
+
+    Falls \( k \geq 1 \), dann gilt \( E_3^{k, 0} = 0 \) und \( E_3^{k-2, 1} = 0 \). Somit sind die Homologiegruppen des gegebenen Kettenkomplexes alle trivial. Nach Proposition 2.5 ist der gegebene Kettenkomplex daher eine exakte Sequenz. Nach Proposition 2.3 folgt daraus \( E_2^{k,0} \cong E_2^{k-2,1} \). Somit gilt für alle \( k \geq 1 \), dass
+    \[
+    H_k(\mathbb{CP}^\infty) \cong H_{k-2}(\mathbb{CP}^\infty).
+    \]
+    \end{proof}
+
+    \begin{corollary}
+    Es gilt:
+    \[
+    H_n(\mathbb{CP}^\infty) =
+    \begin{cases}
+    \mathbb{Z}, & \text{falls \( n \) gerade,} \\
+    0, & \text{falls \( n \) ungerade.}
+    \end{cases}
+    \]
+    \end{corollary}
+
+    \begin{proof}
+    Aus Lemma \ref{E2} folgt, dass \( H_0(\mathbb{CP}^\infty) = \mathbb{Z} \), und es ist bekannt, dass \( H_{-1}(\mathbb{CP}^\infty) = 0 \). Nach Satz \ref{CPunendlich} zeigt ein einfacher Induktionsbeweis, dass \( H_n(\mathbb{CP}^\infty) = \mathbb{Z} \) für alle geraden \( n \), und \( H_n(\mathbb{CP}^\infty) = 0 \) für alle ungeraden \( n \).
+    \end{proof}
+    Also sieht $E^2$ wie folgt aus:
+    \[\begin{tikzcd}[sep=tiny]
+        {\color{blue} 1} & {\mathbb{Z}} & 0 & {\mathbb{Z}} & 0 & {\mathbb{Z}} & 0 \\
+        {\color{blue} 0} & {\mathbb{Z}} & 0 & {\mathbb{Z}} & 0 & {\mathbb{Z}} & 0 \\
+        & {\color{red} 0} & {\color{red} 1} & {\color{red} 2} & {\color{red} 3} & {\color{red} 4} & {\color{red} 5}
+        \arrow[from=2-4, to=1-2]
+        \arrow[from=2-5, to=1-3]
+        \arrow[from=2-6, to=1-4]
+        \arrow[from=2-7, to=1-5]
+    \end{tikzcd}\]
     \newpage
     \nocite{*}
     \printbibliography
