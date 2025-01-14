@@ -136,7 +136,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
 
             \item $E^{r+1}_{p,q}$ ist die zugehörige Homologie von $A^{r}$, das heißt
                 \[
-                    E^{r+1}_{p,q}\;=\; \frac{\ker \bigl(d^{r}_{p,q}\bigr)}{\mathrm{im}\,\bigl(d^{r}_{p+r,q-r+1}\bigr)}
+                    E^{r+1}_{p,q}\;=\; \frac{\ker d^{r}_{p,q}}{\mathrm{im}\,d^{r}_{p+r,q-r+1}}
                     .
                 \]
         \end{enumerate}
@@ -195,7 +195,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Abbildung} vom Bigrad $(c,d)$ ist dann ein Gruppenhomomorphismus
         \[
             f : A \;\longrightarrow\; B,\quad \bigoplus_{p,q \in \Z}a_{p,q}\;\longmapsto
-            \; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}\bigl(a_{p,q}\bigr),
+            \; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q} a_{p,q} ,
         \]
         wobei jedem Summanden $a_{p,q}\in A_{p,q}$ das Element
         $f^{(c,d)}_{p,q}(a_{p,q}) \in B_{p+c,\,q+d}$ zugeordnet wird.
@@ -221,7 +221,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Seien $A$ und $B$ bigraduierte abelsche Gruppen. Dann definieren wir:
         \begin{enumerate}[nolistsep]
             \item $A \subset B \;\colon\Leftrightarrow\; A_{p,q}\subset B_{p,q}$ für alle
-                $p,q \in \Z$,
+                $p,q \in \Z$.
 
             \item Falls $A \subset B$, so sei
                 \[
@@ -235,16 +235,16 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Ist $f: A \to B$ eine bigraduierte Abbildung des Grads $(c,d)$ zwischen bigraduierten
         abelschen Gruppen, so definieren wir
         \begin{itemize}[nolistsep]
-            \item $\displaystyle \ker f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ker \bigl(
-                f_{p,q}\bigr)$,
+            \item $\displaystyle \ker f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ker  
+                f_{p,q} $,
 
-            \item $\displaystyle \ima f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ima \bigl(
-                f_{p-c,q-d}\bigr)$.
+            \item $\displaystyle \ima f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ima  
+                f_{p-c,q-d} $.
         \end{itemize}
     \end{definition}
 
-    Nun können wir die zuvor definierte homologische Sequenz (Definition \ref{homologischeSequenz})
-    zu einer \textbf{spektralen} homologischen Sequenz erweitern.
+    Nun können wir die zuvor definierte homologische Sequenz (Def. \ref{homologischeSequenz})
+    zu einer homologischen \textbf{Spektralsequenz} erweitern.
 
     \begin{definition}
         \label{homologischeSpektraleSequenz} Sei $r_{0} \geq 0$. Eine \textbf{homologische
@@ -270,9 +270,9 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 ^{r}$, das heißt
                 \[
                     E^{r+1}\;=\; \frac{\ker(d^{r})}{\mathrm{im}(d^{r})}\;=\; \frac{\displaystyle\bigoplus_{p,q
-                    \in \Z}\ker\bigl(d^{r}_{p,q}\bigr)}%
-                    {\displaystyle\bigoplus_{p,q \in \Z} \mathrm{im}\!\bigl(d^r_{\,p-r,\,q+r-1}\bigr)}
-                    \;=\; \bigoplus_{p,q \in \Z}\frac{\ker\bigl(d^{r}_{p,q}\bigr)}{\mathrm{im}\!\bigl(d^{r}_{\,p-r,\,q+r-1}\bigr)}
+                    \in \Z}\ker d^{r}_{p,q} }%
+                    {\displaystyle\bigoplus_{p,q \in \Z} \mathrm{im}\! d^r_{\,p-r,\,q+r-1} }
+                    \;=\; \bigoplus_{p,q \in \Z}\frac{\ker d^{r}_{p,q} }{\mathrm{im}\! d^{r}_{\,p-r,\,q+r-1} }
                     .
                 \]
         \end{itemize}
@@ -283,7 +283,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
 
     \begin{remark}
         Es gibt eine entsprechende Variante als \textbf{kohomologische
-        Spektralsequenz}, die in analoger Weise zu Definition~\ref{homologischeSpektraleSequenz}
+        Spektralsequenz}, die in analoger Weise zu Def.~\ref{homologischeSpektraleSequenz}
         konstruiert wird. Dort schreibt man
         $E_{r} \coloneqq \bigoplus_{p,q \in \Z}E_{r}^{\,p,q}$ für die
         Kohomologieanteile und verwendet Differentiale
@@ -367,16 +367,16 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     $A$ ein Deformationsretrakt von $U$ ist. Dies stellt sicher, dass die relative
     Homologie
     \[
-        H_{n}(X,A) \;\cong\; \tilde{H}_{n}\bigl(X/A\bigr)
+        H_{n}(X,A) \;\cong\; \tilde{H}_{n}(X/A) 
     \]
     isomorph zur \textbf{reduzierten} Homologie des Quotienten $X/A$ ist. Falls
     wir nun die Homologien von $A$ und $X/A$ kennen, so ist es naheliegend, zur
     Berechnung der Homologie von $X$ die lange exakte \textbf{reduzierte} Homologiesequenz
     zu verwenden:
     \[
-        \cdots \;\longrightarrow\; \tilde{H}_{n}(A) \;\longrightarrow\; \tilde{H}_{n}
-        (X) \;\longrightarrow\; \tilde{H}_{n}\bigl(X/A\bigr) \;\longrightarrow\; \tilde
-        {H}_{n-1}(A) \;\longrightarrow\; \tilde{H}_{n-1}(X) \;\longrightarrow\; \cdots
+        \cdots \;\xlongrightarrow{\partial_{n+1}}\; \tilde{H}_{n}(A) \;\xlongrightarrow{H_n(\iota)}\; \tilde{H}_{n}
+        (X) \;\xlongrightarrow{H_n(\pi)}\; \tilde{H}_{n}(X/A)  \;\xlongrightarrow{\partial_n}\; \tilde
+        {H}_{n-1}(A) \;\xlongrightarrow{\partial_{n-1}}\; \cdots
         .
     \]
 
@@ -388,7 +388,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     sind und wir bereits die Homologien von $B$, $A/B$ sowie $X/A$ kennen. Dann
     wünschen wir uns eine Verallgemeinerung der langen exakten Sequenz, die auch für
     ein solches verschachteltes Paar von Räumen funktioniert. Im Allgemeinen kann
-    man eine solche \textbf{Matroschka} von topologischen Räumen als \textbf{Filtrierung}
+    man eine solche Matroschka von topologischen Räumen als \textbf{Filtrierung}
     auffassen:
 
     \begin{definition}
@@ -400,16 +400,18 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \]
     \end{definition}
 
+    Wir werden zusätzlich fordern, dass $(X_k,X_{k-1})$ gute Paare sind, jedoch kann die Forderung für CW-Strukturen fallen gelassen werden, da diese durch die Definition eines CW-Komplexes bereits sichergestellt ist.
+
     Nun stellt sich die Frage, was wir über die Homologien von $X$ aussagen können,
     wenn wir unser Wissen über die Homologien der $X_{i}$ aus einer Filtrierung $\mathcal{X}$
     und/oder über die Quotientenräume $X_{i}/X_{i-1}$ einsetzen. Beschränken wir
     uns auf den Spezialfall, dass $X$ der Totalraum einer Faserung ist, so
     erhalten wir eine zufriedenstellende Antwort auf diese Frage.
 
-    \begin{definition}
-        In einer Spektralsequenz kommt es häufig vor, dass $E^{r}$ und $d^{r}$ aus
+    In einer Spektralsequenz kommt es häufig vor, dass $E^{r}$ und $d^{r}$ aus
         einer anderen Struktur hervorgehen, nämlich aus einem \textbf{exakten Paar}.
 
+    \begin{definition}
         Ein \textbf{exaktes Paar} besteht aus einem Paar bigraduierter abelscher Gruppen
         $A$ und $E$ zusammen mit bigraduierten Abbildungen
         \[
@@ -466,10 +468,10 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
 
             \item $i' = i\vert_{i(A)}$ (Einschränkung von $i$ auf $i(A)$),
 
-            \item Für alle $i(a) \in A':\; j'\bigl(i(a)\bigr) \;=\; \bigl[j(a)\bigr] \;
+            \item Für alle $i(a) \in A':\; j' i(a)  \;=\; \bigl[j(a)\bigr] \;
                 \in\; E'$,
 
-            \item Für alle $[e] \in E':\; k'\bigl([e]\bigr) \;=\; k(e)$
+            \item Für alle $[e] \in E':\; k' [e]  \;=\; k(e)$
         \end{itemize}
         gegeben sind.
     \end{lemma}
@@ -484,7 +486,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 $\ker(i) = \ima(k)$ gilt, existiert ein $e \in E$ mit
                 $k(e) = a_{1} - a_{2}$. Dann folgt
                 \[
-                    j(a_{1}) - j(a_{2}) \;=\; j(a_{1} - a_{2}) \;\in\; \ima(j\,k) \;=\; \ima
+                    j(a_{1}) - j(a_{2}) \;=\; j(a_{1} - a_{2}) \;\in\; \ima(j \circ k) \;=\; \ima
                     (d).
                 \]
                 In anderen Worten ist $j(a_{1}) - j(a_{2})$ ein \textbf{Rand} im Bild
@@ -505,9 +507,9 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \]
                 Folglich gilt
                 \[
-                    k(e_{1} - e_{2}) = 0 \;\Longrightarrow\; k'\bigl([\,e_{1} - e_{2}\,]\bigr
-                    ) = 0 \;\Longrightarrow\; k'\bigl([\,e_{1}\,]\bigr) = k'\bigl([\,e_{2}\,
-                    ]\bigr).
+                    k(e_{1} - e_{2}) = 0 \;\Longrightarrow\; k' [\,e_{1} - e_{2}\,]\bigr
+                    ) = 0 \;\Longrightarrow\; k' [\,e_{1}\,]  = k' [\,e_{2}\,
+                    ] .
                 \]
                 Damit ist auch $k'$ wohldefiniert.
 
@@ -515,8 +517,8 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 $\ima(i') \subset \ker(j')$}:\\ Sei $a' \in A'$. Dann existiert
                 $a \in A$ mit $i(a) = a'$. Nun
                 \[
-                    (j' \circ i')(a') \;=\; j'\bigl(i'(a')\bigr) \;=\; j'\bigl(i\vert_{i(A)}
-                    (a')\bigr).
+                    (j' \circ i')(a') \;=\; j' i'(a')  \;=\; j' i\vert_{i(A)}
+                    (a') .
                 \]
                 Da $a' = i(a)$, folgt
                 \[
@@ -533,7 +535,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 ist $j'(a') = 0$. Da $a' \in A'$ gilt $a' = i(a)$ für ein $a \in A$.
                 Also
                 \[
-                    j'\bigl(i(a)\bigr) = \bigl[j(a)\bigr] = 0 \;\Longrightarrow\; j(a) \;\in
+                    j' i(a)  = \bigl[j(a)\bigr] = 0 \;\Longrightarrow\; j(a) \;\in
                     \; \ima(d).
                 \]
                 Somit existiert $e \in E$ mit $j(a) = (jk)(e) = d(e)$. Folglich ist
@@ -542,20 +544,20 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \]
                 Also gibt es ein $b \in A$, sodass $a - k(e) = i(b)$. Daraus folgt
                 \[
-                    a' \;=\; i(a) \;=\; i(a) \;-\; i(k(e)) \;=\; i\bigl(a - k(e)\bigr) \;=\;
-                    i\bigl(i(b)\bigr) \;=\; i^{2}(b).
+                    a' \;=\; i(a) \;=\; i(a) \;-\; i(k(e)) \;=\; i a - k(e)  \;=\;
+                    i i(b)  \;=\; i^{2}(b).
                 \]
                 Da $i(a') = a'$ in $A'$ bereits als Bild vorliegt, folgt
                 $a' \in \ima(i')$. Somit $\ker(j') = \ima(i')$.
 
                 \textbf{(c) $\ima(j') \subset \ker(k')$}:\\ Sei $a' = i(a) \in A'$. Dann
                 \[
-                    \bigl(k' \circ j'\bigr)(a') \;=\; k'\bigl(j'\bigl(i(a)\bigr)\bigr) \;=\;
-                    k'\bigl([\,j(a)\bigr]) \;=\; k\bigl(j(a)\bigr).
+                     k' \circ j' (a') \;=\; k' j' i(a)   \;=\;
+                    k' [\,j(a)\bigr]) \;=\; k j(a) .
                 \]
                 Doch aus Exaktheit folgt $k \circ j = 0$, also
                 \[
-                    k\bigl(j(a)\bigr) = 0.
+                    k j(a)  = 0.
                 \]
                 Damit ist $\ima(j') \subset \ker(k')$.
 
@@ -563,15 +565,15 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 ist $k'( [e] ) = k(e) = 0$, woraus $e \in \ker(k)$. Nach Exaktheit ist
                 $\ker(k) = \ima(j)$, also existiert $a \in A$ mit $e = j(a)$. Daher
                 \[
-                    [e] = [\,j(a)\bigr] = j'\bigl(i(a)\bigr) \;\in\; \ima\bigl(j'\bigr).
+                    [e] = [\,j(a)\bigr] = j' i(a)  \;\in\; \ima j' .
                 \]
                 Somit $\ker(k') = \ima(j')$.
 
                 \textbf{(e) $\ima(k') \subset \ker(i')$ und $\ker(i') \subset \ima(k')$}:\\
                 Für jedes $[e] \in E'$ ist
                 \[
-                    (i' \circ k')\bigl([e]\bigr) \;=\; i'\bigl(k'( [e] )\bigr) \;=\; i\bigl
-                    (k(e)\bigr) \;=\; (i \circ k)(e) \;=\; 0
+                    (i' \circ k') [e]  \;=\; i' k'( [e] )  \;=\; i\bigl
+                    (k(e)\bigr)  \;=\; (i \circ k)(e) \;=\; 0
                 \]
                 (aus $i \circ k = 0$). Also $\ima(k') \subset \ker(i')$.
 
@@ -579,11 +581,11 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 Da $i'(a') = i(a')$ (Einschränkung) und $a' \in A' = i(A)$, existiert ein
                 $a \in A$ mit $a' = i(a)$. Dann
                 \[
-                    0 = i'(a') = i'(i(a)) = i\bigl(i(a)\bigr).
+                    0 = i'(a') = i'(i(a)) = i i(a) .
                 \]
                 Aufgrund der Exaktheit $\ker(i) = \ima(k)$ folgt, dass $i(a) \in \ima(k)$,
                 also $i(a) = k(e)$ für ein $e \in E$. Damit ist $a' = k(e)$ und somit $a'
-                = k'\bigl([e]\bigr)$. Also $\ker(i') \subset \ima(k')$.
+                = k' [e] $. Also $\ker(i') \subset \ima(k')$.
 
                 Insgesamt folgt aus (a)--(e), dass das so konstruierte Diagramm exakt
                 ist. Damit ist $(A', E', i', j', k')$ in der Tat ein exaktes Paar.
@@ -614,20 +616,19 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \label{exaktFiltration} Für alle $p,q \in \Z$ setze
         \[
             E^{1}_{p,q}\;=\; H_{p+q}\bigl(X_{p},\,X_{p-1}\bigr) \quad\text{und}\quad A^{1}
-            _{p,q}\;=\; H_{p+q}\bigl(X_{p}\bigr).
+            _{p,q}\;=\; H_{p+q}(X_{p}).
         \]
         Die Abbildungen $i^{1}, j^{1}, k^{1}$ definieren wir auf jedem $A^{1}_{p,q}$
         bzw.\ $E^{1}_{p,q}$ in Übereinstimmung mit der langen exakten
         Homologiesequenz. Im Folgenden illustriert das Diagramm die Konstruktion:
-        \[
-            \begin{tikzcd}
-                [cramped] \cdots & H_{p+q}(X_{p-1}) & H_{p+q}(X_{p}) & H_{p+q}(X_{p},X_{p-1})
-                \\ & {} & \cdots & H_{p+q-1}(X_{p-1}) \arrow["{k^1_{p,q+1}}", from=1-1,
-                to=1-2] \arrow["{i^1_{p,q}}", from=1-2, to=1-3] \arrow["{j^1_{p,q}}", from=1-3,
-                to=1-4] \arrow["{k^1_{p,q}}", from=1-4, to=2-4] \arrow["{i^1_{p,q-1}}"',
-                from=2-4, to=2-3]
-            \end{tikzcd}
-        \]
+        \[\begin{tikzcd}[sep=small]
+            \cdots & {H_{p+q}(X_{p-1})} & {H_{p+q}(X_{p})} & {H_{p+q}(X_{p},X_{p-1})} & {H_{p+q-1}(X_{p-1})} & \cdots
+            \arrow["{k^1_{p,q+1}}", from=1-1, to=1-2]
+            \arrow["{i^1_{p,q}}", from=1-2, to=1-3]
+            \arrow["{j^1_{p,q}}", from=1-3, to=1-4]
+            \arrow["{k^1_{p,q}}", from=1-4, to=1-5]
+            \arrow["{i^1_{p,q-1}}", from=1-5, to=1-6]
+        \end{tikzcd}\]
         Dabei gilt:
         \begin{itemize}[nolistsep]
             \item $i^{1}_{p,q}\;=\; H_{p+q}(\iota) : A^{1}_{p,q}\to A^{1}_{p,q}$ ist der
@@ -646,13 +647,13 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \end{itemize}
         Da die lange exakte Homologiesequenz exakt ist, bildet
         \[
-            \bigl(E^{1}_{p,q},\,A^{1}_{p,q},\,i^{1}_{p,q},\,j^{1}_{p,q},\,k^{1}_{p,q}\bigr
+            \bigl( E^{1}_{p,q},\,A^{1}_{p,q},\,i^{1}_{p,q},\,j^{1}_{p,q},\,k^{1}_{p,q}\bigr
             )
         \]
         ein \textbf{exaktes Paar}.
     \end{definition}
 
-    Aus Definition~\ref{exaktFiltration} erhalten wir für jedes $r$ ein
+    Aus Def.~\ref{exaktFiltration} erhalten wir für jedes $r$ ein
     entsprechendes exaktes Paar und damit \textbf{unendlich viele} exakte Paare (möglicherweise
     abzählbar oder überabzählbar unendlich). Definieren wir
     \[
@@ -669,7 +670,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         aus einer homologisch exakten Sequenz einer Filtrierung gegeben. Dann gibt
         es eine homologische Spektralsequenz
         \[
-            \{\,E^{r},\,d^{r}\}\quad\text{mit}\quad d^{r} \;=\; j^{r} \circ k^{r}.
+            \{E^{r},\,d^{r}\}\quad\text{mit}\quad d^{r} \;=\; j^{r} \circ k^{r}.
         \]
     \end{theorem}
 
@@ -683,7 +684,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         ist. Auf der ersten Seite folgt aus $d^{1} = j^{1} \circ k^{1}$, dass wir
         für
         \[
-            \bigl(H_{p+q}(X_{p},\,X_{p-1}),\,d^{1}\bigr)
+             \bigl(H_{p+q}(X_{p},\,X_{p-1}),\,d^{1}\bigr)
         \]
         die Abbildungen
         \[
@@ -693,14 +694,14 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         erhalten. Damit sehen wir, dass
         \[
             d^{1} : E^{1}_{p,q}\;=\; H_{p+q}(X_{p},\,X_{p-1}) \;\longrightarrow\; H_{p+q-1}
-            \bigl(X_{p-1},\,X_{p-2}\bigr) \;=\; E^{1}_{p-1,\,q},
+            (X_{p-1},\,X_{p-2}) \;=\; E^{1}_{p-1,\,q},
         \]
         also ist $d^{1}$ vom Grad $(-1,\,0)$.
 
         Für den allgemeinen Fall teilen wir den Beweis in drei Schritte auf:
 
         \begin{enumerate}[nolistsep]
-            \item $A^{r}_{p,q}= i^{r-1}\bigl(A^{1}_{p,q}\bigr)$.
+            \item $A^{r}_{p,q}= i^{r-1} A^{1}_{p,q} $.
 
             \item $k^{r}_{p,q}: E^{r}_{p,q}\;\longrightarrow\; A^{r}_{p-1,q}$.
 
@@ -714,7 +715,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \smallskip
         \noindent
         \textbf{Zu (2).} Der Homomorphismus $k^{r+1}_{p,q}$ wird durch $k^{r}_{p,q}$
-        auf $\ker(d^{r}) / \ima(d^{r})$ induziert. Für die erste Seite wissen wir
+        auf $\ker d^{r} / \ima d^{r}$ induziert. Für die erste Seite wissen wir
         bereits, dass
         \[
             k^{1}_{p,q}: E^{1}_{p,q}\;\longrightarrow\; A^{1}_{p-1,q}
@@ -730,14 +731,14 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \noindent
         \textbf{Zu (3).} Sei $a \in A^{r}_{p,q}$. Dann gibt es ein $b \in A^{1}_{p,q}$
         mit $i^{r-1}(b) = a$, weil nach (1)
-        $\,A^{r}_{p,q}= i^{r-1}\bigl(A^{1}_{p,q}\bigr)$. Folglich
+        $\,A^{r}_{p,q}= i^{r-1} A^{1}_{p,q} $. Folglich
         \begin{align}
-            j^{r}(a)  & \;=\; j^{r}\bigl(i^{r-1}(b)\bigr) \;=\; \bigl[j^{r-1}\bigl(i^{r-2}(b)\bigr)\bigr]                                           \\
-            \nonumber & \;= \bigl[\bigl[j^{r-2}\bigl(i^{r-3}(b)\bigr)\bigr]\bigr] \;=\; \cdots \;=\; \bigl[\cdots \bigl[j^{1}(b)\bigr]\cdots\bigr].
+            j^{r}(a)  & \;=\; j^{r} i^{r-1}(b)  \;=\; \bigl[j^{r-1} i^{r-2}(b) \bigr]                                           \\
+            \nonumber & \;= \bigl[\bigl[j^{r-2} i^{r-3}(b) \bigr]\bigr] \;=\; \cdots \;=\; \bigl[\cdots \bigl[j^{1}(b)\bigr]\cdots\bigr].
         \end{align}
         Hier kennzeichnen wir durch mehrfaches Einklammern, dass wir zunächst eine
-        Äquivalenzklasse $[\,\alpha]$ in $E^{r}_{p,q}$ und anschließend eine weitere
-        Klasse $[[\,\alpha]]$ in $E^{r+1}_{p,q}$ betrachten. Weil sowohl $\,[\cdots [
+        Äquivalenzklasse $[\alpha]$ in $E^{r}_{p,q}$ und anschließend eine weitere
+        Klasse $[[\alpha]]$ in $E^{r+1}_{p,q}$ betrachten. Weil sowohl $\,[\cdots [
         j^{1}(b)] \cdots] \in E^{r+k}_{p,q}$ als auch $\,j^{1}(b) \in E^{1}_{p,q}$ in
         derselben \textbf{homologischen Ordnung} liegen, folgt, dass sich nur der
         \textbf{Grad des derivierten Paares} ändert, nicht jedoch die
@@ -840,7 +841,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \]
                 Definiere $\overline{h}: Z \times [0,1] \to X \times Y$ durch
                 \[
-                    \overline{h}(z,t) \;=\; \Bigl(\bigl(p_{X} \circ \overline{h}_{0}\bigr)(
+                    \overline{h}(z,t) \;=\; \Bigl( p_{X} \circ \overline{h}_{0} (
                     z),\; h(z,t)\Bigr),
                 \]
                 wobei $p_{X} : X \times Y \to X$ die Projektion auf die erste Komponente
@@ -876,7 +877,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Wir erzeugen eine Filtrierung von $X$, indem wir das $p$-Skelett $B^{p}$ von $B$
     betrachten und
     \[
-        X_{p} \;\coloneqq\; \pi^{-1}\bigl(B^{p}\bigr)
+        X_{p} \;\coloneqq\; \pi^{-1} B^{p} 
     \]
     setzen. Aus dieser Filtrierung erhalten wir ein exaktes Paar, aus dem wiederum
     eine homologische Sequenz entsteht. In dieser Konstellation heißt die
@@ -933,7 +934,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Für $t=1$ erhalten wir daraus die gesuchte Abbildung
         \[
             L_{\gamma} : F_{\gamma(0)}\;\longrightarrow\; F_{\gamma(1)}, \quad L_{\gamma}
-            (x) \;=\; \overline{h}\bigl(x,1\bigr).
+            (x) \;=\; \overline{h} x,1 .
         \]
         Diese Konstruktion zeigt die Homotopieäquivalenz der Fasern entlang des
         Weges $\gamma$, und damit sind sämtliche Fasern über eine wegzusammenhängende
@@ -1129,13 +1130,13 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     wegzusammenhängender CW-Komplex ist. Für jedes $p$ sei $B^{p}$ das $p$-dimensionale
     Skelett von $B$, und wir definieren
     \[
-        X_{p} \;\coloneqq\; \pi^{-1}\bigl(B^{p}\bigr).
+        X_{p} \;\coloneqq\; \pi^{-1} B^{p} .
     \]
     Die Räume $X_{p}$ bilden eine Filtrierung von $X$, auf die wir später noch zurückkommen
     werden. Für eine gegebene Gruppe $G$ definieren wir die \textbf{erste Seite} der
     Serre-Spektralsequenz durch
     \[
-        E^{1}_{p,q}\;\coloneqq\; H_{p+q}\bigl(X_{p},\,X_{p-1};\,G\bigr).
+        E^{1}_{p,q}\;\coloneqq\; H_{p+q} X_{p},\,X_{p-1};\,G .
     \]
     Sobald wir diese erste Seite festgelegt haben, \textbf{läuft} die Serre-Spektralsequenz
     weiter, bis sie schließlich bei der $E^{\infty}$-Seite \textbf{stabilisiert} und
@@ -1162,13 +1163,13 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
             \item $E^{r+1}_{p,q}$ ist die Homologie von $E^{r}_{\bullet,\bullet}$ an der
                 Stelle $E^{r}_{p,q}$, das heißt
                 \[
-                    E^{r+1}_{p,q}\;=\; \frac{\ker\bigl(d^{r} : E^{r}_{p,q}\to E^{r}_{\!*}\bigr)}{\mathrm{im}\bigl(d^{r}
-                    : E^{r}_{\!*}\to E^{r}_{p,q}\bigr)}.
+                    E^{r+1}_{p,q}\;=\; \frac{\ker d^{r} : E^{r}_{p,q}\to E^{r}_{\!*} }{\mathrm{im} d^{r}
+                    : E^{r}_{\!*}\to E^{r}_{p,q} }.
                 \]
 
             \item Auf der zweiten Seite gilt
                 \[
-                    E^{2}_{p,q}\;\cong\; H_{p}\bigl(B;\,H_{q}(F;G)\bigr).
+                    E^{2}_{p,q}\;\cong\; H_{p} B;\,H_{q}(F;G) .
                 \]
 
             \item Die stabilen Terme $E^{\infty}_{p,q}$ sind isomorph zu den assoziierten
@@ -1197,9 +1198,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     in $\mathbb{C}^{n+1}\cong \mathbb{R}^{2n+2}$. Ein isometrischer Isomorphismus
     wird durch die Abbildung
     \[
-        \phi \colon \mathbb{R}^{2n+2}\to \mathbb{C}^{n+1}, \quad (x_{1}, \dots, x_{2n+2}
-        ) \mapsto \bigl(x_{1} + i x_{2},\, x_{3} + i x_{4},\, \dots,\, x_{2n+1}+ i x_{2n+2}
-        \bigr)
+        \phi \colon \mathbb{R}^{2n+2}\to \mathbb{C}^{n+1}, \quad (x_{1}, \dots, x_{2n+2}) \mapsto (x_{1} + i x_{2},\, x_{3} + i x_{4},\, \dots,\, x_{2n+1}+  i x_{2n+2})
     \]
     gegeben. Wir können $\mathbb{C}P^{n}$ als Quotientenraum
     \[
@@ -1269,12 +1268,12 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \]
     gegeben. Für den zugehörigen zellulären Kettenkomplex erhalten wir
     \[
-        C_{2k}\bigl(\mathbb{C}P^{\infty}\bigr) \;\cong\; H_{2k}\bigl(X_{2k},\,X_{2k-1}
-        \bigr) \;\cong\; \mathbb{Z}\quad \text{für }k \geq 0,
+        C_{2k} \mathbb{C}P^{\infty}  \;\cong\; H_{2k} X_{2k},\,X_{2k-1}
+          \;\cong\; \mathbb{Z}\quad \text{für }k \geq 0,
     \]
     sowie
     \[
-        C_{k}\bigl(\mathbb{C}P^{\infty}\bigr) \;\cong\; H_{k}\bigl(X_{k},\,X_{k-1}\bigr
+        C_{k} \mathbb{C}P^{\infty}  \;\cong\; H_{k} X_{k},\,X_{k-1}\bigr
         ) \;=\; 0 \quad \text{für alle ungeraden }k \text{ und }k < 0.
     \]
 
@@ -1290,7 +1289,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     der Zellsymmetrie, sodass die Homologiegruppen direkt abgelesen werden können.
     Es gilt:
     \[
-        H_{k}\bigl(\mathbb{C}P^{\infty}\bigr) \;=\;
+        H_{k} \mathbb{C}P^{\infty}  \;=\;
         \begin{cases}
             \mathbb{Z}, & \text{falls }k \in 2\mathbb{N}_{0} \text{ (gerade)}, \\
             0,          & \text{falls }k \text{ ungerade}.
@@ -1317,7 +1316,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     während die Faser $S^{1}$ nur in Grad $1$ Homologie hat. Die Tensorstruktur des
     Spektralsequenz-Produkts liefert somit:
     \[
-        E^{2}_{p,q}= H_{p}\bigl(\mathbb{C}P^{\infty}\bigr) \otimes H_{q}\bigl(S^{1}\bigr
+        E^{2}_{p,q}= H_{p} \mathbb{C}P^{\infty}  \otimes H_{q} S^{1}\bigr
         ).
     \]
 
@@ -1334,7 +1333,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     E^{\infty}$), da die differentielle Abbildung $d^{2}$ wegen der geraden
     Homologie der Basis trivial ist. Somit erhalten wir direkt:
     \[
-        H_{k}\bigl(\mathbb{C}P^{\infty}\bigr) =
+        H_{k} \mathbb{C}P^{\infty}  =
         \begin{cases}
             \mathbb{Z}, & \text{falls } k \text{ gerade}, \\
             0,          & \text{sonst}.
@@ -1349,7 +1348,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \ref{SerreSpectralSequence} ist die zweite Seite $E^{2}$ der Serre-Spektralsequenz
     durch die Homologien
     \[
-        E^{2}_{p,q}= H_{p}\bigl(B;\, H_{q}(F;\mathbb{Z})\bigr)
+        E^{2}_{p,q}= H_{p} B;\, H_{q}(F;\mathbb{Z}) 
     \]
     gegeben.
 
@@ -1395,7 +1394,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Da Homologiegruppen mit Koeffizienten in $0$ selbst die triviale Gruppe sind, folgt
     unmittelbar, dass für $q \neq 0,1$ gilt:
     \[
-        H_{p}\bigl(B;\, H_{q}(S^{1};\mathbb{Z})\bigr) = H_{p}(B;0) = 0.
+        H_{p} B;\, H_{q}(S^{1};\mathbb{Z})  = H_{p}(B;0) = 0.
     \]
     Daraus ergibt sich, dass $E^{2}_{p,q}= 0$ für alle $q \neq 0,1$. Somit hat die
     Seite $E^{2}$ nur nichttriviale Gruppen in den beiden Reihen $q = 0$ und $q = 1$,
@@ -1450,8 +1449,8 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
 
     Somit erhalten wir für $p \geq 0$ und $q = 0,1$:
     \[
-        E^{2}_{p,q}= H_{p}\bigl(B; H_{q}(F;\mathbb{Z})\bigr) = H_{p}(B;\mathbb{Z}) =
-        H_{p}(B) = H_{p}\bigl(\mathbb{C}P^{\infty}\bigr).
+        E^{2}_{p,q}= H_{p} B; H_{q}(F;\mathbb{Z})  = H_{p}(B;\mathbb{Z}) =
+        H_{p}(B) = H_{p} \mathbb{C}P^{\infty} .
     \]
 
     Damit haben wir die zweite Seite $E^{2}$ vollständig berechnet. Sie sieht wie folgt
