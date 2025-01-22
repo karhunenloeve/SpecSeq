@@ -1215,18 +1215,6 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     den Limes $n \to \infty$, wobei $\mathbb{C}P^{\infty}$ ebenfalls genau eine Zelle
     jeder geraden Dimension enthält.
 
-    Die Berechnung der zellulären Homologie zeigt, dass die Homologiegruppen von
-    $\mathbb{C}P^{\infty}$ gegeben sind durch
-    \[
-        H_{k}(\mathbb{C}P^{\infty}) =
-        \begin{cases}
-            \mathbb{Z}, & \text{für } k \text{ gerade},   \\
-            0,          & \text{für } k \text{ ungerade}.
-        \end{cases}
-    \]
-    Dieses Ergebnis werden wir später mit der Homologie aus der Serre-Spektralsequenz
-    vergleichen.
-
     Diese Beschreibung führt zu folgender Filtrierung in Skelette:
     \begin{align*}
         \emptyset & \;\subset\; \bullet \;\subset\; \bullet \;\subset\; \mathbb{C}P^{1} \;\subset\; \mathbb{C}P^{1} \;\subset\; \dots                                                     \\
@@ -1240,8 +1228,9 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Das entsprechende Pushout-Diagramm lautet:
     \[
         \begin{tikzcd}
-            S^{2k-1} \arrow[r, "\pi"] \arrow[d, hook] & \mathbb{C}P^{k-1} \arrow[d, hook]
-            \\ D^{2k} \arrow[r] & \mathbb{C}P^k
+            [sep=large] {\mathbb{C}P^k} & {\mathbb{C}P^{k-1}} \\ {D^{2k}} & {S^{2k-1}}.
+            \arrow["{[x] \mapsto[(x,0,0)]}"', from=1-2, to=1-1] \arrow["c", from=2-1,
+            to=1-1] \arrow["\pi"', from=2-2, to=1-2] \arrow["\iota", from=2-2, to=2-1]
         \end{tikzcd}
     \]
     Hierbei ist die untere horizontale Abbildung die Anheftung der $2k$-Zelle
@@ -1251,25 +1240,19 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Diese Filtrierung zeigt anschaulich die schrittweise Konstruktion von $\mathbb{C}
     P^{\infty}$ als Limes der endlichen komplexen projektiven Räume $\mathbb{C}P^{k}$,
     wobei in jedem Schritt genau eine Zelle hinzukommt.
-    \[
-        \begin{tikzcd}
-            [sep=large] {\mathbb{C}P^k} & {\mathbb{C}P^{k-1}} \\ {D^{2k}} & {S^{2k-1}}.
-            \arrow["{[x] \mapsto[(x,0,0)]}"', from=1-2, to=1-1] \arrow["c", from=2-1,
-            to=1-1] \arrow["\pi"', from=2-2, to=1-2] \arrow["\iota", from=2-2, to=2-1]
-        \end{tikzcd}
-    \]
+
     In $\mathbb{C}P^{\infty}$ sind die Skelette durch
     \[
         X_{2k}= X_{2k+1}= \mathbb{C}P^{k} \quad \text{für alle }k \in \mathbb{N}_{0}
     \]
     gegeben. Für den zugehörigen zellulären Kettenkomplex erhalten wir
     \[
-        C_{2k}(\mathbb{C}P^{\infty}) \;\cong\; H_{2k}(X_{2k},\,X_{2k-1})
+        HC_{2k}(\mathbb{C}P^{\infty}) \;\cong\; H_{2k}(X_{2k},\,X_{2k-1})
           \;\cong\; \mathbb{Z}\quad \text{für }k \geq 0,
     \]
     sowie
     \[
-        C_{k}(\mathbb{C}P^{\infty}) \;\cong\; H_{k}\bigl(X_{k},\,X_{k-1}\bigr
+        HC_{k}(\mathbb{C}P^{\infty}) \;\cong\; H_{k}\bigl(X_{k},\,X_{k-1}\bigr
         ) \;=\; 0 \quad \text{für alle ungeraden }k \text{ und }k < 0.
     \]
 
@@ -1292,10 +1275,11 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \end{cases}
     \]
 
-    Diese Struktur illustriert, dass $\mathbb{C}P^{\infty}$ ein \textit{klassifizierender Raum} für $\mathbb{Z}$-Homologie ist.
-
+    Dies illustriert, dass $\mathbb{C}P^{\infty}$ ein \textit{klassifizierender Raum} für $\mathbb{Z}$-Homologie ist. Dieses Ergebnis werden wir im Folgenden mit der Homologie aus der Serre-Spektralsequenz
+    vergleichen.
     \smallskip
 
+    \begin{remark}[Motivation für die Serre-Spektralsequenz]
     Betrachten wir nun die \textbf{Serre-Spektralsequenz}, um die Homologie von $\mathbb{C}
     P^{\infty}$ zu berechnen. Dabei \textbf{ignorieren} wir in gewisser Weise die erste
     Seite $E^{1}$ und beginnen direkt mit $E^{2}$, die wir auf allen weiteren
@@ -1335,6 +1319,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
 
     Dies stimmt mit den Ergebnissen aus der zellulären Homologie überein und illustriert
     die Effizienz der Serre-Spektralsequenz in diesem Kontext.
+    \end{remark}
 
     Sei also $B = \mathbb{C}P^{\infty}$, $X = S^{\infty}$, $F = S^{1}$, dann ist
     unsere Faserung gegeben durch $F \to X \to B$. Nach Teil c) von Satz
@@ -1395,15 +1380,6 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     Gruppe ab oder stammen aus der trivialen Gruppe. Diese sind daher die triviale
     Abbildung, da die triviale Gruppe in der Kategorie abelscher Gruppen sowohl initiales
     als auch finales Objekt ist.
-
-    Da $q = 0,1$ ist, vereinfacht sich der Term $H_{q}(F;\mathbb{Z})$ wie folgt:
-    \[
-        H_{q}(F;\mathbb{Z}) = H_{q}(S^{1};\mathbb{Z}) =
-        \begin{cases}
-            \mathbb{Z}, & \text{für } q = 0,1, \\
-            0,          & \text{sonst}.
-        \end{cases}
-    \]
 
     Somit erhalten wir für $p \geq 0$ und $q = 0,1$:
     \[
