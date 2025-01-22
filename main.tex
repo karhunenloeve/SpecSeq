@@ -146,24 +146,24 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     welche Untergruppen die Quotienten berechnet werden, und zwar in einer Art Kettenkomplex
     mit zwei Indizes. Es ist jedoch davon auszugehen, dass sich eine Vereinfachung
     der Notation bei den weiteren Untersuchungen als hilfreich erweisen wird.
-    Konkret wird ein $r$ festgelegt und alle $A^{r}$ als ein Objekt $A^{r}$
-    betrachtet. Diese neu entstandene Gruppe wird als bigraduierte abelsche Gruppe
-    bezeichnet, während die Differentiale $d^{r}$ auch kollektiv als $d^{r}$ oder
-    bigraduierte Differentiale bezeichnet werden.
+    Konkret wird ein $r$ festgelegt und alle $A^{r}_{p,q}$ als ein Objekt $A^{r}$
+    betrachtet. Diese neu entstandene Gruppe wird als bigradierte abelsche Gruppe
+    bezeichnet, während die Differentiale $d^{r}$ auch kollektiv als $d^{r}_{p,q}$ oder
+    bigradierte Differentiale bezeichnet werden.
 
     \begin{definition}[Bigraduierte abelsche Gruppen]
-        Eine \textbf{bigraduierte abelsche Gruppe} $A$ ist eine Familie von
+        Eine \textbf{bigradierte abelsche Gruppe} $A$ ist eine Familie von
         abelschen Gruppen
         \[
             A \coloneqq \bigoplus_{p,q \in \Z}A_{p,q},
         \]
         die man als direkte Summe auffassen kann, wobei die Indizes $(p,q)$ aus $\Z \times
-        \Z$ stammen. Sind zwei bigraduierte abelsche Gruppen
+        \Z$ stammen. Sind zwei bigradierte abelsche Gruppen
         \[
             A \coloneqq \bigoplus_{p,q \in \Z}A_{p,q}\quad\text{und}\quad B \coloneqq \bigoplus
             _{p,q \in \Z}B_{p,q}
         \]
-        gegeben, so bezeichnet man eine \textbf{bigraduierte Abbildung} vom Bigrad
+        gegeben, so bezeichnet man eine \textbf{bigradierte Abbildung} vom Bigrad
         $(c,d)$ als die Familie von Gruppenhomomorphismen
         \[
             f \coloneqq \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}.
@@ -183,7 +183,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     wird, sodass die Reihenfolge der Summation als willkürlich zu betrachten ist.
     Eine alternative Betrachtungsweise besteht in der Auffassung der einzelnen
     abelschen Gruppen als Elemente einer Menge. Seien also $A = \bigoplus_{p,q \in
-    \Z}A_{p,q}$ und $B = \bigoplus_{p,q \in \Z}B_{p,q}$ die bigraduierten abelschen
+    \Z}A_{p,q}$ und $B = \bigoplus_{p,q \in \Z}B_{p,q}$ die bigradierten abelschen
     Gruppen.
 
     \begin{definition}[Bigraduierte Abbildung]
@@ -191,11 +191,11 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \[
             f^{(c,d)}_{p,q}: A_{p,q}\;\longrightarrow\; B_{p+c,\,q+d}
         \]
-        eine Abbildung \textbf{vom Bigrad $(c,d)$}. Eine \textbf{bigraduierte
+        eine Abbildung \textbf{vom Bigrad $(c,d)$}. Eine \textbf{bigradierte
         Abbildung} vom Bigrad $(c,d)$ ist dann ein Gruppenhomomorphismus
         \[
             f : A \;\longrightarrow\; B,\quad \bigoplus_{p,q \in \Z}a_{p,q}\;\longmapsto
-            \; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q} a_{p,q} ,
+            \; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}(a_{p,q}) ,
         \]
         wobei jedem Summanden $a_{p,q}\in A_{p,q}$ das Element
         $f^{(c,d)}_{p,q}(a_{p,q}) \in B_{p+c,\,q+d}$ zugeordnet wird.
@@ -205,12 +205,12 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     aufgefasst werden, die \textbf{elementweise} auf der direkten Summe der
     abelschen Gruppen operieren. Entsprechend können wir sinngemäß schreiben:
     \[
-        f \;=\; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}.
+        f \;\coloneq\; \bigoplus_{p,q \in \Z}f^{(c,d)}_{p,q}.
     \]
 
     \begin{example}
         Sei $R$ ein Ring. Dann trägt $R[x,x^{-1},y,y^{-1}]$ die Struktur einer
-        bigraduierten abelschen Gruppe, indem wir
+        bigradierten abelschen Gruppe, indem wir
         \[
             A_{p,q}\;=\; R\,x^{p}\,y^{q} \quad\text{für alle}\; p,q \in \Z
         \]
@@ -218,7 +218,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \end{example}
 
     \begin{definition}[Bigraduierte Untergruppen und Quotienten]
-        Seien $A$ und $B$ bigraduierte abelsche Gruppen. Dann definieren wir:
+        Seien $A$ und $B$ bigradierte abelsche Gruppen. Dann definieren wir:
         \begin{enumerate}[nolistsep]
             \item $A \subset B \;\colon\Leftrightarrow\; A_{p,q}\subset B_{p,q}$ für alle
                 $p,q \in \Z$.
@@ -232,7 +232,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \end{definition}
 
     \begin{definition}
-        Ist $f: A \to B$ eine bigraduierte Abbildung des Grads $(c,d)$ zwischen bigraduierten
+        Ist $f: A \to B$ eine bigradierte Abbildung des Grads $(c,d)$ zwischen bigradierten
         abelschen Gruppen, so definieren wir
         \begin{itemize}[nolistsep]
             \item $\displaystyle \ker f \;\coloneqq\; \bigoplus_{p,q \in \Z}\ker  
@@ -254,7 +254,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \]
         besteht aus
         \begin{enumerate}[nolistsep]
-            \item einer bigraduierten abelschen Gruppe $E^{r}$ und
+            \item einer bigradierten abelschen Gruppe $E^{r}$ und
 
             \item einer bigraduirten Abbildung
                 \[
@@ -271,8 +271,8 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \[
                     E^{r+1}\;=\; \frac{\ker(d^{r})}{\mathrm{im}(d^{r})}\;=\; \frac{\displaystyle\bigoplus_{p,q
                     \in \Z}\ker d^{r}_{p,q} }%
-                    {\displaystyle\bigoplus_{p,q \in \Z} \mathrm{im}\! d^r_{\,p-r,\,q+r-1} }
-                    \;=\; \bigoplus_{p,q \in \Z}\frac{\ker d^{r}_{p,q} }{\mathrm{im}\! d^{r}_{\,p-r,\,q+r-1} }
+                    {\displaystyle\bigoplus_{p,q \in \Z} \mathrm{im}\, d^r_{\,p-r,\,q+r-1} }
+                    \;=\; \bigoplus_{p,q \in \Z}\frac{\ker d^{r}_{p,q} }{\mathrm{im}\, d^{r}_{\,p-r,\,q+r-1} }
                     .
                 \]
         \end{itemize}
@@ -305,7 +305,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         \[
             E^{r}_{p,q}\;\cong\; E_{p,q}^{\,r(p,q)}.
         \]
-        Dann sagen wir, dass die bigraduierte abelsche Gruppe
+        Dann sagen wir, dass die bigradierte abelsche Gruppe
         \[
             E^{\infty} \;\coloneqq\; \bigoplus_{p,q \in \Z}E_{p,q}^{\,r(p,q)}
         \]
@@ -323,8 +323,8 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         Vektorräume.
 
         Der rote Punkt $\color{red}
-        \bullet$ stellt das Element $E^{1}_{0,2}$ dar, der blaue Punkt $\color{blue}
-        \bullet$ repräsentiert $E^{2}_{1,-2}$. Diese besondere Spektralsequenz (die Serre-Spektralsequenz)
+        \bullet$ stellt das Element $E^{1}_{2,4}$ dar, der blaue Punkt $\color{blue}
+        \bullet$ repräsentiert $E^{2}_{3,0}$. Diese besondere Spektralsequenz (die Serre-Spektralsequenz)
         \textbf{stabilisiert} immer, das heißt, für hinreichend große $r$ ändert sich
         die jeweilige Seite nicht mehr.
 
@@ -363,7 +363,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
     \section{Filtrierungen und exakte Paare}
     Angenommen, wir haben einen topologischen Raum $X$ und einen \textbf{guten} Teilraum
     $A$, wobei das \textbf{Gütekriterium} in diesem Zusammenhang bedeutet, dass es
-    eine Umgebung $U \subset X$ mit $\widetilde{A}\subset \mathring{U}$ gibt und
+    eine Umgebung $U \subset X$ mit $\overline{A} \subset \mathring{U}$ gibt und
     $A$ ein Deformationsretrakt von $U$ ist. Dies stellt sicher, dass die relative
     Homologie
     \[
@@ -412,8 +412,8 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         einer anderen Struktur hervorgehen, nämlich aus einem \textbf{exakten Paar}.
 
     \begin{definition}
-        Ein \textbf{exaktes Paar} besteht aus einem Paar bigraduierter abelscher Gruppen
-        $A$ und $E$ zusammen mit bigraduierten Abbildungen
+        Ein \textbf{exaktes Paar} besteht aus einem Paar bigradierter abelscher Gruppen
+        $A$ und $E$ zusammen mit bigradierten Abbildungen
         \[
             i : A \to A, \quad j : A \to E, \quad k : E \to A,
         \]
@@ -507,27 +507,26 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \]
                 Folglich gilt
                 \[
-                    k(e_{1} - e_{2}) = 0 \;\Longrightarrow\; k' [\,e_{1} - e_{2}\,]\bigr
-                    ) = 0 \;\Longrightarrow\; k' [\,e_{1}\,]  = k' [\,e_{2}\,
+                    k(e_{1} - e_{2}) = 0 \;\Longrightarrow\; k' [e_{1} - e_{2}\,] = 0 \;\Longrightarrow\; k' [e_{1}\,]  = k' [e_{2}\,
                     ] .
                 \]
                 Damit ist auch $k'$ wohldefiniert.
 
             \item \textbf{Exaktheit des Diagramms.} \\ \textbf{(a)
                 $\ima(i') \subset \ker(j')$}:\\ Sei $a' \in A'$. Dann existiert
-                $a \in A$ mit $i(a) = a'$. Nun
+                $a \in A$ mit $i(a) = a'$. Nun ist
                 \[
-                    (j' \circ i')(a') \;=\; j' i'(a')  \;=\; j' i\vert_{i(A)}
+                    (j' \circ i')(a') \;=\; j' i\vert_{i(A)}
                     (a') .
                 \]
                 Da $a' = i(a)$, folgt
                 \[
                     (j' \circ i')(i(a)) \;=\; j'(i(a)) \;=\; \bigl[j(a)\bigr].
                 \]
-                Aber $j(i(a)) = (j \circ i)(a) = 0$ (aus der Exaktheit folgt $j \circ i =
+                Aber $ji(a) = 0$ (aus der Exaktheit folgt $ji =
                 0$). Somit ist
                 \[
-                    \bigl[j(a)\bigr] = \bigl[\,0\,\bigr] \quad\Longrightarrow\quad (j' \circ
+                    \bigl[j(a)\bigr] = \bigl[0\,\bigr] \quad\Longrightarrow\quad (j' \circ
                     i')(a') = 0 \quad\Longrightarrow\quad \ima(i') \;\subset\; \ker(j').
                 \]
 
@@ -542,9 +541,9 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \[
                     a - k(e) \;\in\; \ker(j) = \ima(i).
                 \]
-                Also gibt es ein $b \in A$, sodass $a - k(e) = i(b)$. Daraus folgt
+                Also gibt es ein $b \in A$, sodass $a - k(e) = i(b)$. Daraus folgt, da $ik = 0$ aufgrund der Exaktheit:
                 \[
-                    a' \;=\; i(a) \;=\; i(a) \;-\; i(k(e)) \;=\; i a - k(e)  \;=\;
+                    a' \;=\; i(a) \;=\; i(a) \;-\; i(k(e)) \;=\; i(a - k(e))  \;=\;
                     i i(b)  \;=\; i^{2}(b).
                 \]
                 Da $i(a') = a'$ in $A'$ bereits als Bild vorliegt, folgt
@@ -553,7 +552,7 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 \textbf{(c) $\ima(j') \subset \ker(k')$}:\\ Sei $a' = i(a) \in A'$. Dann
                 \[
                      k' \circ j' (a') \;=\; k' j' i(a)   \;=\;
-                    k' [\,j(a)\bigr]) \;=\; k j(a) .
+                    k' [j(a)] \;=\; k j(a) .
                 \]
                 Doch aus Exaktheit folgt $k \circ j = 0$, also
                 \[
@@ -565,17 +564,16 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
                 ist $k'( [e] ) = k(e) = 0$, woraus $e \in \ker(k)$. Nach Exaktheit ist
                 $\ker(k) = \ima(j)$, also existiert $a \in A$ mit $e = j(a)$. Daher
                 \[
-                    [e] = [\,j(a)\bigr] = j' i(a)  \;\in\; \ima j' .
+                    [e] = [j(a)] = j' i(a)  \;\in\; \ima j' .
                 \]
                 Somit $\ker(k') = \ima(j')$.
 
                 \textbf{(e) $\ima(k') \subset \ker(i')$ und $\ker(i') \subset \ima(k')$}:\\
                 Für jedes $[e] \in E'$ ist
                 \[
-                    (i' \circ k') [e]  \;=\; i' k'( [e] )  \;=\; i\bigl
-                    (k(e)\bigr)  \;=\; (i \circ k)(e) \;=\; 0
+                    i' k'( [e] )  \;=\; (i \circ k)(e) \;=\; 0
                 \]
-                (aus $i \circ k = 0$). Also $\ima(k') \subset \ker(i')$.
+                aufgrund der Exaktheit des Diagramms. Also $\ima(k') \subset \ker(i')$.
 
                 Ist umgekehrt $a' \in \ker(i') \subset A'$, so ist $i'(a') = 0$ in $A'$.
                 Da $i'(a') = i(a')$ (Einschränkung) und $a' \in A' = i(A)$, existiert ein
