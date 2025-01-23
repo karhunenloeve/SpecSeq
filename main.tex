@@ -1450,6 +1450,50 @@ für Mathematische Physik \\ Friedrich-Alexander Universität Erlangen-Nürnberg
         E^{\infty}_{p,n-p}\cong F_{n}^{p} / F_{n}^{p-1}.
     \]
 
+    \begin{lemma}
+    $S^\infty$ ist kontrahierbar.
+    \end{lemma}
+
+    \begin{proof}
+    Sei \(S^\infty\) als aufsteigende Vereinigung der endlichen Sphären \(S^n\) mit der direkten Limes-Topologie definiert. Das bedeutet, daß eine Abbildung
+    \[
+    f \colon S^\infty \,\longrightarrow\, Y
+    \]
+    genau dann stetig ist, wenn für jedes \(n\) ihre Einschränkung
+    \[
+    f\vert_{S^n} \colon S^n \,\longrightarrow\, Y
+    \]
+    stetig ist. 
+
+    \begin{enumerate}
+        \item \textbf{CW-Paar-Eigenschaften}: Betrachte für festes \(n\) das Paar \((S^\infty, S^{n-1})\). Da \(S^\infty\) eine CW-Struktur besitzt (es ist die Vereinigung der endlichen CW-Komplexe \(S^n\) durch zelluläre Inklusionen), ist \((S^\infty, S^{n-1})\) ein CW-Paar und damit insbesondere ein gutes Paar.
+        \item \textbf{Homotopie-Hochhebung}: Wegen der Homotopy Extension Property folgt, daß jede auf \(S^n \times [0,1]\) definierte stetige Abbildung zu einer auf \(S^\infty \times [0,1]\) definierten Abbildung \(\tilde{h}^n\) erweitert werden kann, die in besonderer Weise das obere Hemisphären-Kontakt (Kontraktion zum Basispunkt) mit einschließt. Man kann außerdem erreichen, daß
+        \[
+        \tilde{h}^n_0 \;=\;\mathrm{id}_{S^\infty},
+        \]
+        das heißt, zur Zeit \(0\) ist \(\tilde{h}^n\) die Identität auf \(S^\infty\).
+        \item \textbf{Konstruktion einer globalen Kontraktionshomotopie}: Wir definieren
+        \[
+        \tilde{h} \colon S^\infty \times [0,1] \,\longrightarrow\, S^\infty
+        \]
+        abschnittsweise in den Zeitintervallen
+        \[
+        I_n \;=\;\Bigl[\,1 - \tfrac{1}{2^{n-1}},\,1 - \tfrac{1}{2^n}\Bigr]
+        \quad
+        (n \ge 1).
+        \]
+        Für \(t \in I_n\) setze
+        \[
+        \tilde{h}_t(x)
+        \;=\;
+        \tilde{h}^n_{\,2^n\,(t-1)\,+\,2}\,\circ\,\tilde{h}^{n-1}_1\,\circ\,\dots\,\circ\,\tilde{h}^1_1(x),
+        \]
+        wobei \(2^n(t-1)+2\) von \(0\) nach \(1\) durchläuft, wenn \(t\) von \(1 - \tfrac{1}{2^{n-1}}\) nach \(1 - \tfrac{1}{2^n}\) variiert. Für das letzte Teilintervall \(\bigl[1 - \tfrac{1}{2^n},\,1\bigr]\) setzen wir \(\tilde{h}_t(x)=x_0\) konstant auf einen Basispunkt \(x_0\in S^\infty\). Damit ist insbesondere \(\tilde{h}_1(x)=x_0\) für alle \(x\).
+        \item \textbf{Stetigkeit}: Da \(S^\infty\) die direkte Limes-Topologie trägt, ist \(\tilde{h}\) genau dann stetig, wenn ihre Einschränkung \(\tilde{h}\vert_{S^n \times [0,1]}\) für jedes \(n\) stetig ist. Fixiere also \(n\). Auf \(S^n \times [0,1]\) besteht \(\tilde{h}_t(x)\) aus endlichen Kompositionen der stetigen \(\tilde{h}^k\), jeweils auf disjunkten Zeitabschnitten, und ist schließlich auf \(\bigl[1 - \tfrac{1}{2^n},1\bigr]\) konstant. Da die Randwerte exakt zusammenpassen (am Ende eines Intervalls liegt \(\tilde{h}^k_1\) vor, am Beginn des nächsten Intervalls \(\tilde{h}^{k+1}_0 = \mathrm{id}\)), treten keine Unstetigkeiten auf. Somit ist \(\tilde{h}\vert_{S^n \times [0,1]}\) stetig, und daraus folgt die Stetigkeit von \(\tilde{h}\) auf ganz \(S^\infty \times [0,1]\). 
+    \end{enumerate}
+    Da diese Homotopie \(\tilde{h}_1\) konstant den Wert \(x_0\) annimmt, ist \(S^\infty\) kontrahierbar.
+    \end{proof}
+
     Da $X = S^{\infty}$ kontrahierbar ist, gilt $H_{n}(X;\mathbb{Z}) = 0$ für alle
     $n > 0$ und $H_{0}(X;\mathbb{Z}) = \mathbb{Z}$. Somit ist $F_{n}^{p} = 0$ für alle
     $n > 0$ und $0 \leq p \leq n$, woraus folgt, dass $E^{\infty}_{p,n-p}= 0$ für alle
